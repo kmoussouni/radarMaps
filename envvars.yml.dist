@@ -1,0 +1,14 @@
+env: dev
+name: dev
+repo: wemeet
+ip: 192.168.99.100
+user: vagrant
+host: dev.wemeet
+vm_user: vagrant
+driver: virtualbox
+vm_path: /vagrant
+app_path: "."
+src_path: "/var/www/symfony"
+port: 80
+memory: "4096"
+cpus: "3"

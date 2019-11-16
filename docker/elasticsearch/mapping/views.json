@@ -1,0 +1,12 @@
+{
+  "views": {
+    "properties": {
+      "id": {
+        "type": "integer"
+      },
+      "nb_views": {
+        "type": "integer"
+      }
+    }
+  }
+}

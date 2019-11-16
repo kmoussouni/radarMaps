@@ -1,0 +1,164 @@
+version: '3.6'
+
+services:
+    adminer:
+        container_name: adminer
+        image: adminer
+        restart: always
+        ports:
+            - 8082:8080
+    rabbitmq:
+        container_name: rabbitmq
+        image: rabbitmq:3.7.14-management
+        ports:
+            - "8081:15672"
+            - "5672:5672"
+            - "5671:5671"
+        environment:
+            RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER}
+            RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS}
+            RABBITMQ_DEFAULT_VHOST: ${RABBITMQ_DEFAULT_VHOST}
+    mercure:
+        image: dunglas/mercure
+        container_name: mercure
+        environment:
+            - ACME_HOSTS="${MERCURE_ACME_HOSTS}"
+            - PUBLISHER_JWT_KEY=${MERCURE_PUBLISHER_JWT_KEY}
+            - SUBSCRIBER_JWT_KEY=${MERCURE_SUBSCRIBER_JWT_KEY}
+            - DEMO=${MERCURE_DEMO}
+            - ALLOW_ANONYMOUS=${MERCURE_ALLOW_ANONYMOUS}
+        ports:
+            - 8080:80
+            - 4343:443
+    memcached:
+        image: memcached:alpine
+        container_name: memcached
+        ports:
+            - "11211:11211"
+    db:
+        image: mysql:5.7
+        container_name: db
+        privileged: true
+#        user: "1000:50"
+        ports:
+            - "${MYSQL_ROOT_PORT}:3306"
+        environment:
+            MYSQL_HOST: ${MYSQL_ROOT_HOST}
+            MYSQL_PORT: ${MYSQL_ROOT_PORT}
+            MYSQL_ROOT_HOST: ${MYSQL_ROOT_HOST}
+            MYSQL_ROOT_PORT: ${MYSQL_ROOT_PORT}
+            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+            MYSQL_DATABASE: ${MYSQL_DATABASE}
+            MYSQL_USER: ${MYSQL_USER}
+            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+        volumes:
+            - .data/mysql:/var/lib/mysql:rw
+    php:
+        env_file:
+            - .env
+        build:
+            context: docker/php7-fpm
+            dockerfile: Dockerfile
+            args:
+                PHP_TAG: $PHP_TAG
+                XDEBUG_ENABLE: $XDEBUG_ENABLE
+        container_name: php
+        ports:
+            - "9000:9000"
+        extra_hosts:
+            - host.docker.internal:${DOCKER_INTERNAL_IP}
+        links:
+            - elasticsearch
+            - rabbitmq
+            - logstash
+            - db
+        depends_on:
+            - logstash
+            - rabbitmq
+        volumes:
+            - ${SYMFONY_APP_PATH}:/var/www/symfony/:rw
+    nginx:
+        build:
+            context: docker/nginx
+            dockerfile: Dockerfile
+        container_name: nginx
+        env_file:
+            - .env
+        links:
+            - kibana
+            - rabbitmq
+            - php
+        ports:
+            - ${NGINX_EXPOSE}:80/tcp
+            - 443:443/tcp
+        volumes:
+            - nginx-log:/var/log/nginx
+            - ${SYMFONY_APP_PATH}:/var/www/symfony/
+    elasticsearch:
+        build:
+            context: ./docker/elasticsearch/
+            args:
+                ELK_VERSION_TAG: $ELK_VERSION_TAG
+        container_name: elasticsearch
+        user: "1000"
+        volumes:
+            - ./docker/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+            - .data/elastica:/usr/share/elasticsearch/data:rw
+#            - ${SYMFONY_APP_PATH}/docker/elasticsearch/config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+#            - ./data/elastica:/usr/share/elasticsearch/data:rw
+        env_file:
+            - .env
+        ports:
+            - "9200:9200"
+            - "9300:9300"
+        environment:
+            - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
+#            - cluster.name=uni-cluster
+#            - bootstrap.memory_lock=true
+#        ulimits:
+#            memlock:
+#                soft: -1
+#                hard: -1
+    logstash:
+        build:
+            context: ./docker/logstash/
+            args:
+                ELK_VERSION_TAG: $ELK_VERSION_TAG
+        container_name: logstash
+        volumes:
+            - ./docker/logstash/config/logstash.yml:/usr/share/logstash/config/logstash.yml:ro
+            - ./docker/logstash/config/pipelines.yml:/usr/share/logstash/config/pipelines.yml:ro
+            - ./docker/logstash/pipeline:/usr/share/logstash/pipeline:ro
+            - ./docker/logstash/patterns:/usr/share/logstash/patterns:ro
+            - nginx-log:/usr/share/logstash/logs/nginx
+            - ${SYMFONY_APP_PATH}/var/log:/usr/share/logstash/logs
+        ports:
+            - "5000:5000"
+            - "9600:9600"
+            - "12201:12201"
+        environment:
+            LS_JAVA_OPTS: "-Xmx256m -Xms256m"
+        depends_on:
+            - elasticsearch
+            - db
+#            - nginx
+#            - php
+    kibana:
+        build:
+            context: ./docker/kibana/
+            args:
+                ELK_VERSION_TAG: $ELK_VERSION_TAG
+        container_name: kibana
+        volumes:
+            - ./docker/kibana/config/:/usr/share/kibana/config:ro
+        ports:
+            - "5601:5601"
+        links:
+            - elasticsearch
+        depends_on:
+            - elasticsearch
+
+volumes:
+    db-data:
+    elastica-data:
+    nginx-log:

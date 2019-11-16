@@ -1,0 +1,9 @@
+App\Entity\User:
+  admin:
+    username: 'admin'
+    email: 'mouss38@gmail.com'
+    plainPassword: '1234'
+  karim:
+    username: 'karim'
+    email: 'lebondev@gmail.com'
+    plainPassword: '1234'
