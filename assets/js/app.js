@@ -107,28 +107,45 @@ function init()
     // model - freelance
     /////////////////////////////////////////
     loader = new FBXLoader();
-    loader.load( 'build/3d/Freelance/malcolmHappyIdle.fbx', function ( object ) {
+    loader.load( 'build/3d/Freelance/freelance.fbx', function ( object ) {
+    // loader.load( 'build/3d/Freelance/malcolmHappyIdle.fbx', function ( object ) {
         console.info( 'FBX model loading...' );
 
         mixer = new THREE.AnimationMixer( object );
         var action = mixer.clipAction( object.animations[ 0 ] );
         action.play();
+
         object.traverse( function ( child ) {
             if ( child.isMesh ) {
+                scene.add( new THREE.BoxHelper( child ) );
+
                 child.castShadow = true;
                 child.receiveShadow = true;
+
+                collidedObjectUuid.push(child.uuid);
+                console.log('child = ' + child.uuid);
+                child.updateMatrixWorld();
+                child.updateMatrix();
+                child.updateWorldMatrix();
+                child.matrixAutoUpdate = true;
+                child.isObject3D = true;
+                // child.geometry.computeBoundingBox();
             }
         } );
 
         object.updateWorldMatrix();
+        object.updateMatrix();
         object.name = "freelance";
-        collidedObjectUuid.push(object.uuid);
-        scene.add( object );
-        scene.add( new THREE.BoxHelper( object ) );
+        console.log('object = ' + object.uuid);
 
+        collidedObjectUuid.push(object.uuid);
+
+        scene.add( object );
     }, undefined, function ( error ) {
         console.error( error );
     } );
+
+    collidedObjectUuid.push(loader.uuid);
 
     /////////////////////////////////////////
     // title / text
@@ -287,40 +304,6 @@ function createPlane(i, j, name, imagesUrl) {
  * Animate / Interact
  ***************************************/
 function animate() {
-    raycaster.setFromCamera( mouse, camera );
-    intersects = raycaster.intersectObjects( scene.children );
-
-    if ( intersects.length > 0 ) {
-        intersect = intersects[0];
-        if(collidedObjectUuid.indexOf(intersect.object.uuid) != -1) {
-            var face = intersect.face;
-            var linePosition = new THREE.BufferAttribute();
-            // var linePosition = line.geometry.attributes['position'];
-
-            scene.add( new THREE.BoxHelper( intersect.object ) );
-
-            if(intersect.object.geometry) {
-                var meshPosition = intersect.object.position;
-                if(face) {
-                    console.log('intersect ' + intersect.object.uuid + '      name: ' + intersect.object.name);
-                    // intersect.object.scale.add( offset );
-
-                    // var currentHex = face.material.emissive.getHex();
-                    // face.color.setHex(0xff0000);
-                    intersect.visible = true;
-                    linePosition.copyAt( 0, meshPosition, face.a );
-                    linePosition.copyAt( 1, meshPosition, face.b );
-                    linePosition.copyAt( 2, meshPosition, face.c );
-                    linePosition.copyAt( 3, meshPosition, face.a );
-                    intersect.object.updateMatrix();
-                    line.geometry.applyMatrix( intersect.object.matrix );
-                    line.visible = true;
-                } else {
-                    line.visible = false;
-                }
-            }
-        } else { line.visible = false; }
-    } else { line.visible = false; }
 
     // Update animations
     requestAnimationFrame( animate );
@@ -351,11 +334,12 @@ function onDocumentMouseDown( event ) {
     intersects = raycaster.intersectObjects( scene.children );
     if ( intersects.length > 0 ) {
         intersect = intersects[ 0 ];
+        console.log('down on ' + intersect.object.name + '/' + intersect.object.uuid);
         // delete cube
         // if ( isShiftDown ) {
         //     if ( intersect.object !== plane ) {
-                scene.remove( intersect.object );
-                scene.children.splice( scene.children.indexOf( intersect.object ), 1 );
+        //         scene.remove( intersect.object );
+        //         scene.children.splice( scene.children.indexOf( intersect.object ), 1 );
             // }
             // create cube
         // } else {
@@ -387,6 +371,39 @@ function onDocumentMouseMove( event ) {
     event.preventDefault();
     mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
     mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+
+    raycaster.setFromCamera( mouse, camera );
+    intersects = raycaster.intersectObjects( scene.children );
+
+    if ( intersects.length > 0 ) {
+        intersect = intersects[0];
+        if(collidedObjectUuid.indexOf(intersect.object.uuid) != -1) {
+            var face = intersect.face;
+            var linePosition = new THREE.BufferAttribute();
+            // var linePosition = line.geometry.attributes['position'];
+
+            if(intersect.object.geometry) {
+                var meshPosition = intersect.object.position;
+                if(face) {
+                    console.log('intersect ' + intersect.object.uuid + '      name: ' + intersect.object.name);
+                    // intersect.object.scale.add( offset );
+
+                    // var currentHex = face.material.emissive.getHex();
+                    // face.color.setHex(0xff0000);
+                    // intersect.visible = true;
+                    // linePosition.copyAt( 0, meshPosition, face.a );
+                    // linePosition.copyAt( 1, meshPosition, face.b );
+                    // linePosition.copyAt( 2, meshPosition, face.c );
+                    // linePosition.copyAt( 3, meshPosition, face.a );
+                    // intersect.object.updateMatrix();
+                    // line.geometry.applyMatrix( intersect.object.matrix );
+                    // line.visible = true;
+                } else {
+                    line.visible = false;
+                }
+            }
+        } else { line.visible = false; }
+    } else { line.visible = false; }
 }
 
 function onDocumentMouseUp() {
