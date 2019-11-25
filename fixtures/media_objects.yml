@@ -1,0 +1,7 @@
+App\Entity\MediaObject:
+  media_objects{0..100}:
+    user: "@karim"
+    contentUrl: "<imageUrl(512, 512)>.png"
+    file: null
+#    filePath: "<image(600, 400)>.jpg"
+    filePath: 'null'

@@ -2,12 +2,15 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
 
 /**
  * Class User
  * @package App\Entity
+ *
+ * @ApiResource()
  *
  * @ORM\Entity()
  * @ORM\Table(name="user")
@@ -22,9 +25,14 @@ class User extends BaseUser
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Post", inversedBy="users")
+     * @ORM\OneToMany(targetEntity="Article", mappedBy="user")
      */
-    protected $posts;
+    protected $articles;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Project", mappedBy="user")
+     */
+    protected $projects;
 
     /**
      * @return mixed
@@ -37,18 +45,36 @@ class User extends BaseUser
     /**
      * @return mixed
      */
-    public function getPosts()
+    public function getProjects()
     {
-        return $this->posts;
+        return $this->projects;
     }
 
     /**
-     * @param mixed $posts
+     * @param mixed $projects
      * @return User
      */
-    public function setPosts($posts)
+    public function setProjects($projects)
     {
-        $this->posts = $posts;
+        $this->projects = $projects;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getArticles()
+    {
+        return $this->articles;
+    }
+
+    /**
+     * @param mixed $articles
+     * @return User
+     */
+    public function setArticles($articles)
+    {
+        $this->articles = $articles;
         return $this;
     }
 }

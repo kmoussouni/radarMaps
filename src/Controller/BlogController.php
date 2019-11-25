@@ -18,6 +18,6 @@ class BlogController extends AbstractController
      */
     public function home()
     {
-        return $this->render('Blog/blog.html.twig');
+        return $this->render('show.html.twig');
     }
 }

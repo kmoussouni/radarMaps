@@ -1,0 +1,9 @@
+App\Entity\Article:
+  articles{0..100}:
+    user: '@karim'
+    image: "@media_objects*"
+    body: "<sentence()>"
+    section: "<word()>"
+    backStory: "<sentence()>"
+    speakable: ""
+    wordCount: 0

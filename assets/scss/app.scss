@@ -1,0 +1,28 @@
+
+@import "~bulma/bulma";
+
+$slightgray: 'slightgray';
+$background: '#00ff00';
+
+body {
+  background-color: $background;
+}
+
+.container {
+  width: 100% !important;
+  height: 100px !important;
+  position: absolute !important;
+}
+
+navi, infoi {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.info {
+  display: block;
+  z-index: 10;
+}

@@ -16,15 +16,15 @@ Vagrant.configure("2") do |config|
   config.vm.hostname = machine['host']
   config.vm.network "private_network", ip: machine['ip']
 
-  config.vm.network "forwarded_port", guest: 25, host: 25
-  config.vm.network "forwarded_port", guest: 80, host: 80
-  config.vm.network "forwarded_port", guest: 443, host: 443
-  config.vm.network "forwarded_port", guest: 9001, host: 9001
-  config.vm.network "forwarded_port", guest: 2375, host: 2375
-  config.vm.network "forwarded_port", guest: 3306, host: 3306
-  config.vm.network "forwarded_port", guest: 5601, host: 5601
-  config.vm.network "forwarded_port", guest: 8080, host: 8088
-  config.vm.network "forwarded_port", guest: 11211, host: 11211
+  #config.vm.network "forwarded_port", guest: 25, host: 25
+  #config.vm.network "forwarded_port", guest: 80, host: 80
+  #config.vm.network "forwarded_port", guest: 443, host: 443
+  #config.vm.network "forwarded_port", guest: 9001, host: 9001
+  #config.vm.network "forwarded_port", guest: 2375, host: 2375
+  #config.vm.network "forwarded_port", guest: 3306, host: 3306
+  #config.vm.network "forwarded_port", guest: 5601, host: 5601
+  #config.vm.network "forwarded_port", guest: 8080, host: 8088
+  #config.vm.network "forwarded_port", guest: 11211, host: 11211
 
   #config.vm.network "forwarded_port", guest: 22, host: 22
 
@@ -62,7 +62,7 @@ Vagrant.configure("2") do |config|
       ufw allow 443;
       ufw allow  9001;
       ufw allow  2375;
-      ufw allow  3306;
+   d   ufw allow  3306;
       ufw allow  5601;
       ufw allow  8088;
       ufw allow  11211;

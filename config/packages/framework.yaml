@@ -16,3 +16,9 @@ framework:
         log: true
     templating:
         engines: ["twig"]
+    assets:
+        json_manifest_path: '%kernel.project_dir%/public/build/manifest.json'
+    serializer:
+        enable_annotations: true
+        mapping:
+            paths: ['%kernel.project_dir%/config/serialization']

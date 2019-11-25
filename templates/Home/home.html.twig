@@ -1,3 +1,13 @@
-home
+{% extends 'base.html.twig' %}
 
-<a href="/blog">blog</a>
+{% block title %}Home - Karim Moussouni{% endblock %}
+
+{% block body %}
+
+{% include 'Home/main.html.twig' %}
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}

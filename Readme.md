@@ -1,8 +1,6 @@
-#kmoussouni/wemeet
+#kmoussokarimmoussouni/karimmoussokarimmoussouni.com
 
-# Uni Project Back Stack
-
-
+# KarimMoussokarimmoussouni.com Project
 
 ##Install
 
@@ -42,13 +40,13 @@ make ssh
 add to your local hosts file
 ```
 #Vagrant
-192.168.99.100  uni.local www.uni.local kibana.uni.local db smtp elasticsearch adminer.uni.local
+192.168.99.100  karimmoussouni.local www.karimmoussouni.local kibana.karimmoussouni.local db smtp elasticsearch adminer.karimmoussouni.local
 #Wsl
-127.0.0.1       uni.local www.uni.local kibana.uni.local db smtp elasticsearch adminer.uni.local
+127.0.0.1       karimmoussouni.local www.karimmoussouni.local kibana.karimmoussouni.local db smtp elasticsearch adminer.karimmoussouni.local
 ```
 
 test the urls:
-www.uni.local, www.uni.local/api/docs, www.uni.local
+www.karimmoussouni.local, www.karimmoussouni.local/api/docs, www.karimmoussouni.local
 
 setup env variables in .env and envvars.yml (vm specs, git personnal account and token access, app specs)
 

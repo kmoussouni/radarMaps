@@ -65,6 +65,7 @@ services:
         container_name: php
         ports:
             - "9000:9000"
+            - "3000:3000"
         extra_hosts:
             - host.docker.internal:${DOCKER_INTERNAL_IP}
         links:

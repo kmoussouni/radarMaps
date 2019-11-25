@@ -1,2 +1,0 @@
-App\Entity\Post:
-  posts{0..100}:
