@@ -22,3 +22,13 @@ framework:
         enable_annotations: true
         mapping:
             paths: ['%kernel.project_dir%/config/serialization']
+#    cache:
+#        enable: false
+#        directory: '%kernel.cache_dir%/pools' # Only used with cache.adapter.filesystem
+#
+#        # service: cache.doctrine
+#        default_doctrine_provider: 'app.doctrine_cache'
+#        # service: cache.psr6
+#        default_psr6_provider: 'app.my_psr6_service'
+#        # service: cache.redis
+#        default_memcached_provider: 'memcached://localhost'

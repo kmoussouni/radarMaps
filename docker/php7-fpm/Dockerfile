@@ -4,13 +4,10 @@ ARG SYMFONY_APP_PATH="${SYMFONY_APP_PATH}"
 
 FROM kmoussouni/php73-fpm:${PHP_TAG}
 
-RUN echo "127.0.0.1    uni.local" >> /etc/hosts;
-RUN echo "127.0.0.1    shop.uni.local" >> /etc/hosts;
-RUN echo "127.0.0.1    www.uni.local" >> /etc/hosts;
-RUN echo "127.0.0.1    coin.uni.local" >> /etc/hosts;
+RUN echo "127.0.0.1    karimmoussouni.local" >> /etc/hosts;
 
-RUN cat /etc/passwd
-RUN echo /var/www/symfony
+RUN usermod -aG www-data dev
+
 RUN chown -Rf dev:www-data /var/www/symfony
 RUN chmod -Rf 775 /var/www/symfony
 

@@ -14,7 +14,9 @@ Encore
     // .setManifestKeyPrefix('build/')
 
     .addStyleEntry('css/app.min', './assets/scss/app.scss')
+    .addStyleEntry('css/blog.min', './assets/scss/blog.scss')
     .addEntry('js/app.min', './assets/js/app.js')
+    .addEntry('js/blog.min', './assets/js/blog.js')
     // .addEntry('js/resume.min', './assets/js/resume.js')
 
     // .splitEntryChunks()

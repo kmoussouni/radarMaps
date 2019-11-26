@@ -6,6 +6,7 @@ import {Vector3} from "three";
  * commonjs
  ***************************************/
 var THREE = require('three');
+var TWEEN = require('tween/tween.js');
 
 /** import */
 import { OrbitControls } from '../../node_modules/three/examples/jsm/controls/OrbitControls.js';
@@ -13,7 +14,7 @@ import { FBXLoader } from '../../node_modules/three/examples/jsm/loaders/FBXLoad
 
 const axios = require('axios');
 
-// import '../scss/app.scss';
+import '../scss/app.scss';
 
 /** variables */
 var baseUrl = "http://karimmoussouni.local/"
@@ -62,8 +63,7 @@ animate();
  ***************************************/
 function init()
 {
-    container = document.createElement( 'div' );
-    document.body.appendChild( container );
+    container = document.getElementById('root' );
 
     /**
      * Camera
@@ -96,7 +96,25 @@ function init()
     light.shadow.camera.right = 120;
     scene.add( light );
 
-    scene.add( new THREE.PointLightHelper( light, 15 ) );
+    var tweenlight = new TWEEN.Tween({
+            x: light.position.x,
+            y: light.position.y,
+            z: light.position.z,
+            r: light.rotation.x
+        })
+        .to({ x: 0, y: 100, z: 0, r: -2*Math.PI}, 1000)
+        .onUpdate(function() {
+            console.log(this.r, this.x, this.y, this.z, this.o);
+            // light.position.set(this.x, this.y, this.z);
+            light.rotation.set(this.r, light.rotation.y, light.rotation.z);
+            // light.scale.set(this.s,this.s,this.s);
+
+            // light.material.opacity = this.o;
+        });
+    tweenlight.start();
+
+
+    // scene.add( new THREE.PointLightHelper( light, 15 ) );
 
     /**
      * grid
@@ -107,8 +125,8 @@ function init()
     // model - freelance
     /////////////////////////////////////////
     loader = new FBXLoader();
-    loader.load( 'build/3d/Freelance/freelance.fbx', function ( object ) {
-    // loader.load( 'build/3d/Freelance/malcolmHappyIdle.fbx', function ( object ) {
+    // loader.load( 'build/3d/Freelance/freelance.fbx', function ( object ) {
+    loader.load( 'build/3d/Freelance/malcolmHappyIdle.fbx', function ( object ) {
         console.info( 'FBX model loading...' );
 
         mixer = new THREE.AnimationMixer( object );
@@ -117,25 +135,28 @@ function init()
 
         object.traverse( function ( child ) {
             if ( child.isMesh ) {
-                scene.add( new THREE.BoxHelper( child ) );
+                console.log('child is mesh')
 
-                child.castShadow = true;
-                child.receiveShadow = true;
+                // scene.add( new THREE.BoxHelper( child ) );
 
-                collidedObjectUuid.push(child.uuid);
-                console.log('child = ' + child.uuid);
-                child.updateMatrixWorld();
-                child.updateMatrix();
-                child.updateWorldMatrix();
-                child.matrixAutoUpdate = true;
-                child.isObject3D = true;
+                // child.castShadow = true;
+                // child.receiveShadow = true;
+
+                // collidedObjectUuid.push(child.uuid);
+                // console.log('child = ' + child.uuid);
+                // child.updateMatrixWorld();
+                // child.updateMatrix();
+                // child.updateWorldMatrix();
+                // child.matrixAutoUpdate = true;
+                // child.isObject3D = true;
                 // child.geometry.computeBoundingBox();
             }
         } );
 
-        object.updateWorldMatrix();
-        object.updateMatrix();
+        // object.updateWorldMatrix();
+        // object.updateMatrix();
         object.name = "freelance";
+        object.type = "Mesh";
         console.log('object = ' + object.uuid);
 
         collidedObjectUuid.push(object.uuid);
@@ -164,7 +185,7 @@ function init()
             opacity: 0.4,
             side: THREE.DoubleSide
         } );
-        var message = "   Customize \nyour freelance.";
+        var message = "Contact\n         me :)";
         var shapes = font.generateShapes( message, 100 );
         var geometry = new THREE.ShapeBufferGeometry( shapes );
         geometry.computeBoundingBox();
@@ -181,7 +202,8 @@ function init()
             }
         } );
 
-        // text.prototype.name = "text";
+        text.name = "Text";
+        text.km = "Text";
         scene.add( text );
         // make line shape ( N.B. edge view remains visible )
         var holeShapes = [];
@@ -200,12 +222,15 @@ function init()
             var shape = shapes[ i ];
             var points = shape.getPoints();
             var geometry = new THREE.BufferGeometry().setFromPoints( points );
-            geometry.translate( xMid, 50, -50 );
+            geometry.translate( xMid, 50, 100 );
             var lineMesh = new THREE.Line( geometry, matDark );
             lineText.add( lineMesh );
         }
+
+        lineText.name = "lineText";
+        lineText.km = "lineText";
         scene.add( lineText );
-        scene.add( new THREE.BoxHelper( lineText) );
+        // scene.add( new THREE.BoxHelper( lineText) );
     } );
 
     // intersect Line
@@ -290,10 +315,17 @@ function createPlane(i, j, name, imagesUrl) {
     textureLoader.crossOrigin = "*";
     var texture = textureLoader.load( imagesUrl );
     var material = new THREE.MeshBasicMaterial( { map: texture } );
+    material.side = THREE.DoubleSide;
+    material.opacity = 1.0;
 
-    var plane = new THREE.Mesh( geometry, material );
+    // var plane = new THREE.Mesh( geometry );
+    var floorGeometry = new THREE.PlaneGeometry(100, 100);
+    // var floorGeometry = new THREE.PlaneGeometry(100, 100, 10, 10);
+    var plane = new THREE.Mesh(floorGeometry, material);
     collidedObjectUuid.push(plane.uuid);
     plane.name = name;
+    plane.km = "Project";
+    // plane.material = material;
     plane.rotation.x = - Math.PI / 2;
     plane.position.set( -delta + 100*i, cote, -delta + cote*j );
 
@@ -307,11 +339,12 @@ function animate() {
 
     // Update animations
     requestAnimationFrame( animate );
+    TWEEN.update();
+
     var delta = clock.getDelta();
     if ( mixer ) mixer.update( delta );
 
     renderer.render( scene, camera );
-    // stats.update();
 }
 
 /********************************************************************************************************************
@@ -351,16 +384,58 @@ function onDocumentMouseDown( event ) {
         // }
         // render();
 
-        handleClick(intersect.object.uuid, )
+        handleClick(intersect.object, intersect.object.uuid)
     }
 }
 
-function handleClick(uuid, state) {
+function handleClick(object, uuid, state='project') {
+    console.log('click / TYPE= ' + object.type + " / NAME= " + object.name + " / UUID= " + uuid + " / KM= " + object.km);
+
     //cv
 
     // blog
+    if(object.km == 'Text') {
+        console.log('BLOG')
+        window.open('/blog');
+    }
 
-    // portfolio/project
+    /**************************************
+     * portfolio/project
+     *************************************/
+    if(object.km == 'Project') {
+        var tweenProject = new TWEEN.Tween({
+                x: object.position.x,
+                y: object.position.y,
+                z: object.position.z,
+                r: object.rotation.x,
+                o: object.material.opacity,
+                s: object.scale.x
+            })
+            .to({ x: camera.position.x, y: camera.position.y, z: 0, r: -2*Math.PI, o: 0, s: 5}, 1000)
+            .onUpdate(function() {
+                console.log(this.r, this.x, this.y, this.z, this.o, this.s);
+                object.position.set(this.x, this.y, this.z);
+                object.rotation.set(this.r, object.rotation.y, object.rotation.z);
+                object.scale.set(this.s,this.s,this.s);
+                object.material.opacity = this.o;
+            });
+
+        var tweenCamera = new TWEEN.Tween({
+                x: camera.rotation.x,
+                y: camera.rotation.y,
+                z: camera.rotation.z
+            })
+            .to({ x: 0, y: 0, z: 0}, 1000)
+            .onUpdate(function() {
+                console.log('Camera: '  + this.x, this.y, this.z);
+                camera.rotation.set(this.x, this.y, this.z);
+            });
+
+            tweenCamera.start();
+            tweenProject.start();
+    }
+
+    // object.vector
 
     // contact
 
@@ -385,7 +460,7 @@ function onDocumentMouseMove( event ) {
             if(intersect.object.geometry) {
                 var meshPosition = intersect.object.position;
                 if(face) {
-                    console.log('intersect ' + intersect.object.uuid + '      name: ' + intersect.object.name);
+                    // console.log('intersect ' + intersect.object.uuid + '      name: ' + intersect.object.name);
                     // intersect.object.scale.add( offset );
 
                     // var currentHex = face.material.emissive.getHex();
@@ -404,6 +479,8 @@ function onDocumentMouseMove( event ) {
             }
         } else { line.visible = false; }
     } else { line.visible = false; }
+
+    controls.update();
 }
 
 function onDocumentMouseUp() {

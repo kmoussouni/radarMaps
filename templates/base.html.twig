@@ -7,7 +7,7 @@
         <meta name="description" content="Karim Moussouni Web Portal">
         <meta name="author" content="Karim Moussouni">
 
-        <link href="{{ asset('/build/css/app.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('/build/css/app.min.css') }}" rel="stylesheet" />
 
         <!-- Custom fonts for this template -->
 {#        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet">#}
@@ -19,15 +19,12 @@
     </head>
 
     <body>
-{#        <section class="section">#}
             <div class="container">
                 {% block body %}{% endblock %}
             </div>
-{#        </section>#}
+            <div id="root"></div>
     </body>
 
     {% block javascripts %}
-        <script src={{ asset('build/runtime.js') }} type="text/javascript"></script>
-        <script src="{{ asset('build/js/app.min.js') }}" type="text/javascript"></script>
     {% endblock %}
 </html>
