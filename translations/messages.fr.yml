@@ -1,25 +1,25 @@
-contact.form.contactme.title: "Contact me"
+contact.form.contactme.title: "Contactez moi"
 contact.form.type.label: "Type"
 contact.form.type.backdev.option: "Back Dev"
 contact.form.type.leaddev.option: "Lead Dev"
 contact.form.type.fullstack.option: "FullStack"
-contact.form.contract.title: "Contract"
+contact.form.contract.title: "Contrat"
 contact.form.contract.freelance.option: "Freelance"
 contact.form.contract.cdi.option: "CDI"
 contact.form.techno.title: "Techno"
 contact.form.techno.php.option: "PHP 7"
-contact.form.techno.symfony.option: __contact.form.techno.symfony.option
-contact.form.techno.javascript.option: __contact.form.techno.javascript.option
-contact.form.techno.reactjs.option: __contact.form.techno.reactjs.option
-contact.form.techno.webpack.option: __contact.form.techno.webpack.option
-contact.form.techno.mysql.option: __contact.form.techno.mysql.option
-contact.form.techno.docker.option: __contact.form.techno.docker.option
-contact.form.techno.vagrant.option: __contact.form.techno.vagrant.option
-contact.form.techno.elasticsearch.option: __contact.form.techno.elasticsearch.option
-contact.form.techno.logstash.option: __contact.form.techno.logstash.option
-contact.form.techno.kibana.option: __contact.form.techno.kibana.option
-contact.form.lastname.label: __contact.form.lastname.label
-contact.firstname.message.label: Message
+contact.form.techno.symfony.option: Symfony
+contact.form.techno.javascript.option: Javascript
+contact.form.techno.reactjs.option: Reactjs
+contact.form.techno.webpack.option: Webpack
+contact.form.techno.mysql.option: Mysql
+contact.form.techno.docker.option: Docker
+contact.form.techno.vagrant.option: Vagrant
+contact.form.techno.elasticsearch.option: Elasticsearch
+contact.form.techno.logstash.option: Logstash
+contact.form.techno.kibana.option: Kibana
+contact.form.lastname.label: Nom
+contact.form.firstname.label: Prénom
 contact.form.socity.label: "Société"
 contact.form.email.label: Email
 contact.form.email.placeholder: Veuillez entrer votre email
@@ -27,13 +27,13 @@ contact.form.subject.label: Sujet
 contact.form.subject.default.option: Selectionnez une option
 contact.form.subject.contact.option: Contact
 contact.form.subject.recrutement.option: Recrutement
-contact.form.subject.project.option: Project
+contact.form.subject.project.option: Projet
 contact.form.message.label: Message
 contact.form.submit.label: Envoyer
 contact.form.cancel.label: Annuler
 home.title: "Karim Moussouni"
 card.title.label: "Karim Moussouni"
 card.subtitle.label: "Full Stack Developer"
-card.content.label: "I am experienced in leveraging agile frameworks to provide a robust\nsynopsis for high level overviews. Iterative approaches to corporate\nstrategy foster collaborative thinking to further the overall value\nproposition."
-info.subtitle1.label: "FBX Scene Loading / 3D text / UI by "
-info.subtitle2.label: "Character and Animations from "
+card.content.label: "Je suis expérimenté dans l'exploitation de frameworks agiles pour fournir une synopsis robuste pour les aperçus de haut niveau. Les approches itératives de la stratégie des entreprises favorisent la réflexion collaborative afin de faire progresser la proposition de valeur globale."
+info.subtitle1.label: "Chargement d'un scène FBX / texte 3D / UI par "
+info.subtitle2.label: "Modèle et Animations de "

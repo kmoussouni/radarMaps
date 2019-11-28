@@ -26,8 +26,6 @@ var loader, line;
 
 var collidedObjectUuid = [];
 
-var firstLetter = true;
-var text;
 var fontMap = {
     "helvetiker": 0,
     "gentilis": 2,
@@ -36,19 +34,15 @@ var weightMap = {
     "regular": 0,
     "bold": 1
 };
-var reverseFontMap = [];
-var reverseWeightMap = [];
-for ( var i in fontMap ) reverseFontMap[ fontMap[ i ] ] = i;
-for ( var i in weightMap ) reverseWeightMap[ weightMap[ i ] ] = i;
-var targetRotation = 0;
-var targetRotationOnMouseDown = 0;
-var mouseX = 0;
-var mouseXOnMouseDown = 0;
-var windowHalfX = window.innerWidth / 2;
+// var reverseFontMap = [];
+// var reverseWeightMap = [];
+// for ( var i in fontMap ) reverseFontMap[ fontMap[ i ] ] = i;
+// for ( var i in weightMap ) reverseWeightMap[ weightMap[ i ] ] = i;
+// var windowHalfX = window.innerWidth / 2;
 
 var raycaster, intersects, intersect;
 var mouse;
-var offset = new THREE.Vector3( 1.3, 1.3, 1.3 );
+var windowHalfX = window.innerWidth / 2;
 
 /****************************************
  * Sequence
@@ -174,7 +168,7 @@ function init()
     // title / text
     /////////////////////////////////////////
     var text = new THREE.FontLoader();
-    text.load( 'build/3d/Freelance/fonts/helvetiker_regular.typeface.json', function ( font ) {
+    text.load( '/build/3d/Freelance/fonts/helvetiker_regular.typeface.json', function ( font ) {
         var xMid, text;
         var color = 0x006699;
         var matDark = new THREE.LineBasicMaterial( {

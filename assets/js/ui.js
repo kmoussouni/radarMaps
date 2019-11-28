@@ -33,7 +33,16 @@ function exitContact() {
 
 function submitContactForm() {
     console.log('submitContactForm');
-    axios.post('/api/quotation', {}
+    axios.post('/api/quotation', {
+        lastname: document.getElementById('contactForm[Lastname]'),
+        firstname: document.getElementById('contactForm[firstname]'),
+        email: document.getElementById('contactForm[email]'),
+        subject: document.getElementById('contactForm[subject]'),
+        message: document.getElementById('contactForm[message]'),
+        type: document.getElementById('contactForm[type]'),
+        contract: document.getElementById('contactForm[contract]'),
+        techno: document.getElementById('contactForm[technos]')
+    }
 
     );
 };

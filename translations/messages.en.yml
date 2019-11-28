@@ -1,36 +1,36 @@
-contact.form.subject.label: __contact.form.subject.label
-contact.form.email.placeholder: __contact.form.email.placeholder
-contact.form.subject.default.option: __contact.form.subject.default.option
-contact.form.subject.contact.option: __contact.form.subject.contact.option
-contact.form.subject.recrutement.option: __contact.form.subject.recrutement.option
-contact.form.subject.project.option: __contact.form.subject.project.option
-contact.form.message.label: __contact.form.message.label
-contact.form.submit.label: __contact.form.submit.label
-contact.form.cancel.label: __contact.form.cancel.label
-contact.form.contactme.title: __contact.form.contactme.title
-contact.form.type.label: __contact.form.type.label
-contact.form.type.backdev.option: __contact.form.type.backdev.option
-contact.form.type.leaddev.option: __contact.form.type.leaddev.option
-contact.form.type.fullstack.option: __contact.form.type.fullstack.option
-contact.form.contract.title: __contact.form.contract.title
-contact.form.contract.freelance.option: __contact.form.contract.freelance.option
-contact.form.contract.cdi.option: __contact.form.contract.cdi.option
-contact.form.techno.title: __contact.form.techno.title
-contact.form.techno.php.option: __contact.form.techno.php.option
-contact.form.techno.symfony.option: __contact.form.techno.symfony.option
-contact.form.techno.javascript.option: __contact.form.techno.javascript.option
-contact.form.techno.reactjs.option: __contact.form.techno.reactjs.option
-contact.form.techno.webpack.option: __contact.form.techno.webpack.option
-contact.form.techno.mysql.option: __contact.form.techno.mysql.option
-contact.form.techno.docker.option: __contact.form.techno.docker.option
-contact.form.techno.vagrant.option: __contact.form.techno.vagrant.option
-contact.form.techno.elasticsearch.option: __contact.form.techno.elasticsearch.option
-contact.form.techno.logstash.option: __contact.form.techno.logstash.option
-contact.form.techno.kibana.option: __contact.form.techno.kibana.option
-contact.form.lastname.label: __contact.form.lastname.label
-contact.firstname.message.label: __contact.firstname.message.label
-contact.form.socity.label: __contact.form.socity.label
-contact.form.email.label: __contact.form.email.label
+contact.form.contactme.title: "Contact me"
+contact.form.type.label: "Type"
+contact.form.type.backdev.option: "Back Dev"
+contact.form.type.leaddev.option: "Lead Dev"
+contact.form.type.fullstack.option: "FullStack"
+contact.form.contract.title: "Contract"
+contact.form.contract.freelance.option: "Freelance"
+contact.form.contract.cdi.option: "CDI"
+contact.form.techno.title: "Techno"
+contact.form.techno.php.option: "PHP 7"
+contact.form.techno.symfony.option: Symfony
+contact.form.techno.javascript.option: Javascript
+contact.form.techno.reactjs.option: Reactjs
+contact.form.techno.webpack.option: Webpack
+contact.form.techno.mysql.option: Mysql
+contact.form.techno.docker.option: Docker
+contact.form.techno.vagrant.option: Vagrant
+contact.form.techno.elasticsearch.option: Elasticsearch
+contact.form.techno.logstash.option: Logstash
+contact.form.techno.kibana.option: Kibana
+contact.form.lastname.label: Lastname
+contact.form.firstname.label: Firstname
+contact.form.socity.label: Society
+contact.form.email.label: Mail
+contact.form.email.placeholder: Please enter your email
+contact.form.subject.label: Subject
+contact.form.subject.default.option: Select an option
+contact.form.subject.contact.option: Contact
+contact.form.subject.recrutement.option: Hiring
+contact.form.subject.project.option: Project
+contact.form.message.label: Message
+contact.form.submit.label: Submit
+contact.form.cancel.label: Cancem
 home.title: "Karim Moussouni"
 card.title.label: "Karim Moussouni"
 card.subtitle.label: "Full Stack Developer"
