@@ -11,7 +11,7 @@ import { FBXLoader } from '../../node_modules/three/examples/jsm/loaders/FBXLoad
 
 const axios = require('axios');
 
-import ShowSection from './ui';
+import {ShowSection, showProject} from './ui';
 import '../scss/app.scss';
 
 /** variables */
@@ -130,7 +130,9 @@ function init()
             if ( child.isMesh ) {
                 // console.log('child is mesh')
 
-                // scene.add( new THREE.BoxHelper( child ) );
+                var box = new THREE.BoxHelper( child );
+                box.geometry.computeBoundingBox();
+                scene.add( box );
 
                 // child.castShadow = true;
                 // child.receiveShadow = true;
@@ -423,7 +425,12 @@ function handleClick(object, uuid, state='project') {
                 object.rotation.set(this.r, object.rotation.y, object.rotation.z);
                 object.scale.set(this.s,this.s,this.s);
                 object.material.opacity = this.o;
-            });
+            })
+            .onComplete(function() {
+                console.log('done');
+                showProject(object);
+            })
+        ;
 
         var tweenCamera = new TWEEN.Tween({
                 x: camera.rotation.x,
