@@ -4,15 +4,12 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="Karim Moussouni Web Portal">
+        <meta name="description" content="Karim Moussouni Web Site">
         <meta name="author" content="Karim Moussouni">
 
         <link href="{{ asset('/build/css/app.min.css') }}" rel="stylesheet" />
 
-        <!-- Custom fonts for this template -->
-{#        <link href="https://fonts.googleapis.com/css?family=Saira+Extra+Condensed:500,700" rel="stylesheet">#}
-{#        <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet">#}
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}{% endblock %}</title>
         {% block stylesheets %}
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
         {% endblock %}
@@ -20,7 +17,7 @@
 
     <body>
             <div class="container">
-                {% block body %}{% endblock %}
+                {% block content %}{% endblock %}
             </div>
             <div id="root"></div>
     </body>

@@ -1,5 +1,8 @@
 @import "~bulma/bulma";
-@import "~font-awesome";
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+@import "~flag-icon-css/css/flag-icon.min.css";
+
+//@import "resume";
 
 $slightgray: 'slightgray';
 $background: '#00ff00';
@@ -10,8 +13,11 @@ body {
 
 .container {
   width: 100% !important;
+  max-width: 100% !important;
   height: 100px !important;
   position: absolute !important;
+  z-index: 10;
+  pointer-events: initial;
 }
 
 navi, infoi {
@@ -22,7 +28,27 @@ navi, infoi {
   left: 0;
 }
 
-.info {
+#info {
   display: block;
+  position: absolute;
+  right: 0px;
+  height: 132px;
+  bottom: 0px;
   z-index: 10;
+}
+
+#card {
+  display: none;
+}
+
+#resume {
+  display: none;
+}
+
+#contact {
+  display: none;
+}
+
+#project {
+  display: none;
 }

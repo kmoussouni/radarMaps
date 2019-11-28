@@ -1,15 +1,16 @@
 ####General
 ```
         add loading spinner / disable render until loading is completed
-        click on objects
-        add fontawesome
-        fix global sass
+DONE    click on objects
+DONE    add fontawesome
+DONE    fix global sass
         fix wording
-        fix bulma install / fix form events
+DONE    fix bulma install / fix form events
         add 4 steps form: type, contract, technos, popin => name, mail, text, submit => Entity Quotation
         add ui animations/tweens
         api platform exclude strategy policies
-        remove unused docker container rabbit, elasticsearch, kibana, logstash, mercure, adminer, ...
+DONE    remove unused docker container rabbit, elasticsearch, kibana, logstash, mercure, adminer, ...
+        helpers
 ```
 
 ####Projects
@@ -23,27 +24,31 @@ DONE        url
 
 ####Articles
 ```
-        create blog template list and show
+        create blog template index and show
         create page with pagination
         create article page / factorise
 ```
 
-####Projects
+####Quotation
 ```
+        Update entity with contact form elements
+        add POST api on quotation form submit
 ```
 
 ####Back
 ```
-    finish api
-    add oauth2 authentication
-    add reactadmin
+        finish api
+        add oauth2 authentication
+DONE    add reactadmin
+        configure reactadmin
+        customize reactadmin
 ```
 
 ####PROD
 ```
-    get identification
-    restore ovh server
-    install docker
-    create bash script
+DONE    get identification
+DONE    restore ovh server
+DONE    install docker
+        create bash script
 ```
 

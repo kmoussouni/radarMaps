@@ -1,7 +1,4 @@
 // karimmoussouni.com
-
-import {Vector3} from "three";
-
 /****************************************
  * commonjs
  ***************************************/
@@ -14,6 +11,7 @@ import { FBXLoader } from '../../node_modules/three/examples/jsm/loaders/FBXLoad
 
 const axios = require('axios');
 
+import ShowSection from './ui';
 import '../scss/app.scss';
 
 /** variables */
@@ -56,6 +54,7 @@ var offset = new THREE.Vector3( 1.3, 1.3, 1.3 );
  * Sequence
  ***************************************/
 init();
+
 animate();
 
 /****************************************
@@ -104,7 +103,7 @@ function init()
         })
         .to({ x: 0, y: 100, z: 0, r: -2*Math.PI}, 1000)
         .onUpdate(function() {
-            console.log(this.r, this.x, this.y, this.z, this.o);
+            // console.log(this.r, this.x, this.y, this.z, this.o);
             // light.position.set(this.x, this.y, this.z);
             light.rotation.set(this.r, light.rotation.y, light.rotation.z);
             // light.scale.set(this.s,this.s,this.s);
@@ -126,8 +125,8 @@ function init()
     /////////////////////////////////////////
     loader = new FBXLoader();
     // loader.load( 'build/3d/Freelance/freelance.fbx', function ( object ) {
-    loader.load( 'build/3d/Freelance/malcolmHappyIdle.fbx', function ( object ) {
-        console.info( 'FBX model loading...' );
+    loader.load( '/build/3d/Freelance/malcolmHappyIdle.fbx', function ( object ) {
+        // console.info( 'FBX model loading...' );
 
         mixer = new THREE.AnimationMixer( object );
         var action = mixer.clipAction( object.animations[ 0 ] );
@@ -135,7 +134,7 @@ function init()
 
         object.traverse( function ( child ) {
             if ( child.isMesh ) {
-                console.log('child is mesh')
+                // console.log('child is mesh')
 
                 // scene.add( new THREE.BoxHelper( child ) );
 
@@ -157,11 +156,14 @@ function init()
         // object.updateMatrix();
         object.name = "freelance";
         object.type = "Mesh";
-        console.log('object = ' + object.uuid);
+        // console.log('object = ' + object.uuid);
 
         collidedObjectUuid.push(object.uuid);
 
         scene.add( object );
+
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('card').style.display = 'block';
     }, undefined, function ( error ) {
         console.error( error );
     } );
@@ -177,7 +179,8 @@ function init()
         var color = 0x006699;
         var matDark = new THREE.LineBasicMaterial( {
             color: color,
-            side: THREE.DoubleSide
+            opacity: 0.1
+            // side: THREE.DoubleSide
         } );
         var matLite = new THREE.MeshBasicMaterial( {
             color: color,
@@ -190,17 +193,17 @@ function init()
         var geometry = new THREE.ShapeBufferGeometry( shapes );
         geometry.computeBoundingBox();
         xMid = - 0.5 * ( geometry.boundingBox.max.x - geometry.boundingBox.min.x );
-        geometry.translate( xMid, 50, 0 );
+        geometry.translate( xMid, 50, -100 );
         // make shape ( N.B. edge view not visible )
         text = new THREE.Mesh( geometry, matLite );
-        text.position.z = -50;
+        // text.position.z = -50;
 
-        text.traverse( function ( child ) {
-            if ( child.isMesh ) {
-                child.castShadow = true;
-                child.receiveShadow = false;
-            }
-        } );
+        // text.traverse( function ( child ) {
+        //     if ( child.isMesh ) {
+        //         child.castShadow = true;
+        //         child.receiveShadow = false;
+        //     }
+        // } );
 
         text.name = "Text";
         text.km = "Text";
@@ -222,7 +225,7 @@ function init()
             var shape = shapes[ i ];
             var points = shape.getPoints();
             var geometry = new THREE.BufferGeometry().setFromPoints( points );
-            geometry.translate( xMid, 50, 100 );
+            geometry.translate( xMid, 50, -100 );
             var lineMesh = new THREE.Line( geometry, matDark );
             lineText.add( lineMesh );
         }
@@ -272,7 +275,7 @@ function init()
  * Events
  ***************************************/
 function createPortfolio() {
-    console.log('create portforlio');
+    // console.log('create portforlio');
 
     var countProject = 0;
     var url;
@@ -361,30 +364,36 @@ function onDocumentKeyPress( event ) {
 }
 
 function onDocumentMouseDown( event ) {
-    event.preventDefault();
-    mouse.set( ( event.clientX / window.innerWidth ) * 2 - 1, - ( event.clientY / window.innerHeight ) * 2 + 1 );
-    raycaster.setFromCamera( mouse, camera );
-    intersects = raycaster.intersectObjects( scene.children );
-    if ( intersects.length > 0 ) {
-        intersect = intersects[ 0 ];
-        console.log('down on ' + intersect.object.name + '/' + intersect.object.uuid);
-        // delete cube
-        // if ( isShiftDown ) {
-        //     if ( intersect.object !== plane ) {
-        //         scene.remove( intersect.object );
-        //         scene.children.splice( scene.children.indexOf( intersect.object ), 1 );
-            // }
-            // create cube
-        // } else {
-        //     var voxel = new THREE.Mesh( cubeGeo, cubeMaterial );
-        //     voxel.position.copy( intersect.point ).add( intersect.face.normal );
-        //     voxel.position.divideScalar( 50 ).floor().multiplyScalar( 50 ).addScalar( 25 );
-        //     scene.add( voxel );
-        //     scene.children.push( voxel );
-        // }
-        // render();
+    // event.preventDefault();
 
-        handleClick(intersect.object, intersect.object.uuid)
+    console.log(event.target);
+    console.log(event);
+
+    if(event.target  instanceof HTMLCanvasElement) {
+        mouse.set( ( event.clientX / window.innerWidth ) * 2 - 1, - ( event.clientY / window.innerHeight ) * 2 + 1 );
+        raycaster.setFromCamera( mouse, camera );
+        intersects = raycaster.intersectObjects( scene.children );
+        if ( intersects.length > 0 ) {
+            intersect = intersects[ 0 ];
+            // console.log('down on ' + intersect.object.name + '/' + intersect.object.uuid);
+            // delete cube
+            // if ( isShiftDown ) {
+            //     if ( intersect.object !== plane ) {
+            //         scene.remove( intersect.object );
+            //         scene.children.splice( scene.children.indexOf( intersect.object ), 1 );
+                // }
+                // create cube
+            // } else {
+            //     var voxel = new THREE.Mesh( cubeGeo, cubeMaterial );
+            //     voxel.position.copy( intersect.point ).add( intersect.face.normal );
+            //     voxel.position.divideScalar( 50 ).floor().multiplyScalar( 50 ).addScalar( 25 );
+            //     scene.add( voxel );
+            //     scene.children.push( voxel );
+            // }
+            // render();
+
+            handleClick(intersect.object, intersect.object.uuid)
+        }
     }
 }
 
@@ -392,16 +401,18 @@ function handleClick(object, uuid, state='project') {
     console.log('click / TYPE= ' + object.type + " / NAME= " + object.name + " / UUID= " + uuid + " / KM= " + object.km);
 
     //cv
-
-    // blog
-    if(object.km == 'Text') {
-        console.log('BLOG')
-        window.open('/blog');
+    if(object.name == 'freelance') {
+        console.log('RESUME')
+        ShowSection('resume');
     }
 
-    /**************************************
-     * portfolio/project
-     *************************************/
+    // contact
+    if(object.km == 'Text') {
+        console.log('BLOG')
+        ShowSection('contact');
+    }
+
+    // portfolio/project
     if(object.km == 'Project') {
         var tweenProject = new TWEEN.Tween({
                 x: object.position.x,
@@ -413,7 +424,7 @@ function handleClick(object, uuid, state='project') {
             })
             .to({ x: camera.position.x, y: camera.position.y, z: 0, r: -2*Math.PI, o: 0, s: 5}, 1000)
             .onUpdate(function() {
-                console.log(this.r, this.x, this.y, this.z, this.o, this.s);
+                // console.log(this.r, this.x, this.y, this.z, this.o, this.s);
                 object.position.set(this.x, this.y, this.z);
                 object.rotation.set(this.r, object.rotation.y, object.rotation.z);
                 object.scale.set(this.s,this.s,this.s);
@@ -427,17 +438,14 @@ function handleClick(object, uuid, state='project') {
             })
             .to({ x: 0, y: 0, z: 0}, 1000)
             .onUpdate(function() {
-                console.log('Camera: '  + this.x, this.y, this.z);
+                // console.log('Camera: '  + this.x, this.y, this.z);
                 camera.rotation.set(this.x, this.y, this.z);
             });
 
             tweenCamera.start();
             tweenProject.start();
     }
-
-    // object.vector
-
-    // contact
+    // blog
 
     // exits
 }

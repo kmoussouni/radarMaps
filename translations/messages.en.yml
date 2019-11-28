@@ -1,0 +1,39 @@
+contact.form.subject.label: __contact.form.subject.label
+contact.form.email.placeholder: __contact.form.email.placeholder
+contact.form.subject.default.option: __contact.form.subject.default.option
+contact.form.subject.contact.option: __contact.form.subject.contact.option
+contact.form.subject.recrutement.option: __contact.form.subject.recrutement.option
+contact.form.subject.project.option: __contact.form.subject.project.option
+contact.form.message.label: __contact.form.message.label
+contact.form.submit.label: __contact.form.submit.label
+contact.form.cancel.label: __contact.form.cancel.label
+contact.form.contactme.title: __contact.form.contactme.title
+contact.form.type.label: __contact.form.type.label
+contact.form.type.backdev.option: __contact.form.type.backdev.option
+contact.form.type.leaddev.option: __contact.form.type.leaddev.option
+contact.form.type.fullstack.option: __contact.form.type.fullstack.option
+contact.form.contract.title: __contact.form.contract.title
+contact.form.contract.freelance.option: __contact.form.contract.freelance.option
+contact.form.contract.cdi.option: __contact.form.contract.cdi.option
+contact.form.techno.title: __contact.form.techno.title
+contact.form.techno.php.option: __contact.form.techno.php.option
+contact.form.techno.symfony.option: __contact.form.techno.symfony.option
+contact.form.techno.javascript.option: __contact.form.techno.javascript.option
+contact.form.techno.reactjs.option: __contact.form.techno.reactjs.option
+contact.form.techno.webpack.option: __contact.form.techno.webpack.option
+contact.form.techno.mysql.option: __contact.form.techno.mysql.option
+contact.form.techno.docker.option: __contact.form.techno.docker.option
+contact.form.techno.vagrant.option: __contact.form.techno.vagrant.option
+contact.form.techno.elasticsearch.option: __contact.form.techno.elasticsearch.option
+contact.form.techno.logstash.option: __contact.form.techno.logstash.option
+contact.form.techno.kibana.option: __contact.form.techno.kibana.option
+contact.form.lastname.label: __contact.form.lastname.label
+contact.firstname.message.label: __contact.firstname.message.label
+contact.form.socity.label: __contact.form.socity.label
+contact.form.email.label: __contact.form.email.label
+home.title: "Karim Moussouni"
+card.title.label: "Karim Moussouni"
+card.subtitle.label: "Full Stack Developer"
+card.content.label: "I am experienced in leveraging agile frameworks to provide a robust\nsynopsis for high level overviews. Iterative approaches to corporate\nstrategy foster collaborative thinking to further the overall value\nproposition."
+info.subtitle1.label: "FBX Scene Loading / 3D text / UI by "
+info.subtitle2.label: "Character and Animations from "

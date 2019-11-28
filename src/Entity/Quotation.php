@@ -44,17 +44,22 @@ class Quotation
     /**
      * @ORM\Column(type="string")
      */
-    protected $popin;
+    protected $firstname;
 
     /**
      * @ORM\Column(type="string")
      */
-    protected $name;
+    protected $lastname;
 
     /**
      * @ORM\Column(type="string")
      */
     protected $mail;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    protected $subject;
 
     /**
      * @ORM\Column(type="string")
@@ -136,42 +141,6 @@ class Quotation
     /**
      * @return mixed
      */
-    public function getPopin()
-    {
-        return $this->popin;
-    }
-
-    /**
-     * @param mixed $popin
-     * @return Quotation
-     */
-    public function setPopin($popin)
-    {
-        $this->popin = $popin;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * @param mixed $name
-     * @return Quotation
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
     public function getMail()
     {
         return $this->mail;
@@ -202,6 +171,60 @@ class Quotation
     public function setText($text)
     {
         $this->text = $text;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFirstname()
+    {
+        return $this->firstname;
+    }
+
+    /**
+     * @param mixed $firstname
+     * @return Quotation
+     */
+    public function setFirstname($firstname)
+    {
+        $this->firstname = $firstname;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLastname()
+    {
+        return $this->lastname;
+    }
+
+    /**
+     * @param mixed $lastname
+     * @return Quotation
+     */
+    public function setLastname($lastname)
+    {
+        $this->lastname = $lastname;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSubject()
+    {
+        return $this->subject;
+    }
+
+    /**
+     * @param mixed $subject
+     * @return Quotation
+     */
+    public function setSubject($subject)
+    {
+        $this->subject = $subject;
         return $this;
     }
 }

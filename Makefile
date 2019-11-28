@@ -34,7 +34,6 @@ ssh: ## Connect to app container
 	@$(DOCKER) exec -u dev -it $(APP_CONTAINER_NAME) $(SH)
 
 fixperm: ## Connect to app container
-	@$(DOCKER) exec -u 0 -t $(APP_CONTAINER_NAME) rm -Rf /var/www/symfony/var/cache/* $(c)
 	@$(DOCKER) exec -u 0 -t $(APP_CONTAINER_NAME) chmod -Rf 777 /var/www/* $(c)
 	@$(DOCKER) exec -u 0 -t $(APP_CONTAINER_NAME) chown -Rf dev:www-data /var/www/* $(c)
 
