@@ -130,9 +130,9 @@ function init()
             if ( child.isMesh ) {
                 // console.log('child is mesh')
 
-                var box = new THREE.BoxHelper( child );
-                box.geometry.computeBoundingBox();
-                scene.add( box );
+                // var box = new THREE.BoxHelper( child );
+                // box.geometry.computeBoundingBox();
+                // scene.add( box );
 
                 // child.castShadow = true;
                 // child.receiveShadow = true;
@@ -368,7 +368,7 @@ function onDocumentMouseDown( event ) {
     if(event.target  instanceof HTMLCanvasElement) {
         mouse.set( ( event.clientX / window.innerWidth ) * 2 - 1, - ( event.clientY / window.innerHeight ) * 2 + 1 );
         raycaster.setFromCamera( mouse, camera );
-        intersects = raycaster.intersectObjects( scene.children );
+        intersects = raycaster.intersectObjects( scene.children, true );
         if ( intersects.length > 0 ) {
             intersect = intersects[ 0 ];
             // console.log('down on ' + intersect.object.name + '/' + intersect.object.uuid);
@@ -397,7 +397,7 @@ function handleClick(object, uuid, state='project') {
     console.log('click / TYPE= ' + object.type + " / NAME= " + object.name + " / UUID= " + uuid + " / KM= " + object.km);
 
     //cv
-    if(object.name == 'freelance') {
+    if(object.name == 'Shoes' || object.name == 'Bottoms' || object.name == 'Shoes' || object.name == 'Hats' || object.name == 'Tops') {
         console.log('RESUME')
         ShowSection('resume');
     }

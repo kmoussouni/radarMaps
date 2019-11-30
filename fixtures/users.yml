@@ -3,7 +3,12 @@ App\Entity\User:
     username: 'admin'
     email: 'mouss38@gmail.com'
     plainPassword: '1234'
+    enabled: true
+#    createdAt: "now"
+#    updatedAt: "now"
   karim:
     username: 'karim'
     email: 'lebondev@gmail.com'
     plainPassword: '1234'
+#    createdAt: "now"
+    enabled: true

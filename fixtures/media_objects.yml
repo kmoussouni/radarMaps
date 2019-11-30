@@ -3,5 +3,77 @@ App\Entity\MediaObject:
     user: "@karim"
     contentUrl: "<imageUrl(512, 512)>.png"
     file: null
-#    filePath: "<image(600, 400)>.jpg"
     filePath: 'null'
+#    filePath: "<image(600, 400)>.jpg"
+
+
+  logo_bayday:
+    user: "@karim"
+    contentUrl: ""
+    filePath: "../assets/assets/client/bayday.jpg"
+
+  logo_globalis:
+    user: "@karim"
+    contentUrl: ""
+    filePath: "../assets/assets/client/bayday.jpg"
+
+  logo_epresspack:
+    user: "@karim"
+    contentUrl: ""
+    filePath: "../assets/assets/client/bayday.jpg"
+
+  logo_rdc:
+    user: "@karim"
+    contentUrl: ""
+    filePath: "../assets/assets/client/bayday.jpg"
+
+  logo_awakit:
+    user: "@karim"
+    contentUrl: ""
+    filePath: "../assets/assets/client/bayday.jpg"
+
+  logo_additeam:
+    user: "@karim"
+    contentUrl: ""
+    filePath: "../assets/assets/client/bayday.jpg"
+
+  logo_nordnet:
+    user: "@karim"
+    contentUrl: ""
+    filePath: "../assets/assets/client/bayday.jpg"
+
+  logo_kingfisher:
+    user: "@karim"
+    contentUrl: ""
+    filePath: "../assets/assets/client/bayday.jpg"
+
+  logo_oney:
+    user: "@karim"
+    contentUrl: ""
+    filePath: "../assets/assets/client/bayday.jpg"
+
+  logo_vintec:
+    user: "@karim"
+    contentUrl: ""
+    filePath: "../assets/assets/client/bayday.jpg"
+
+  logo_adeo:
+    user: "@karim"
+    contentUrl: ""
+    filePath: "../assets/assets/client/bayday.jpg"
+
+  logo_equadra:
+    user: "@karim"
+    contentUrl: ""
+    filePath: "../assets/assets/client/bayday.jpg"
+
+  logo_profilsoft:
+    user: "@karim"
+    contentUrl: ""
+    filePath: "../assets/assets/client/bayday.jpg"
+
+  logo_ipt:
+    user: "@karim"
+    contentUrl: ""
+    filePath: "../assets/assets/client/bayday.jpg"
+

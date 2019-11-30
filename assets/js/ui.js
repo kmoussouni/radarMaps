@@ -32,7 +32,6 @@ function submitContactForm() {
 
 function showProject(project) {
     console.log('showProject ' + project.title);
-
 }
 
 function ShowSection(UIId) {

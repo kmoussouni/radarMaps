@@ -6,6 +6,7 @@ use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\Timestampable;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 /**
  * Class Article
@@ -18,7 +19,7 @@ use Gedmo\Timestampable\Traits\Timestampable;
  */
 class Article
 {
-    use Timestampable;
+    use TimestampableEntity;
 
     /**
      * @ORM\Column(name="id", type="integer")

@@ -5,7 +5,7 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Timestampable\Traits\Timestampable;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 /**
  * Class Project
@@ -18,7 +18,7 @@ use Gedmo\Timestampable\Traits\Timestampable;
  */
 class Project
 {
-    use Timestampable;
+    use TimestampableEntity;
 
     /**
      * @ORM\Column(name="id", type="integer")
@@ -28,7 +28,7 @@ class Project
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="articles")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="projects")
      */
     protected $user;
 

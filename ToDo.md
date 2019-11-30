@@ -52,3 +52,8 @@ DONE    install docker
         create bash script
 ```
 
+####DEBUG
+```
+        Date fixtures error
+```
+

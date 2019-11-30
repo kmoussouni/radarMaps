@@ -5,6 +5,7 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 /**
  * Class User
@@ -17,6 +18,8 @@ use FOS\UserBundle\Model\User as BaseUser;
  */
 class User extends BaseUser
 {
+    use TimestampableEntity;
+
     /**
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
@@ -33,6 +36,25 @@ class User extends BaseUser
      * @ORM\OneToMany(targetEntity="Project", mappedBy="user")
      */
     protected $projects;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Experience", mappedBy="user")
+     */
+    protected $experiences;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Client", mappedBy="user")
+     */
+    protected $clients;
+
+    /**
+     * User constructor.
+     */
+    public function __construct()
+    {
+//        $this->createdAt = new Date();
+//        $this->updatedAt = new Date();
+    }
 
     /**
      * @return mixed
@@ -75,6 +97,42 @@ class User extends BaseUser
     public function setArticles($articles)
     {
         $this->articles = $articles;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getClients()
+    {
+        return $this->clients;
+    }
+
+    /**
+     * @param mixed $clients
+     * @return User
+     */
+    public function setClients($clients)
+    {
+        $this->clients = $clients;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getExperiences()
+    {
+        return $this->experiences;
+    }
+
+    /**
+     * @param mixed $experiences
+     * @return User
+     */
+    public function setExperiences($experiences)
+    {
+        $this->experiences = $experiences;
         return $this;
     }
 }

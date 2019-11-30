@@ -1,0 +1,84 @@
+App\Entity\Client:
+  bayday:
+      name: "BayDay"
+      image: '@logo_bayday'
+      location: "Paris XII"
+      user: '@karim'
+
+  globalis:
+      name: "GLOBALIS media systems - Accélérateur de projets digitaux Freelance"
+      image: '@logo_globalis'
+      location: "Paris - La Defense"
+      user: '@karim'
+
+  epresspack:
+      name: "Epresspack"
+      image: '@logo_epresspack'
+      location: "Paris I"
+      user: '@karim'
+
+  rdc:
+      name: "Rue Du Commerce"
+      location: "Saint Ouen 93"
+      image: '@logo_rdc'
+      user: '@karim'
+
+  awakit:
+      name: "Awakit, l'agence digitale de Gfi"
+      location: "Boulogne-Billancourt 92"
+      image: '@logo_awakit'
+      user: '@karim'
+
+  additeam:
+      name: "Additeam"
+      location: "Villeneuve d'Ascq 59"
+      image: '@logo_additeam'
+      user: '@karim'
+
+  nord_net:
+      name: "NordNet"
+      location: "Roubaix 59"
+      image: '@logo_nordnet'
+      user: '@karim'
+
+  kingfisher:
+      user: '@karim'
+      name: 'KingFisher'
+      image: '@logo_kingfisher'
+      location: "Tourcoing 59"
+
+  oney_banque_accord:
+      name: "Oney Banque Accord"
+      image: '@logo_oney'
+      location : "La Madeleine 59"
+      user: '@karim'
+
+  vintec:
+      name: "Vintec"
+      image: '@logo_vintec'
+      location: "Télétravail"
+      user: '@karim'
+
+  adeo:
+      name: "Adeo Services"
+      image: '@logo_adeo'
+      location: "Ronchin"
+      user: '@karim'
+
+  equadra:
+      name: "Quadra"
+      location: "Wasquehal 59"
+      image: '@logo_equadra'
+      user: '@karim'
+
+  profilsoft:
+      name: "ProfilSoft"
+      location: "Roubaix 59"
+      user: '@karim'
+      image: '@logo_profilsoft'
+
+  ipt:
+      name: "Interim Professionnel Technique"
+      location: "Paris XVI"
+      user: '@karim'
+      image: '@logo_ipt'

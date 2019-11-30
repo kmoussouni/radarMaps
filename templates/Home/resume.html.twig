@@ -1,222 +1,196 @@
-<section class="card resume-section p-3 p-lg-5 d-flex align-items-center" id="about">
-    <div class="card-content">
-        {% include 'Components/exit.html.twig' with {context: 'resume'} %}
+<div class="card resume">
 
-        <div class="wrapper">
-            <div class="sidebar-wrapper">
-                <div class="profile-container">
-                    <img class="profile" src="assets/images/profile.png" alt="" />
-                    <h1 class="name">Alan Doe</h1>
-                    <h3 class="tagline">Full Stack Developer</h3>
-                </div><!--//profile-container-->
+    <a href="https://github.com/kmoussouni" class="github-corner" aria-label="GitHub">
+        <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#00d1b2;color:#fff;position:absolute;top:0;border:0;right:0" aria-hidden="true">
+            <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+            <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin:130px 106px" class="octo-arm"></path>
+            <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
+        </svg>
+    </a>
 
-                <div class="contact-container container-block">
-                    <ul class="list-unstyled contact-list">
-                        <li class="email"><i class="fas fa-envelope"></i><a href="mailto: yourname@email.com">alan.doe@website.com</a></li>
-                        <li class="phone"><i class="fas fa-phone"></i><a href="tel:0123 456 789">0123 456 789</a></li>
-                        <li class="website"><i class="fas fa-globe"></i><a href="https://themes.3rdwavemedia.com/bootstrap-templates/resume/orbit-free-resume-cv-bootstrap-theme-for-developers/" target="_blank">portfoliosite.com</a></li>
-                        <li class="linkedin"><i class="fab fa-linkedin-in"></i><a href="#" target="_blank">linkedin.com/in/alandoe</a></li>
-                        <li class="github"><i class="fab fa-github"></i><a href="#" target="_blank">github.com/username</a></li>
-                        <li class="twitter"><i class="fab fa-twitter"></i><a href="https://twitter.com/3rdwave_themes" target="_blank">@twittername</a></li>
-                    </ul>
-                </div><!--//contact-container-->
-                <div class="education-container container-block">
-                    <h2 class="container-block-title">Education</h2>
-                    <div class="item">
-                        <h4 class="degree">MSc in Computer Science</h4>
-                        <h5 class="meta">University of London</h5>
-                        <div class="time">2011 - 2012</div>
-                    </div><!--//item-->
-                    <div class="item">
-                        <h4 class="degree">BSc in Applied Mathematics</h4>
-                        <h5 class="meta">Bristol University</h5>
-                        <div class="time">2007 - 2011</div>
-                    </div><!--//item-->
-                </div><!--//education-container-->
+    <header class="line has-background-primary"></header>
 
-                <div class="languages-container container-block">
-                    <h2 class="container-block-title">Languages</h2>
-                    <ul class="list-unstyled interests-list">
-                        <li>English <span class="lang-desc">(Native)</span></li>
-                        <li>French <span class="lang-desc">(Professional)</span></li>
-                        <li>Spanish <span class="lang-desc">(Professional)</span></li>
-                    </ul>
-                </div><!--//interests-->
+    <section class="profile section">
 
-                <div class="interests-container container-block">
-                    <h2 class="container-block-title">Interests</h2>
-                    <ul class="list-unstyled interests-list">
-                        <li>Climbing</li>
-                        <li>Snowboarding</li>
-                        <li>Cooking</li>
-                    </ul>
-                </div><!--//interests-->
+            <div class="columns">
+                <p class="title">
+                    {% include 'Components/exit.html.twig' with {context: 'resume'} %}
+                </p>
+            </div>
 
-            </div><!--//sidebar-wrapper-->
+        {#        <div class="">#}
 
-            <div class="main-wrapper">
-
-                <section class="section summary-section">
-                    <h2 class="section-title"><span class="icon-holder"><i class="fas fa-user"></i></span>Career Profile</h2>
-                    <div class="summary">
-                        <p>Summarise your career here lorem ipsum dolor sit amet, consectetuer adipiscing elit. You can <a href="https://themes.3rdwavemedia.com/bootstrap-templates/resume/orbit-free-resume-cv-bootstrap-theme-for-developers/" target="_blank">download this free resume/CV template here</a>. Aenean commodo ligula eget dolor aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu.</p>
-                    </div><!--//summary-->
-                </section><!--//section-->
-
-                <section class="section experiences-section">
-                    <h2 class="section-title"><span class="icon-holder"><i class="fas fa-briefcase"></i></span>Experiences</h2>
-
-                    <div class="item">
-                        <div class="meta">
-                            <div class="upper-row">
-                                <h3 class="job-title">Lead Developer</h3>
-                                <div class="time">2015 - Present</div>
-                            </div><!--//upper-row-->
-                            <div class="company">Startup Hubs, San Francisco</div>
-                        </div><!--//meta-->
-                        <div class="details">
-                            <p>Describe your role here lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo.</p>
-                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. </p>
-                        </div><!--//details-->
-                    </div><!--//item-->
-
-                    <div class="item">
-                        <div class="meta">
-                            <div class="upper-row">
-                                <h3 class="job-title">Senior Software Engineer</h3>
-                                <div class="time">2014 - 2015</div>
-                            </div><!--//upper-row-->
-                            <div class="company">Google, London</div>
-                        </div><!--//meta-->
-                        <div class="details">
-                            <p>Describe your role here lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
-
-                        </div><!--//details-->
-                    </div><!--//item-->
-
-                    <div class="item">
-                        <div class="meta">
-                            <div class="upper-row">
-                                <h3 class="job-title">UI Developer</h3>
-                                <div class="time">2012 - 2014</div>
-                            </div><!--//upper-row-->
-                            <div class="company">Amazon, London</div>
-                        </div><!--//meta-->
-                        <div class="details">
-                            <p>Describe your role here lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
-                        </div><!--//details-->
-                    </div><!--//item-->
-
-                </section><!--//section-->
-
-                <section class="section projects-section">
-                    <h2 class="section-title"><span class="icon-holder"><i class="fas fa-archive"></i></span>Projects</h2>
-                    <div class="intro">
-                        <p>You can list your side projects or open source libraries in this section. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum et ligula in nunc bibendum fringilla a eu lectus.</p>
-                    </div><!--//intro-->
-                    <div class="item">
-                        <span class="project-title"><a href="#hook">Velocity</a></span> - <span class="project-tagline">A responsive website template designed to help startups promote, market and sell their products.</span>
-
-                    </div><!--//item-->
-                    <div class="item">
-                        <span class="project-title"><a href="http://themes.3rdwavemedia.com/website-templates/responsive-bootstrap-theme-web-development-agencies-devstudio/" target="_blank">DevStudio</a></span> -
-                        <span class="project-tagline">A responsive website template designed to help web developers/designers market their services. </span>
-                    </div><!--//item-->
-                    <div class="item">
-                        <span class="project-title"><a href="http://themes.3rdwavemedia.com/website-templates/responsive-bootstrap-theme-for-startups-tempo/" target="_blank">Tempo</a></span> - <span class="project-tagline">A responsive website template designed to help startups promote their products or services and to attract users &amp; investors</span>
-                    </div><!--//item-->
-                    <div class="item">
-                        <span class="project-title"><a href="hhttp://themes.3rdwavemedia.com/website-templates/responsive-bootstrap-theme-mobile-apps-atom/" target="_blank">Atom</a></span> - <span class="project-tagline">A comprehensive website template solution for startups/developers to market their mobile apps. </span>
-                    </div><!--//item-->
-                    <div class="item">
-                        <span class="project-title"><a href="http://themes.3rdwavemedia.com/website-templates/responsive-bootstrap-theme-for-mobile-apps-delta/" target="_blank">Delta</a></span> - <span class="project-tagline">A responsive Bootstrap one page theme designed to help app developers promote their mobile apps</span>
-                    </div><!--//item-->
-                </section><!--//section-->
-
-                <section class="skills-section section">
-                    <h2 class="section-title"><span class="icon-holder"><i class="fas fa-rocket"></i></span>Skills &amp; Proficiency</h2>
-                    <div class="skillset">
-                        <div class="item">
-                            <h3 class="level-title">Python &amp; Django</h3>
-                            <div class="progress level-bar">
-                                <div class="progress-bar theme-progress-bar" role="progressbar" style="width: 99%" aria-valuenow="99" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div><!--//item-->
-
-                        <div class="item">
-                            <h3 class="level-title">Javascript &amp; jQuery</h3>
-                            <div class="progress level-bar">
-                                <div class="progress-bar theme-progress-bar" role="progressbar" style="width: 98%" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div><!--//item-->
-
-                        <div class="item">
-                            <h3 class="level-title">Angular</h3>
-                            <div class="progress level-bar">
-                                <div class="progress-bar theme-progress-bar" role="progressbar" style="width: 98%" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div><!--//item-->
-
-                        <div class="item">
-                            <h3 class="level-title">HTML5 &amp; CSS</h3>
-                            <div class="progress level-bar">
-                                <div class="progress-bar theme-progress-bar" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div><!--//item-->
-
-                        <div class="item">
-                            <h3 class="level-title">Ruby on Rails</h3>
-                            <div class="progress level-bar">
-                                <div class="progress-bar theme-progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div><!--//item-->
-
-                        <div class="item">
-                            <h3 class="level-title">Sketch &amp; Photoshop</h3>
-                            <div class="progress level-bar">
-                                <div class="progress-bar theme-progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div><!--//item-->
-
+            <div class="columns">
+                <div class="column is-two-fifths">
+                    <h1 class="title is-size-1">Karim Moussouni</h1>
+                    <p class="subtitle">Full Stack Developer</p>
+                </div>
+                <div class="column is-2"><figure class="image image is-128x128">
+                        <img class="is-rounded" src="{{ asset('build/img/profile.jpg')}} ">
+                    </figure>
+                </div>
+                <div class="column has-text-grey-light has-text-right-in-desktop">
+                    <p class="has-text-weight-light">Paris, France</p>
+                    <p class="has-text-weight-light">(+62) 857-8123-8798</p>
+                    <p class="has-text-weight-light">karim.moussouni@gmail.com</p>
+                    <div class="social-icon">
+                        <a href="https://twitter.com/kmoussouni" class="twitter" title="Twitter">
+                            <i class="fab fa-twitter"></i>
+                            @kmoussouni
+                        </a>
                     </div>
-                </section><!--//skills-section-->
+                    <div class="social-icon">
+                        <a href="https://github.com/kmoussouni" class="github" title="Github">
+                            <i class="fab fa-github"></i>
+                            kmoussouni
+                        </a>
+                    </div>
+                    <div class="social-icon">
+                        <a href="https://www.linkedin.com/in/karim-moussouni-39407868/" class="github" title="Github">
+                            <i class="fab fa-linkedin"></i>
+                            kmoussouni
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {#</div>#}
+    </section>
 
-            </div><!--//main-body-->
-        </div>
+    <div class="hr"></div>
 
-        <footer class="footer">
-            <div class="text-center">
-                <!--/* This template is released under the Creative Commons Attribution 3.0 License. Please keep the attribution link below when using for your own project. Thank you for your support. :) If you'd like to use the template without the attribution, you can check out other commercial license options via our website: themes.3rdwavemedia.com */-->
-                <small class="copyright">Designed with <i class="fas fa-heart"></i> by <a href="https://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers</small>
-            </div><!--//container-->
-        </footer><!--//footer-->
-
-
-        {#        <div class="w-100">#}
-{#            <h1 class="mb-0">#}
-{#                <span class="has-text-info">THE</span>#}
-{#                Karim#}
-{#                <span class="text-primary">Moussouni</span>#}
-{#                <span class="has-text-success">Resume</span>#}
-{#            </h1>#}
-{#            <div class="subheading mb-5">Noisy le Grand · Région Parisienne, #Phone ·#}
-{#                <a href="mailto:name@email.com">mouss38@gmail.com</a>#}
-{#            </div>#}
-{#            <p class="lead mb-5">I am experienced in leveraging agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition.</p>#}
-{#            <div class="social-icons">#}
-{#                <a href="#">#}
-{#                    <i class="fab fa-linkedin-in"></i>#}
-{#                </a>#}
-{#                <a href="#">#}
-{#                    <i class="fab fa-github"></i>#}
-{#                </a>#}
-{#                <a href="#">#}
-{#                    <i class="fab fa-twitter"></i>#}
-{#                </a>#}
-{#                <a href="#">#}
-{#                    <i class="fab fa-facebook-f"></i>#}
-{#                </a>#}
-{#            </div>#}
+    <section class="section">
+{#    <div class="container">#}
+        <div class="columns">
+            <div class="column is-three-fifths">
+                <div class="summary">
+                    <div class="title is-size-5 has-text-primary has-text-weight-bold">SUMMARY</div>
+                    <div class="wrapper">
+                        <p>
+                            An experienced software engineer especially in frontend side.
+                            Having deep knowledge in HTML, CSS (with its pre-processor) and JavaScript with the various framework.
+                            Write good quality, well tested, and fast delivered code.
+                            Experience in architecting frontend codebase.
+                            A well-known figure in the programming community, open-source creator, and writer for many technical articles.
+                        </p>
+                        <br />
+                    </div>
+                </div>
+                <div class="experience">
+                    <div class="title is-size-5 has-text-primary has-text-weight-bold">EXPERIENCE</div>
+                    {% for experience in experiences %}
+                        <div class="item">
+                            <div class="is-size-5">
+                                <b>{{ experience.client.name }},</b>
+                                <span class="has-text-weight-semi-bold">{{ experience.client.location }} — <i>{{ experience.title }}</i></span>
+                            </div>
+                            <div class="is-size-7">{{ experience.startDate|date('M Y') }} - {{ experience.endDate|date('M Y') }}</div>
+                            <ul style="list-style:disc;margin-left:1em">
+                                <p class="is-size-8">{{ experience.body }}</p>
+{#                                <li>Split monolith frontend codebase into some different repository</li>#}
+{#                                <li>Introduce many best practices in coding Vue.js and Nuxt.js</li>#}
+{#                                <li>Creating many common utilities for easier sharing code that managed in monorepo using Lerna</li>#}
+{#                                <li>Monitoring web performance</li>#}
+{#                                <li>Actively sharing about how to be effective, good quality, and excellent software development process especially in frontend side.</li>#}
+                            </ul>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="education">
+                    <div class="title is-size-5 has-text-primary has-text-weight-bold">EDUCATION</div>
+                    <div class="item"><div class="is-size-5"><b>Muhammadiyah University</b>,
+                            <span class="has-text-weight-semi-bold">Jakarta — <i>Bachelor Degree</i></span>
+                        </div>
+                        <div class="is-size-7">2009 - 2013</div>
+                        <div>Bachelor of Informatics Engineering</div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="projects">
+                    <div class="title is-size-5 has-text-primary has-text-weight-bold">PROJECTS</div>
+                    {% for project in projects %}
+                        <div class="item"><div class="is-size-5">
+                                    <b>{{ project.title }}, {{ project.body|truncate }}</b> — <i>{{ project.body }}</i>
+                                </div>
+                                <div class="is-size-7">{{ project.createdAt }}</div>
+    {#                        </div>#}
+                        </div>
+                    {% endfor %}
+                </div>
+            <div class="skills">
+                        <div class="title is-size-5 has-text-primary has-text-weight-bold">SKILLS</div>
+                        <div class="wrapper">
+                            <div class="item">
+                                <div>Javascript</div>
+                                <progress class="progress is-primary is-small" value="70" max="100">70%</progress>
+                            </div>
+                            <div class="item">
+                                <div>Symfony</div>
+                                <progress class="progress is-primary is-small" value="70" max="100">70%</progress>
+                            </div>
+                            <div class="item">
+                                <div>PHP</div>
+                                <progress class="progress is-primary is-small" value="70" max="100">70%</progress>
+                            </div>
+                            <div class="item">
+                                <div>PHP</div>
+                                <progress class="progress is-primary is-small" value="70" max="100">70%</progress>
+                            </div>
+                            <div class="item">
+                                <div>Docker</div>
+                                <progress class="progress is-primary is-small" value="70" max="100">70%</progress>
+                            </div>
+                            <div class="item">
+                                <div>Elasticsearch</div>
+                                <progress class="progress is-primary is-small" value="70" max="100">70%</progress>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="languages">
+                        <div class="title is-size-5 has-text-primary has-text-weight-bold">
+                            LANGUAGES
+                        </div>
+                        <div class="wrapper">
+                            French, English,
+                        </div>
+                    </div>
+                </div>
+            </div>
 {#        </div>#}
-    </div>
-</section>
+    </section>
+{#    <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">#}
+{#    </script>#}
+{#    <ins class="adsbygoogle" style="display: block; margin: 0px auto 1em; text-align: center; height: 280px;" data-ad-client="ca-pub-5442972248172818" data-ad-slot="1487770485" data-ad-format="auto" data-adsbygoogle-status="done">#}
+{#        <ins id="aswift_0_expand" style="display:inline-table;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:1200px;background-color:transparent;">#}
+{#            <ins id="aswift_0_anchor" style="display:block;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:1200px;background-color:transparent;">#}
+{#                <iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left: 0px; position: absolute; top: 0px; border: 0px none; width: 1200px; height: 280px; overflow: visible;" width="1200" height="280" frameborder="0">#}
+
+{#                </iframe>#}
+{#            </ins>#}
+{#        </ins>#}
+{#    </ins>#}
+{#    <script>#}
+{#        (adsbygoogle = window.adsbygoogle || []).push({});#}
+{#    </script>#}
+{#    <footer class="footer">#}
+{#        <div class="content has-text-centered">#}
+{#            <a href="index.html">See Dark Theme</a>#}
+{#            <br>#}
+{#            Copyright © 2018-2019 by Irfan Maulana#}
+{#        </div>#}
+{#    </footer>#}
+{#    <footer class="line has-background-primary"></footer>#}
+
+    {#<script type="application/ld+json">{ "@context": "http://schema.org", "@type": "WebSite", "url": "https://www.mazipan.github.io/", "name": "Irfan Maulana | Front End Developer", "author": "Irfan Maulana", "image": "http://mazipan.github.io/images/irfan-maulana.jpg", "description": "Irfan Maulana is Front End Developer from Indonesia - Man that craft some code to build a beauty and readable code, experienced in web and desktop technology.", "sameAs": ["https://www.facebook.com/mazipanneh", "https://instagram.com/maz_ipan", "https://twitter.com/Maz_Ipan", "https://id.linkedin.com/in/irfanmaulanamazipan", "https://www.slideshare.net/IrfanMaulana21", "https://github.com/mazipan" ] }</script>#}
+    {#<script type="application/ld+json">{ "@context": "http://schema.org", "@type": "Person", "email": "mailto:mazipanneh@gmail.com", "image": "http://mazipan.github.io/images/irfan-maulana.jpg", "jobTitle": "Software Engineer", "name": "Irfan Maulana", "url": "https://www.mazipan.github.io/", "sameAs": ["https://www.facebook.com/mazipanneh", "https://instagram.com/maz_ipan", "https://twitter.com/Maz_Ipan", "https://id.linkedin.com/in/irfanmaulanamazipan", "https://www.slideshare.net/IrfanMaulana21", "https://github.com/mazipan" ] }</script>#}
+    {#<script type="application/ld+json">{ "@context": "http://schema.org", "@type": "BreadcrumbList", "itemListElement": [{ "@type": "ListItem", "position": 1, "item": { "@id": "http://mazipan.github.io/", "name": "Home", "image": "http://mazipan.github.io/images/irfan-maulana.jpg" } }, { "@type": "ListItem", "position": 2, "item": { "@id": "http://mazipan.github.io/demo/", "name": "Demo", "image": "http://mazipan.github.io/images/irfan-maulana.jpg" } }, { "@type": "ListItem", "position": 3, "item": { "@id": "http://mazipan.github.io/bulma-resume-template", "name": "bulma-resume-template", "image": "https://mazipan.github.io/bulma-resume-template/logo.png" } }] }</script>#}
+    {#<script type="text/javascript" src="/bulma-resume-template/light.7fe14a3780034d7476d0.js"></script>#}
+    {#<ins class="adsbygoogle adsbygoogle-noablate" style="display: none !important;" data-adsbygoogle-status="done">#}
+    {#<ins id="aswift_1_expand" style="display:inline-table;border:none;height:0px;margin:0;padding:0;position:relative;visibility:visible;width:0px;background-color:transparent;">#}
+    {#<ins id="aswift_1_anchor" style="display:block;border:none;height:0px;margin:0;padding:0;position:relative;visibility:visible;width:0px;background-color:transparent;">#}
+    {#            <iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;border:0px;width:0px;height:0px;" frameborder="0">#}
+    {#            </iframe></ins></ins></ins>#}
+    {#<iframe id="google_osd_static_frame_7138854497867" name="google_osd_static_frame" style="display: none; width: 0px; height: 0px;">#}
+    {#</iframe>#}
+
+</div>

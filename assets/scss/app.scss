@@ -2,8 +2,6 @@
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 @import "~flag-icon-css/css/flag-icon.min.css";
 
-//@import "resume";
-
 $slightgray: 'slightgray';
 $background: '#00ff00';
 
@@ -12,12 +10,21 @@ body {
 }
 
 .container {
-  width: 95% !important;
-  max-width: 95% !important;
-  height: 100% !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  //height: 100% !important;
   position: absolute !important;
   z-index: 10;
   pointer-events: initial;
+}
+
+.resume {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  //position: absolute !important;
+  //z-index: 10;
+  //pointer-events: initial;
 }
 
 navi, infoi {
