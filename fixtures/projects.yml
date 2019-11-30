@@ -1,5 +1,5 @@
 App\Entity\Project:
-  projects{0..58}:
+  projects{0..5}:
     user: '@karim'
     title: '<sentence()>'
     body: '<sentence()>'

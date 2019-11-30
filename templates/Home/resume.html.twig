@@ -97,10 +97,10 @@
                 </div>
                 <div class="education">
                     <div class="title is-size-5 has-text-primary has-text-weight-bold">EDUCATION</div>
-                    <div class="item"><div class="is-size-5"><b>Muhammadiyah University</b>,
-                            <span class="has-text-weight-semi-bold">Jakarta — <i>Bachelor Degree</i></span>
+                    <div class="item"><div class="is-size-5"><b>Université de Marne-la-Vallée</b>,
+                            <span class="has-text-weight-semi-bold">Marne-la-Vallée — <i>Mathématiques et informatique appliquées aux sciences</i></span>
                         </div>
-                        <div class="is-size-7">2009 - 2013</div>
+                        <div class="is-size-7">1997 – 1999</div>
                         <div>Bachelor of Informatics Engineering</div>
                     </div>
                 </div>
@@ -112,7 +112,7 @@
                         <div class="item"><div class="is-size-5">
                                     <b>{{ project.title }}, {{ project.body|truncate }}</b> — <i>{{ project.body }}</i>
                                 </div>
-                                <div class="is-size-7">{{ project.createdAt }}</div>
+                                <div class="is-size-7">{{ project.createdAt|date('M Y') }}</div>
     {#                        </div>#}
                         </div>
                     {% endfor %}
