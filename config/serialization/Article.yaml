@@ -1,6 +1,0 @@
-App\Entity\Article:
-  attributes:
-    id:
-      groups: ['read', 'write']
-#    author:
-#      groups: ['write']

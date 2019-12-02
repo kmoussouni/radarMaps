@@ -4,13 +4,14 @@
 DONE    click on objects
 DONE    add fontawesome
 DONE    fix global sass
-        fix wording
+        fix wording/translations
+        fix dompdf 
 DONE    fix bulma install / fix form events
         add 4 steps form: type, contract, technos, popin => name, mail, text, submit => Entity Quotation
         add ui animations/tweens
         api platform exclude strategy policies
 DONE    remove unused docker container rabbit, elasticsearch, kibana, logstash, mercure, adminer, ...
-        helpers
+        ui helpers
 ```
 
 ####Projects
@@ -37,11 +38,16 @@ DONE        url
 
 ####Back
 ```
-        finish api
-        add oauth2 authentication
-DONE    add reactadmin
+DONE    add react api platform admin
         configure reactadmin
         customize reactadmin
+```
+
+####Api
+```
+        finish api
+        add oauth2 authentication
+        restritecd api to local only
 ```
 
 ####PROD
@@ -54,6 +60,6 @@ DONE    install docker
 
 ####DEBUG
 ```
-        Date fixtures error
+DONE    Date fixtures error
 ```
 

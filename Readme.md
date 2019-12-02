@@ -165,3 +165,8 @@ and in autoload-dev/psr-4 section
         "ComposerOverloadClass\\": "var/cache/ComposerOverloadClass"
 ```
 
+
+php bin/console mailingnewsrooms:oauth-server:client:create --redirect-uri="https://karimmoussouni.local" --grant-type="authorization_code" --grant-type="password" --grant-type="refresh_token" --grant-type="token" --grant-type="client_credentials" --grant-type="acces_token"
+
+
+php bin/console mailingnewsrooms:oauth-server:client:create --redirect-uri="https://api.mailingnewsrooms.me/v5/ha/ha_entrypoint" --grant-type="authorization_code" --grant-type="password" --grant-type="refresh_token" --grant-type="token" --grant-type="client_credentials" --grant-type="acces_token"

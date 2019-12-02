@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Core23\DompdfBundle\Wrapper\DompdfWrapper;
 use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
 use Knp\Snappy\Pdf;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -52,11 +53,12 @@ class HomeController extends AbstractController
      * @Route(name="resume_pdf", path="/resume/pdf")
      * @return Response
      */
-    public function resumePdf(Pdf $pdf)
+    public function resumePdf(DompdfWrapper $dompdf)
     {
         $experiences = $this->getDoctrine()->getManager()->getRepository('App\Entity\Experience')->findAll();
         $projects = $this->getDoctrine()->getManager()->getRepository('App\Entity\Project')->findAll();
 
+//        $html = $this->renderView('Resume/resume.html.twig',
         $html = $this->renderView('Resume/resume.html.twig',
             [
                 'experiences' => $experiences,
@@ -64,7 +66,13 @@ class HomeController extends AbstractController
             ]
         );
 
-        return new PdfResponse(
-            $pdf->getOutputFromHtml($html), 'file.pdf');
+        // Get a StreamResponse for your controller to return the pdf to the browser
+        $response = $dompdf->getStreamResponse($html, "document.pdf");
+
+        $response->send();
+
+//        return new PdfResponse('some_binary_output'
+////            $pdf->getOutputFromHtml($html),
+//        ,'file.pdf');
     }
 }

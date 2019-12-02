@@ -4,7 +4,7 @@ ARG SYMFONY_APP_PATH="${SYMFONY_APP_PATH}"
 
 FROM kmoussouni/php73-fpm:${PHP_TAG}
 
-RUN apt-get -y install libssl1.0-dev
+#RUN apt-get -y install libssl1.0-dev
 
 RUN echo "127.0.0.1    karimmoussouni.local" >> /etc/hosts;
 

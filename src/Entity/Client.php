@@ -2,13 +2,16 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Timestampable\Traits\Timestampable;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
+use Symfony\Component\Serializer\Annotation\MaxDepth;
 
 /**
  * Class Experience
  * @package App\Entity
+ *
+ * @ApiResource()
  *
  * @ORM\Entity()
  * @ORM\Table(name="client")
@@ -25,12 +28,14 @@ class Client
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="clients")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="clients")
+     * @MaxDepth(1)
      */
     protected $user;
 
     /**
-     * @ORM\OneToMany(targetEntity="Experience", mappedBy="client")
+     * @ORM\OneToMany(targetEntity="App\Entity\Experience", mappedBy="client")
+     * @MaxDepth(1)
      */
     protected $experiences;
 
@@ -44,7 +49,7 @@ class Client
     /**
      * @var MediaObject|null
      *
-     * @ORM\ManyToOne(targetEntity=MediaObject::class)
+     * @ORM\ManyToOne(targetEntity="App\Entity\MediaObject")
      * @ORM\JoinColumn(nullable=true)
      */
     public $image;
@@ -137,18 +142,49 @@ class Client
     /**
      * @return mixed
      */
-    public function getExperience()
+    public function getExperiences()
     {
-        return $this->experience;
+        return $this->experiences;
     }
 
     /**
      * @param mixed $experience
      * @return Client
      */
-    public function setExperience($experience)
+    public function setExperiences($experiences)
     {
-        $this->experience = $experience;
+        $this->experiences = $experiences;
         return $this;
     }
+
+    /**
+     * @param mixed $experience
+     * @return Client
+     */
+    public function addExperience($experience)
+    {
+        $this->experiences->add($experience);
+        return $this;
+    }
+
+    /**
+     * @param mixed $experience
+     * @return Client
+     */
+    public function hasExperience($experience)
+    {
+        return $this->experiences->contains($experience);
+    }
+
+    /**
+     * @param mixed $experience
+     * @return Client
+     */
+    public function removeExperience($experience)
+    {
+        $this->experiences->remove($experience);
+        return $this;
+    }
+
+
 }

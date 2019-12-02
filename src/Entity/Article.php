@@ -5,6 +5,7 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Timestampable\Traits\Timestampable;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 
@@ -41,6 +42,21 @@ class Article
      * @ApiProperty(iri="http://schema.org/image")
      */
     public $image;
+
+    /**
+     * The actual title of the article.
+     *
+     * @ORM\Column(type="string", nullable=false)
+     */
+    protected $title;
+
+    /**
+     * The actual slug of the article.
+     *
+     * @ORM\Column(type="string", unique=true, nullable=false)
+     * @Gedmo\Slug(fields={"title"})
+     */
+    protected $slug;
 
     /**
      * The actual body of the article.
@@ -212,6 +228,42 @@ class Article
     public function setWordCount(int $wordCount): Article
     {
         $this->wordCount = $wordCount;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param mixed $title
+     * @return Article
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param mixed $slug
+     * @return Article
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
         return $this;
     }
 }

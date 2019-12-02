@@ -247,6 +247,9 @@ function init()
     renderer.shadowMap.enabled = true;
     container.appendChild( renderer.domElement );
 
+    raycaster = new THREE.Raycaster();
+    mouse = new THREE.Vector2();
+
     // Orbit Camera Controls
     controls = new OrbitControls( camera, renderer.domElement );
     controls.target.set( 0, 200, 0 );
@@ -260,9 +263,6 @@ function init()
     // document.addEventListener( 'touchmove', onDocumentTouchMove, false );
     // document.addEventListener( 'keypress', onDocumentKeyPress, false );
     // document.addEventListener( 'keydown', onDocumentKeyDown, false );
-
-    raycaster = new THREE.Raycaster();
-    mouse = new THREE.Vector2();
 
     window.addEventListener( 'resize', onWindowResize, false );
 }
