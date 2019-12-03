@@ -1,5 +1,5 @@
 import React from "react";
-import {FieldGuesser, ListGuesser, CreateGuesser, InputGuesser} from "@api-platform/admin";
+import {FieldGuesser, ListGuesser, CreateGuesser, InputGuesser, EditGuesser, ShowGuesser} from "@api-platform/admin";
 
 const UsersList = props => (
     <ListGuesser {...props}>
@@ -13,18 +13,22 @@ const UsersList = props => (
     </ListGuesser>
 );
 
-const UserCreate = props => (
+const UsersCreate = props => (
     <CreateGuesser {...props}>
-        <InputGuesser source="author" />
-        <InputGuesser source="book" />
-        <InputGuesser source="rating" />
-
-        {/* While deprecated fields are hidden by default, using an explicit InputGuesser component allows to add them back. */}
-        <InputGuesser source="letter" />
-
-        <InputGuesser source="body" />
-        <InputGuesser source="publicationDate" />
+        <InputGuesser source="username" />
     </CreateGuesser>
 );
 
-export default {UsersList, UserCreate};
+const UsersEdit = props => (
+    <EditGuesser {...props}>
+        <InputGuesser source="username" />
+    </EditGuesser>
+);
+
+const UsersShow = props => (
+    <ShowGuesser {...props}>
+        <FieldGuesser source="username" />
+    </ShowGuesser>
+);
+
+export {UsersList, UsersCreate, UsersEdit, UsersShow};

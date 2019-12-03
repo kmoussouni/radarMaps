@@ -10,7 +10,15 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
  * Class Quotation
  * @package App\Entity
  *
- * @ApiResource()
+ * @ApiResource(
+ *     itemOperations={
+ *          "get",
+ *      },
+ *     collectionOperations={
+ *          "get",
+ *          "post"
+ *      }
+ * )
  *
  * @ORM\Entity()
  * @ORM\Table(name="quotation")

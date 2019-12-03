@@ -4,12 +4,12 @@
 
         <article class="message notification is-success">
 
-            <div class="message-header">
-                <p class="title">
-                    {{ 'contact.form.contactme.title'|trans }}
-                    {% include 'Components/exit.html.twig' with {context: 'contact'} %}
-                </p>
-            </div>
+{#            <div class="message-header">#}
+{#                <p class="title">#}
+{#                    {{ 'contact.form.contactme.title'|trans }}#}
+{#                    {% include 'Components/exit.html.twig' with {context: 'contact'} %}#}
+{#                </p>#}
+{#            </div>#}
 
             <div class="message-body">
 
@@ -19,7 +19,7 @@
                         <label class="label">{{ 'contact.form.type.label'|trans }}</label>
                         <div class="control">
                             <div class="select">
-                                <select>
+                                <select id="type">
                                     <option>{{ 'contact.form.type.backdev.option'|trans }}</option>
                                     <option>{{ 'contact.form.type.leaddev.option'|trans }}</option>
                                     <option>{{ 'contact.form.type.fullstack.option'|trans }}</option>
@@ -35,7 +35,7 @@
                         <label class="label">{{ 'contact.form.contract.title'|trans }}</label>
                         <div class="control">
                             <div class="select">
-                                <select>
+                                <select id="contract">
                                     <option>{{ 'contact.form.contract.freelance.option'|trans }}</option>
                                     <option>{{ 'contact.form.contract.cdi.option'|trans }}</option>
                                 </select>
@@ -47,7 +47,7 @@
                         <label class="label">{{ 'contact.form.techno.title'|trans }}</label>
                         <div class="control">
                             <div class="select">
-                                <select>
+                                <select id="technos" multiple>
                                     <option>{{ 'contact.form.techno.php.option'|trans }}</option>
                                     <option>{{ 'contact.form.techno.symfony.option'|trans }}</option>
                                     <option>{{ 'contact.form.techno.javascript.option'|trans }}</option>
@@ -72,15 +72,15 @@
 
                 <label class="label">{{ 'contact.form.lastname.label'|trans }}</label>
                 <div class="control">
-                    <input class="input" type="text" placeholder="Text input">
+                    <input id="lastname" class="input" type="text" placeholder="Text input">
                 </div>
                 <label class="label">{{ 'contact.form.firstname.label'|trans }}</label>
                 <div class="control">
-                    <input class="input" type="text" placeholder="Text input">
+                    <input id="firstname" class="input" type="text" placeholder="Text input">
                 </div>
-                <label class="label">{{ 'contact.form.socity.label'|trans }}</label>
+                <label class="label">{{ 'contact.form.society.label'|trans }}</label>
                 <div class="control">
-                    <input class="input" type="text" placeholder="...">
+                    <input id="society" class="input" type="text" placeholder="...">
                 </div>
 
             </div>
@@ -88,7 +88,7 @@
             <div class="field">
                 <label class="label">{{ 'contact.form.email.label'|trans }}</label>
                 <div class="control has-icons-left has-icons-right">
-                    <input class="input is-danger" type="email" placeholder="{{ 'contact.form.email.placeholder'|trans }}" value="hello@" required />
+                    <input id="email" class="input is-danger" type="email" placeholder="{{ 'contact.form.email.placeholder'|trans }}" value="hello@" required />
                     <span class="icon is-small is-left">
                         <i class="fas fa-envelope"></i>
                     </span>
@@ -103,7 +103,7 @@
                 <label class="label">{{ 'contact.form.subject.label'|trans }}</label>
                 <div class="control">
                     <div class="select">
-                        <select>
+                        <select id="subject">
                             <option>{{ 'contact.form.subject.default.option'|trans }}</option>
                             <option>{{ 'contact.form.subject.contact.option'|trans }}</option>
                             <option>{{ 'contact.form.subject.recrutement.option'|trans }}</option>
@@ -116,16 +116,16 @@
             <div class="field">
                 <label class="label">{{ 'contact.form.message.label'|trans }}</label>
                 <div class="control">
-                     <textarea class="textarea" placeholder="Textarea"></textarea>
+                     <textarea  id="message" class="textarea" placeholder="Textarea"></textarea>
                 </div>
             </div>
 
             <div class="field is-grouped">
                 <div class="control">
-                    <button id="submitContactForm" class="button is-link">{{ 'contact.form.submit.label'|trans }}</button>
+                    <button id="submitform" class="button is-link">{{ 'contact.form.submit.label'|trans }}</button>
                 </div>
                 <div class="control">
-                    <button class="button is-link is-light">{{ 'contact.form.cancel.label'|trans }}</button>
+                    <button id="cancelform" class="button is-link is-light">{{ 'contact.form.cancel.label'|trans }}</button>
                 </div>
             </div>
 

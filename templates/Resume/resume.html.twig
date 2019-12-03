@@ -1,5 +1,12 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+{#    <link href="{{ asset('/build/css/app.min.css') }}" rel="stylesheet" />#}
+{% endblock %}
+
 {% block content %}
-    {% include 'Home/resume.html.twig' %}
+    <div class="container">
+        {% include 'Home/resume.html.twig' %}
+    </div>
 {% endblock %}

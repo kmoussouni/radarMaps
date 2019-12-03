@@ -16,18 +16,18 @@ function exitContact() {
 
 function submitContactForm() {
     console.log('submitContactForm');
-    axios.post('/api/quotation', {
-        lastname: document.getElementById('contactForm[Lastname]'),
-        firstname: document.getElementById('contactForm[firstname]'),
-        email: document.getElementById('contactForm[email]'),
-        subject: document.getElementById('contactForm[subject]'),
-        message: document.getElementById('contactForm[message]'),
-        type: document.getElementById('contactForm[type]'),
-        contract: document.getElementById('contactForm[contract]'),
-        techno: document.getElementById('contactForm[technos]')
+    axios.post('/api/quotations', {
+    {
+        document.getElementById('lastname'),
+        document.getElementById('firstname'),
+            email: document.getElementById('email'),
+            subject: document.getElementById('subject'),
+            message: document.getElementById('message'),
+            type: document.getElementById('type'),
+            contract: document.getElementById('contract'),
+            techno: document.getElementById('technos')
     }
-
-    );
+    });
 };
 
 function showProject(project) {

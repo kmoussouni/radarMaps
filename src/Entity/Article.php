@@ -90,7 +90,7 @@ class Article
      * @var string
      * @ORM\Column(name="speakable", type="string")
      */
-    protected $speakable;
+    protected $speakable = '';
     /**
      * @var int
      * @ORM\Column(name="word_count", type="integer")

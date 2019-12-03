@@ -18,7 +18,6 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @package App\Entity
  *
  * @ApiResource(
- *     iri="http://schema.org/MediaObject",
  *     normalizationContext={
  *         "groups"={"media_object_read"}
  *     },
@@ -49,7 +48,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *         "get"
  *     },
  *     itemOperations={
- *         "get"
+ *         "get", "put"
  *     })
  *
  * @Vich\Uploadable
@@ -71,8 +70,8 @@ class MediaObject
     protected $id;
 
     /**
-     * @ApiProperty()
      * @ORM\ManyToOne(targetEntity="User", inversedBy="articles")
+     * @Groups({"media_object_read"})
      */
     protected $user;
 
@@ -80,7 +79,6 @@ class MediaObject
      * @var string|null
      *
      * @ORM\Column(type="string")
-     * @ApiProperty(iri="http://schema.org/contentUrl")
      * @Groups({"media_object_read"})
      */
     public $contentUrl;
@@ -88,8 +86,8 @@ class MediaObject
     /**
      * @var File|null
      *
-     * @ApiProperty()
      * @Assert\NotNull(groups={"media_object_create"})
+     * @Groups({"media_object_read"})
      * @Vich\UploadableField(mapping="media_object", fileNameProperty="filePath")
      */
     public $file;
@@ -97,7 +95,7 @@ class MediaObject
     /**
      * @var string|null
      *
-     * @ApiProperty()
+     * @Groups({"media_object_read"})
      * @ORM\Column(nullable=true)
      */
     public $filePath;

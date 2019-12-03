@@ -1,17 +1,20 @@
 import React from "react";
-import { HydraAdmin, ResourceGuesser, ListGuesser, FieldGuesser } from "@api-platform/admin";
+import { HydraAdmin, ResourceGuesser} from "@api-platform/admin";
 
-import {UsersList, UserCreate} from './entity/User';
+import {ArticlesList, ArticlesCreate, ArticlesEdit, ArticlesShow} from './entity/Article';
+import {ClientsList, ClientsCreate, ClientsEdit, ClientsShow} from './entity/Client';
+import {ExperiencesList, ExperiencesCreate, ExperiencesEdit, ExperiencesShow} from './entity/Experience';
+import {MediaObjectsList, MediaObjectsCreate, MediaObjectsEdit, MediaObjectsShow} from './entity/MediaObject';
+import {ProjectsList, ProjectsCreate, ProjectsEdit, ProjectsShow} from './entity/Project';
+import {UsersList, UsersCreate, UsersEdit, UsersShow} from './entity/User';
 
-// Replace with your own API entrypoint
-// For instance if https://example.com/api/books is the path to the collection of book resources, then the entrypoint is https://example.com/api
 export default () => (
     <HydraAdmin entrypoint="http://karimmoussouni.local/api">
-        <ResourceGuesser name="articles" />
-        <ResourceGuesser name="clients" />
-        <ResourceGuesser name="experiences" />
-        <ResourceGuesser name="media_objects" />
-        <ResourceGuesser name="projects" />
-        <ResourceGuesser name="users" list={UsersList} create={UserCreate} />
+        <ResourceGuesser name="articles" edit={ArticlesEdit} list={ArticlesList} create={ArticlesCreate} show={ArticlesShow}/>
+        <ResourceGuesser name="clients" edit={ClientsEdit} list={ClientsList} create={ClientsCreate} show={ClientsShow} />
+        <ResourceGuesser name="experiences" edit={ExperiencesEdit} list={ExperiencesList} create={ExperiencesCreate} show={ExperiencesShow} />
+        <ResourceGuesser name="media_objects" edit={MediaObjectsEdit} list={MediaObjectsList} create={MediaObjectsCreate} show={MediaObjectsShow}/>
+        <ResourceGuesser name="projects" edit={ProjectsEdit} list={ProjectsList} create={ProjectsCreate} show={ProjectsShow} />
+        <ResourceGuesser name="users" edit={UsersEdit} list={UsersList} create={UsersCreate} show={UsersShow} />
     </HydraAdmin>
 );

@@ -25,18 +25,8 @@ var mixer;
 var loader, line;
 
 var collidedObjectUuid = [];
+var INTERSECTED;
 
-var fontMap = {
-    "helvetiker": 0,
-    "gentilis": 2,
-};
-var weightMap = {
-    "regular": 0,
-    "bold": 1
-};
-// var reverseFontMap = [];
-// var reverseWeightMap = [];
-// for ( var i in fontMap ) reverseFontMap[ fontMap[ i ] ] = i;
 // for ( var i in weightMap ) reverseWeightMap[ weightMap[ i ] ] = i;
 // var windowHalfX = window.innerWidth / 2;
 
@@ -118,7 +108,6 @@ function init()
     // model - freelance
     /////////////////////////////////////////
     loader = new FBXLoader();
-    // loader.load( 'build/3d/Freelance/freelance.fbx', function ( object ) {
     loader.load( '/build/3d/Freelance/malcolmHappyIdle.fbx', function ( object ) {
         // console.info( 'FBX model loading...' );
 
@@ -126,33 +115,8 @@ function init()
         var action = mixer.clipAction( object.animations[ 0 ] );
         action.play();
 
-        object.traverse( function ( child ) {
-            if ( child.isMesh ) {
-                // console.log('child is mesh')
-
-                // var box = new THREE.BoxHelper( child );
-                // box.geometry.computeBoundingBox();
-                // scene.add( box );
-
-                // child.castShadow = true;
-                // child.receiveShadow = true;
-
-                // collidedObjectUuid.push(child.uuid);
-                // console.log('child = ' + child.uuid);
-                // child.updateMatrixWorld();
-                // child.updateMatrix();
-                // child.updateWorldMatrix();
-                // child.matrixAutoUpdate = true;
-                // child.isObject3D = true;
-                // child.geometry.computeBoundingBox();
-            }
-        } );
-
-        // object.updateWorldMatrix();
-        // object.updateMatrix();
         object.name = "freelance";
         object.type = "Mesh";
-        // console.log('object = ' + object.uuid);
 
         collidedObjectUuid.push(object.uuid);
 
@@ -190,21 +154,11 @@ function init()
         geometry.computeBoundingBox();
         xMid = - 0.5 * ( geometry.boundingBox.max.x - geometry.boundingBox.min.x );
         geometry.translate( xMid, 50, -100 );
-        // make shape ( N.B. edge view not visible )
         text = new THREE.Mesh( geometry, matLite );
-        // text.position.z = -50;
-
-        // text.traverse( function ( child ) {
-        //     if ( child.isMesh ) {
-        //         child.castShadow = true;
-        //         child.receiveShadow = false;
-        //     }
-        // } );
 
         text.name = "Text";
         text.km = "Text";
         scene.add( text );
-        // make line shape ( N.B. edge view remains visible )
         var holeShapes = [];
         for ( var i = 0; i < shapes.length; i ++ ) {
             var shape = shapes[ i ];
@@ -371,22 +325,7 @@ function onDocumentMouseDown( event ) {
         intersects = raycaster.intersectObjects( scene.children, true );
         if ( intersects.length > 0 ) {
             intersect = intersects[ 0 ];
-            // console.log('down on ' + intersect.object.name + '/' + intersect.object.uuid);
-            // delete cube
-            // if ( isShiftDown ) {
-            //     if ( intersect.object !== plane ) {
-            //         scene.remove( intersect.object );
-            //         scene.children.splice( scene.children.indexOf( intersect.object ), 1 );
-                // }
-                // create cube
-            // } else {
-            //     var voxel = new THREE.Mesh( cubeGeo, cubeMaterial );
-            //     voxel.position.copy( intersect.point ).add( intersect.face.normal );
-            //     voxel.position.divideScalar( 50 ).floor().multiplyScalar( 50 ).addScalar( 25 );
-            //     scene.add( voxel );
-            //     scene.children.push( voxel );
-            // }
-            // render();
+            console.log('down on ' + intersect.object.name + '/' + intersect.object.uuid);
 
             handleClick(intersect.object, intersect.object.uuid)
         }
@@ -457,52 +396,28 @@ function onDocumentMouseMove( event ) {
     mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
 
     raycaster.setFromCamera( mouse, camera );
-    intersects = raycaster.intersectObjects( scene.children );
+    intersects = raycaster.intersectObjects( scene.children, true );
 
     if ( intersects.length > 0 ) {
         intersect = intersects[0];
-        if(collidedObjectUuid.indexOf(intersect.object.uuid) != -1) {
-            var face = intersect.face;
-            var linePosition = new THREE.BufferAttribute();
-            // var linePosition = line.geometry.attributes['position'];
+        console.log('intersect ' + intersect.object.uuid + '      name: ' + intersect.object.name);
 
-            if(intersect.object.geometry) {
-                var meshPosition = intersect.object.position;
-                if(face) {
-                    // console.log('intersect ' + intersect.object.uuid + '      name: ' + intersect.object.name);
-                    // intersect.object.scale.add( offset );
+        if(INTERSECTED != intersect) {
+            INTERSECTED = intersect;
 
-                    // var currentHex = face.material.emissive.getHex();
-                    // face.color.setHex(0xff0000);
-                    // intersect.visible = true;
-                    // linePosition.copyAt( 0, meshPosition, face.a );
-                    // linePosition.copyAt( 1, meshPosition, face.b );
-                    // linePosition.copyAt( 2, meshPosition, face.c );
-                    // linePosition.copyAt( 3, meshPosition, face.a );
-                    // intersect.object.updateMatrix();
-                    // line.geometry.applyMatrix( intersect.object.matrix );
-                    // line.visible = true;
-                } else {
-                    line.visible = false;
-                }
+            console.log("INTERSECT   =" + INTERSECTED.object.uuid);
+
+            INTERSECTED.object.material.transparent = true;
+            INTERSECTED.object.material.opacity = 0.5;
+        } else {
+            if ( INTERSECTED ) {
+                console.log("INTERSECTED =" + INTERSECTED.object.uuid);
+                INTERSECTED.object.material.transparent = false;
+                INTERSECTED.object.material.opacity = 1;
             }
-        } else { line.visible = false; }
-    } else { line.visible = false; }
+            INTERSECTED = null;
+        }
+    }
 
     controls.update();
-}
-
-function onDocumentMouseUp() {
-}
-
-function onDocumentMouseOut() {
-}
-
-function onDocumentTouchStart( event ) {
-}
-
-function onDocumentTouchMove( event ) {
-}
-
-function onDocumentKeyDown( event ) {
 }

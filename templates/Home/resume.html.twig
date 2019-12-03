@@ -6,6 +6,11 @@
             <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin:130px 106px" class="octo-arm"></path>
             <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
         </svg>
+        <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#d1b200;color:#000fff;position:absolute;top:0;border:0;right:0" aria-hidden="true">
+            <path d="M0,0 L115,115 L130,115 L142,142 L25,25 L25,0 Z"></path>
+{#            <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin:130px 106px" class="octo-arm"></path>#}
+{#            <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>#}
+        </svg>
     </a>
 
     <header class="line has-background-primary"></header>
@@ -63,9 +68,9 @@
         <div class="columns">
             <div class="column is-three-fifths">
                 <div class="summary">
-                    <div class="title is-size-5 has-text-primary has-text-weight-bold">SUMMARY</div>
+                    <div class="title is-size-8 has-text-primary has-text-weight-bold">SUMMARY</div>
                     <div class="wrapper">
-                        <p>
+                        <p class="has-text-centered">
                             An experienced software engineer especially in frontend side.
                             Having deep knowledge in HTML, CSS (with its pre-processor) and JavaScript with the various framework.
                             Write good quality, well tested, and fast delivered code.
@@ -76,127 +81,105 @@
                     </div>
                 </div>
                 <div class="experience">
-                    <div class="title is-size-5 has-text-primary has-text-weight-bold">EXPERIENCE</div>
+                    <div class="title is-size-8 has-text-primary has-text-weight-bold">EXPERIENCE</div>
                     {% for experience in experiences %}
                         <div class="item">
-                            <div class="is-size-5">
+                            <div class="is-size-8">
                                 <b>{{ experience.client.name }},</b>
-                                <span class="has-text-weight-semi-bold">{{ experience.client.location }} — <i>{{ experience.title }}</i></span>
+                                <span class="has-text-weight-semi-bold"><i>{{ experience.title }}</i></span>
                             </div>
-                            <div class="is-size-7">{{ experience.startDate|date('M Y') }} - {{ experience.endDate|date('M Y') }}</div>
+                            <div class="is-size-8">{{ experience.startDate|date('M Y') }} - {{ experience.endDate|date('M Y') }} - {{ experience.client.location }}</div>
                             <ul style="list-style:disc;margin-left:1em">
-                                <p class="is-size-8">{{ experience.body }}</p>
-{#                                <li>Split monolith frontend codebase into some different repository</li>#}
-{#                                <li>Introduce many best practices in coding Vue.js and Nuxt.js</li>#}
-{#                                <li>Creating many common utilities for easier sharing code that managed in monorepo using Lerna</li>#}
-{#                                <li>Monitoring web performance</li>#}
-{#                                <li>Actively sharing about how to be effective, good quality, and excellent software development process especially in frontend side.</li>#}
+                                <p class="has-text-justified is-size-8">{{ experience.body }}</p>
                             </ul>
                         </div>
                     {% endfor %}
                 </div>
                 <div class="education">
-                    <div class="title is-size-5 has-text-primary has-text-weight-bold">EDUCATION</div>
-                    <div class="item"><div class="is-size-5"><b>Cogéfi</b>,
-                            <span class="has-text-weight-semi-bold"><i>BTS Informatique de Gestion</i></span>
+                    <div class="title is-size-8 has-text-primary has-text-weight-bold">EDUCATION</div>
+                    <div class="item">
+                        <div class="is-size-8">
+                            <span class="has-text-weight-semi-bold">
+                                <i>
+                                    <b>BTS Informatique de Gestion</b>
+                                    1999 - 2001
+                                </i>
+                            </span>
                         </div>
-                        <div class="is-size-7">1999 - 2001</div>
-                        <div>Champs sur Marne</div>
+                        <div class="is-size-8">
+                        </div>
+                        <div>
+                            Cogéfi, Champs sur Marne
+                        </div>
                     </div>
-                    <div class="item"><div class="is-size-5"><b>Université de Marne-la-Vallée</b>,
-                            <span class="has-text-weight-semi-bold"><i>MIAS / Mathématiques et Informatique Appliquées aux Sciences</i></span>
+                    <div class="item">
+                        <div class="is-size-8">
+                            <span class="has-text-weight-semi-bold">
+                                <i>
+                                    <b>
+                                        MIAS / Mathématiques et Informatique Appliquées aux Sciences
+                                    </b>,
+                                    1997 – 1999
+                                </i>
+                            </span>
                         </div>
-                        <div class="is-size-7">1997 – 1999</div>
-                        <div>Marne-la-Vallée - Cités Descartes</div>
+{#                        <div class="is-size-8"></div>#}
+                        <div>
+                            Université de Marne-la-Vallée, Cités Descartes
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="column">
                 <div class="projects">
-                    <div class="title is-size-5 has-text-primary has-text-weight-bold">PROJECTS</div>
+                    <div class="title is-size-8 has-text-primary has-text-weight-bold">PROJECTS</div>
                     {% for project in projects %}
-                        <div class="item"><div class="is-size-5">
-                                    <b>{{ project.title }}, {{ project.body|truncate }}</b> — <i>{{ project.body }}</i>
-                                </div>
-                                <div class="is-size-7">{{ project.createdAt|date('M Y') }}</div>
-    {#                        </div>#}
+                        <div class="item">
+                            <div class="is-size-8">
+                                <b>{{ project.title }}, {{ project.body|truncate }}</b> — <i>{{ project.body }}</i>
+                            </div>
+                            <div class="is-size-8">{{ project.createdAt|date('M Y') }}</div>
                         </div>
                     {% endfor %}
                 </div>
-            <div class="skills">
-                        <div class="title is-size-5 has-text-primary has-text-weight-bold">SKILLS</div>
-                        <div class="wrapper">
-                            <div class="item">
-                                <div>Javascript</div>
-                                <progress class="progress is-primary is-small" value="70" max="100">70%</progress>
-                            </div>
-                            <div class="item">
-                                <div>Symfony</div>
-                                <progress class="progress is-primary is-small" value="70" max="100">70%</progress>
-                            </div>
-                            <div class="item">
-                                <div>PHP</div>
-                                <progress class="progress is-primary is-small" value="70" max="100">70%</progress>
-                            </div>
-                            <div class="item">
-                                <div>PHP</div>
-                                <progress class="progress is-primary is-small" value="70" max="100">70%</progress>
-                            </div>
-                            <div class="item">
-                                <div>Docker</div>
-                                <progress class="progress is-primary is-small" value="70" max="100">70%</progress>
-                            </div>
-                            <div class="item">
-                                <div>Elasticsearch</div>
-                                <progress class="progress is-primary is-small" value="70" max="100">70%</progress>
-                            </div>
+                <div class="skills">
+                    <div class="title is-size-8 has-text-primary has-text-weight-bold">SKILLS</div>
+                    <div class="wrapper">
+                        <div class="item">
+                            <div>Javascript</div>
+                            <progress class="progress is-primary is-small" value="60" max="100">60%</progress>
                         </div>
-                    </div>
-                    <div class="languages">
-                        <div class="title is-size-5 has-text-primary has-text-weight-bold">
-                            LANGUAGES
+                        <div class="item">
+                            <div>Symfony</div>
+                            <progress class="progress is-primary is-small" value="70" max="100">70%</progress>
                         </div>
-                        <div class="wrapper">
-                            French, English,
+                        <div class="item">
+                            <div>PHP</div>
+                            <progress class="progress is-primary is-small" value="80" max="100">80%</progress>
+                        </div>
+                        <div class="item">
+                            <div>ReactJS/Redux</div>
+                            <progress class="progress is-primary is-small" value="50" max="100">50%</progress>
+                        </div>
+                        <div class="item">
+                            <div>Docker</div>
+                            <progress class="progress is-primary is-small" value="70" max="100">70%</progress>
+                        </div>
+                        <div class="item">
+                            <div>Elasticsearch</div>
+                            <progress class="progress is-primary is-small" value="70" max="100">70%</progress>
                         </div>
                     </div>
                 </div>
+                <div class="languages">
+                    <div class="title is-size-8 has-text-primary has-text-weight-bold">
+                        LANGUAGES
+                    </div>
+                    <div class="wrapper">
+                        French, English,
+                    </div>
+                </div>
             </div>
-{#        </div>#}
+        </div>
     </section>
-{#    <script async="" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">#}
-{#    </script>#}
-{#    <ins class="adsbygoogle" style="display: block; margin: 0px auto 1em; text-align: center; height: 280px;" data-ad-client="ca-pub-5442972248172818" data-ad-slot="1487770485" data-ad-format="auto" data-adsbygoogle-status="done">#}
-{#        <ins id="aswift_0_expand" style="display:inline-table;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:1200px;background-color:transparent;">#}
-{#            <ins id="aswift_0_anchor" style="display:block;border:none;height:280px;margin:0;padding:0;position:relative;visibility:visible;width:1200px;background-color:transparent;">#}
-{#                <iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_0" name="aswift_0" style="left: 0px; position: absolute; top: 0px; border: 0px none; width: 1200px; height: 280px; overflow: visible;" width="1200" height="280" frameborder="0">#}
-
-{#                </iframe>#}
-{#            </ins>#}
-{#        </ins>#}
-{#    </ins>#}
-{#    <script>#}
-{#        (adsbygoogle = window.adsbygoogle || []).push({});#}
-{#    </script>#}
-{#    <footer class="footer">#}
-{#        <div class="content has-text-centered">#}
-{#            <a href="index.html">See Dark Theme</a>#}
-{#            <br>#}
-{#            Copyright © 2018-2019 by Irfan Maulana#}
-{#        </div>#}
-{#    </footer>#}
-{#    <footer class="line has-background-primary"></footer>#}
-
-    {#<script type="application/ld+json">{ "@context": "http://schema.org", "@type": "WebSite", "url": "https://www.mazipan.github.io/", "name": "Irfan Maulana | Front End Developer", "author": "Irfan Maulana", "image": "http://mazipan.github.io/images/irfan-maulana.jpg", "description": "Irfan Maulana is Front End Developer from Indonesia - Man that craft some code to build a beauty and readable code, experienced in web and desktop technology.", "sameAs": ["https://www.facebook.com/mazipanneh", "https://instagram.com/maz_ipan", "https://twitter.com/Maz_Ipan", "https://id.linkedin.com/in/irfanmaulanamazipan", "https://www.slideshare.net/IrfanMaulana21", "https://github.com/mazipan" ] }</script>#}
-    {#<script type="application/ld+json">{ "@context": "http://schema.org", "@type": "Person", "email": "mailto:mazipanneh@gmail.com", "image": "http://mazipan.github.io/images/irfan-maulana.jpg", "jobTitle": "Software Engineer", "name": "Irfan Maulana", "url": "https://www.mazipan.github.io/", "sameAs": ["https://www.facebook.com/mazipanneh", "https://instagram.com/maz_ipan", "https://twitter.com/Maz_Ipan", "https://id.linkedin.com/in/irfanmaulanamazipan", "https://www.slideshare.net/IrfanMaulana21", "https://github.com/mazipan" ] }</script>#}
-    {#<script type="application/ld+json">{ "@context": "http://schema.org", "@type": "BreadcrumbList", "itemListElement": [{ "@type": "ListItem", "position": 1, "item": { "@id": "http://mazipan.github.io/", "name": "Home", "image": "http://mazipan.github.io/images/irfan-maulana.jpg" } }, { "@type": "ListItem", "position": 2, "item": { "@id": "http://mazipan.github.io/demo/", "name": "Demo", "image": "http://mazipan.github.io/images/irfan-maulana.jpg" } }, { "@type": "ListItem", "position": 3, "item": { "@id": "http://mazipan.github.io/bulma-resume-template", "name": "bulma-resume-template", "image": "https://mazipan.github.io/bulma-resume-template/logo.png" } }] }</script>#}
-    {#<script type="text/javascript" src="/bulma-resume-template/light.7fe14a3780034d7476d0.js"></script>#}
-    {#<ins class="adsbygoogle adsbygoogle-noablate" style="display: none !important;" data-adsbygoogle-status="done">#}
-    {#<ins id="aswift_1_expand" style="display:inline-table;border:none;height:0px;margin:0;padding:0;position:relative;visibility:visible;width:0px;background-color:transparent;">#}
-    {#<ins id="aswift_1_anchor" style="display:block;border:none;height:0px;margin:0;padding:0;position:relative;visibility:visible;width:0px;background-color:transparent;">#}
-    {#            <iframe marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" scrolling="no" allowfullscreen="true" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){try{h=s.upd(h,i)}catch(e){}w.location.replace(h)}}" id="aswift_1" name="aswift_1" style="left:0;position:absolute;top:0;border:0px;width:0px;height:0px;" frameborder="0">#}
-    {#            </iframe></ins></ins></ins>#}
-    {#<iframe id="google_osd_static_frame_7138854497867" name="google_osd_static_frame" style="display: none; width: 0px; height: 0px;">#}
-    {#</iframe>#}
-
 </div>
