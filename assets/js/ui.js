@@ -16,18 +16,20 @@ function exitContact() {
 
 function submitContactForm() {
     console.log('submitContactForm');
-    axios.post('/api/quotations', {
-    {
-        document.getElementById('lastname'),
-        document.getElementById('firstname'),
-            email: document.getElementById('email'),
-            subject: document.getElementById('subject'),
-            message: document.getElementById('message'),
-            type: document.getElementById('type'),
-            contract: document.getElementById('contract'),
-            techno: document.getElementById('technos')
-    }
-    });
+    axios.post('/api/quotations',
+    [
+        {
+            lastname: document.getElementById('lastname').valueOf(),
+            firstname: document.getElementById('firstname').valueOf(),
+            email: document.getElementById('email').valueOf(),
+            subject: document.getElementById('subject').valueOf(),
+            message: document.getElementById('message').valueOf(),
+            type: document.getElementById('type').valueOf(),
+            contract: document.getElementById('contract').valueOf(),
+            technos: document.getElementById('technos').valueOf()
+        }
+    ]
+    );
 };
 
 function showProject(project) {
@@ -53,9 +55,12 @@ function ShowSection(UIId) {
 
 // Resume
 document.getElementById("exitResume").onclick = exitResume;
+
 // ContactForm
-document.getElementById("exitContact").onclick = exitContact;
+
 document.getElementById("submitContactForm").onclick = submitContactForm;
+document.getElementById("exitContact").onclick = exitContact;
+
 // Projects
 
 // exports

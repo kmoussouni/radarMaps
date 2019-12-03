@@ -25,14 +25,14 @@ DONE        url
 
 ####Articles
 ```
-        create blog template index and show
-        create page with pagination
-        create article page / factorise
+DONE    create blog template index and show
+DONE    create page with pagination
+DONE    create article page / factorise
 ```
 
 ####Quotation
 ```
-        Update entity with contact form elements
+        add ContactFormType
         add POST api on quotation form submit
 ```
 
