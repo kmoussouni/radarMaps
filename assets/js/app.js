@@ -1,4 +1,6 @@
 // karimmoussouni.com
+// import webgl from "./asc/webgl.asc.asc";
+
 /****************************************
  * commonjs
  ***************************************/
@@ -11,7 +13,7 @@ import { FBXLoader } from '../../node_modules/three/examples/jsm/loaders/FBXLoad
 
 const axios = require('axios');
 
-import {ShowSection, showProject} from './ui';
+import {ShowSection, showProject, updateProgress} from './ui';
 import '../scss/app.scss';
 
 /** variables */
@@ -124,7 +126,10 @@ function init()
 
         document.getElementById('loading').style.display = 'none';
         document.getElementById('card').style.display = 'block';
-    }, undefined, function ( error ) {
+    }, function ( e ) {
+        updateProgress(e);
+        console.log( e.loaded + '/'+e.total );
+    }, function ( error ) {
         console.error( error );
     } );
 
@@ -391,7 +396,7 @@ function handleClick(object, uuid, state='project') {
 }
 
 function onDocumentMouseMove( event ) {
-    event.preventDefault();
+    // event.preventDefault();
     mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
     mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
 
@@ -408,14 +413,15 @@ function onDocumentMouseMove( event ) {
             console.log("INTERSECT   =" + INTERSECTED.object.uuid);
 
             INTERSECTED.object.material.transparent = true;
-            INTERSECTED.object.material.opacity = 0.5;
+            INTERSECTED.object.material.opacity = 0.7;
         } else {
             if ( INTERSECTED ) {
                 console.log("INTERSECTED =" + INTERSECTED.object.uuid);
                 INTERSECTED.object.material.transparent = false;
                 INTERSECTED.object.material.opacity = 1;
             }
-            INTERSECTED = null;
+
+            // INTERSECTED = null;
         }
     }
 

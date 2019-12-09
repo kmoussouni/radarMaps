@@ -34,6 +34,14 @@ Encore
     })
 
     // .addPlugin(new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/))
+    .configureLoaderRule(
+        'js', loaderRule =>
+            {
+                loaderRule.test = /\.asc$/, // assemblyscript Source File
+                loaderRule.exclude = "/node_modules/"
+                // loaderRule.loader = "assemblyscript-live-loader"
+            }
+    )
     .addPlugin(new CopyWebpackPlugin([
         { from: './assets/img', to: 'img' },
         { from: './assets/3d', to: '3d' },

@@ -26,8 +26,10 @@ DONE        url
 ####Articles
 ```
 DONE    create blog template index and show
-DONE    create page with pagination
 DONE    create article page / factorise
+        update blog template index and show
+        add index pagination knp paginator
+        add index/show social network features
 ```
 
 ####Quotation
@@ -39,8 +41,8 @@ DONE    create article page / factorise
 ####Back
 ```
 DONE    add react api platform admin
-        configure reactadmin
-        customize reactadmin
+        configure react-admin
+        customize react-admin
 ```
 
 ####Api
@@ -61,5 +63,11 @@ DONE    install docker
 ####DEBUG
 ```
 DONE    Date fixtures error
+```
+
+####EVOLS
+```
+        Default redirect / => /{locale}
+        FBX Loader progress event
 ```
 

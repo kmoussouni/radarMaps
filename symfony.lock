@@ -751,6 +751,9 @@
     "webmozart/assert": {
         "version": "1.5.0"
     },
+    "white-october/pagerfanta-bundle": {
+        "version": "v1.3.2"
+    },
     "willdurand/negotiation": {
         "version": "v2.3.1"
     },

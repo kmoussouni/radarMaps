@@ -4,7 +4,7 @@
 
 {% block content %}
 
-    {% include 'Blog/nav.html.twig' %}
+{#    {% include 'Blog/nav.html.twig' %}#}
 
     {% include 'Blog/header.html.twig' %}
 
@@ -15,8 +15,7 @@
 
             <div class="column is-8 is-offset-2">
 
-                {% for article in articles %}
-
+                {% for article in pager.currentPageResults %}
                     <div class="card article">
                         <div class="card-content">
                             <div class="media">
@@ -32,7 +31,7 @@
                             </div>
                             <div class="content article-body">
                                 <p>
-                                    {{ article.body|truncate(250) }}
+                                    {{ article.body|truncate(342) }}
                                 </p>
                             </div>
                         </div>
@@ -43,6 +42,14 @@
 
         </section>
 
+        <section class="articles">
+        <div class="column is-8 is-offset-2">
+            {{ pagerfanta(pager, 'twitter_bootstrap4_translated', {}) }}
+        </div>
+        </section>
+    </div>
+
+    <div class="container">
     </div>
 
 {% endblock %}

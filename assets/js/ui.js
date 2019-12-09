@@ -53,6 +53,13 @@ function ShowSection(UIId) {
     }
 }
 
+function updateProgress(e) {
+    if(document.getElementById('progress')) {
+        document.getElementById('progress').value = (e.loaded / e.total) * 100;
+    }
+}
+
+
 // Resume
 document.getElementById("exitResume").onclick = exitResume;
 
@@ -64,4 +71,4 @@ document.getElementById("exitContact").onclick = exitContact;
 // Projects
 
 // exports
-export {ShowSection, showProject};
+export {ShowSection, showProject, updateProgress};

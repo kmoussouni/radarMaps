@@ -21,9 +21,10 @@ Install Vagrant and VirtualBox.
 #End Wsl
 
 #Vagrant
-    cp envvars.yml.dist envvars.yml 
+    cp envvars.yml.dist envvars.yml
     vagrant plugin install vagrant-disksize
     vagrant plugin install vagrant-vbguest
+    vagrant plugin install vagrant-winnfsd
     vagrant plugin install vagrant-faster
     vagrant plugin install vagrant-cachier
     vagrant up

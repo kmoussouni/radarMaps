@@ -2,9 +2,13 @@
 
 namespace App\Controller;
 
+use ApiPlatform\Core\Bridge\Symfony\Routing\RouteNameGenerator;
 use App\Entity\Article;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Knp\Component\Pager\PaginatorInterface;
+use Pagerfanta\Adapter\DoctrineORMAdapter;
+use Pagerfanta\Pagerfanta;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,42 +17,47 @@ use Symfony\Component\Routing\Annotation\Route;
  * Class BlogController
  * @package App\Controller
  */
-class BlogController extends AbstractController
+class BlogController extends Controller
 {
     /**
      * @Route(name="blog", path="/blog")
      *
      * @param Request $request
      * @param EntityManagerInterface $entityManager
+     * @param Pagerfanta $pagerfanta
+     * @param RouteNameGenerator $routeNameGenerator
      * @return Response
      */
     public function blog(Request $request, EntityManagerInterface $entityManager)
     {
-//        $articles = $this->get('entity')->find('App\Entity\Article');
-        $articles = $entityManager->getRepository('App\Entity\Article')->findAll();
+        $queryBuilder = $entityManager->createQueryBuilder()
+            ->select('a')
+            ->from('App:Article', 'a');
 
-//        die(var_dump(count($articles)));
+        $adapter = new DoctrineORMAdapter($queryBuilder);
+        $pagerfanta = new Pagerfanta($adapter);
 
-//        foreach($articles as $article) {
-//            echo $article->getTitle();
-//        }
+        $pagerfanta->setMaxPerPage(5);
 
-        return $this->render('Blog/index.html.twig',
-            [
-                 'articles' => $articles
-            ]
-        );
+        $pagerfanta->setCurrentPage($request->get('page'));
+
+        return $this->render('Blog/index.html.twig', [
+            'pager' => $pagerfanta
+        ]);
     }
 
     /**
      * @Route(name="blog_show", path="/blog/{slug}")
      *
      * @param Article $article
-     * @param EntityManagerInterface $entityManager
      * @return Response
      */
-    public function show(Article $article, EntityManagerInterface $entityManager)
+    public function show(Article $article)
     {
+        if(!$article) {
+            throw $this->createNotFoundException('The article does not exist');
+        }
+
         return $this->render('Blog/show.html.twig',
             [
                  'article' => $article

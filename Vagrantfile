@@ -45,13 +45,14 @@ Vagrant.configure("2") do |config|
   # `vagrant up`), reinstalling from local directories
   config.vm.provision "recompose", type: "shell", env: {"docker_user" => machine['docker_user'], "docker_pass" => machine['docker_pass']}, run: "always", inline: <<-SHELL
 
-      yum install -y yum-utils curl
+      yum install -y yum-utils curl nfs-kernel-server
+
+      yum uodate -y
 
       mkdir -p /backup
       mkdir -p /var/www/symfony
       mkdir -p /var/www/symfony/public/media/image
       mkdir -p /var/www/symfony/var/xdebug
-      mkdir -p /var/www/symfony/public/media/image
 
       yum install epel-release -y
       yum install --enablerepo="epel" ufw -y
@@ -82,6 +83,9 @@ Vagrant.configure("2") do |config|
 
       systemctl restart docker.service
       sysctl -w vm.max_map_count=262144
+
+      sysctl net.bridge.bridge-nf-call-iptables=1
+      sysctl net.bridge.bridge-nf-call-ip6tables=1
 
       openssl req -newkey rsa:2048 -nodes -keyout /var/www/symfony/docker/nginx/certs/uni.local.key -x509 -days 365 -out /var/www/symfony/docker/nginx/certs/uni.local.crt -subj '/CN=uni.local' -extensions EXT -config <( \
          printf "[dn]\nCN=uni.local\n[req]\ndistinguished_name = dn\n[EXT]\nsubjectAltName=DNS:uni.local\nkeyUsage=digitalSignature\nextendedKeyUsage=serverAuth")

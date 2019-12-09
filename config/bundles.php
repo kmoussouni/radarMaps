@@ -27,4 +27,5 @@ return [
     Vich\UploaderBundle\VichUploaderBundle::class => ['all' => true],
     Core23\DompdfBundle\Core23DompdfBundle::class => ['all' => true],
     FOS\OAuthServerBundle\FOSOAuthServerBundle::class => ['all' => true],
+    WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle::class => ['all' => true],
 ];

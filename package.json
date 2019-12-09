@@ -31,6 +31,7 @@
         "@babel/preset-react": "^7.0.0",
         "@fortawesome/fontawesome-free": "^5.11.2",
         "@symfony/webpack-encore": "^0.28.0",
+        "assemblyscript-live-loader": "git+https://github.com/dongsik-yoo/assemblyscript-live-loader.git",
         "copy-webpack-plugin": "^5.0.5",
         "core-js": "^3.0.0",
         "regenerator-runtime": "^0.13.2",

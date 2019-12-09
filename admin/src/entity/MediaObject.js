@@ -5,6 +5,8 @@ import {ImageInput, ImageField} from "react-admin";
 const MediaObjectsList = props => (
     <ListGuesser {...props}>
         <FieldGuesser source="user" addLabel={true} />
+        <FieldGuesser source="file" addLabel={true} />
+        <FieldGuesser source="filePath" addLabel={true} />
     </ListGuesser>
 );
 
@@ -28,6 +30,9 @@ const MediaObjectsEdit = props => (
 const MediaObjectsShow = props => (
     <ShowGuesser {...props}>
         <FieldGuesser source="user" />
+        <FieldGuesser source="contentUrl" />
+        <ImageField source="file" />
+        <ImageField source="filePath" />
     </ShowGuesser>
 );
 
