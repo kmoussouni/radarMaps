@@ -1,11 +1,13 @@
 import React from "react";
 import {FieldGuesser, ListGuesser, CreateGuesser, InputGuesser, EditGuesser, ShowGuesser} from "@api-platform/admin";
-import {ImageInput, ImageField} from "react-admin";
+import {TextField, ImageInput, ImageField} from "react-admin";
 
 const MediaObjectsList = props => (
     <ListGuesser {...props}>
-        <FieldGuesser source="user" addLabel={true} />
-        <FieldGuesser source="file" addLabel={true} />
+        <TextField source="user.email" addLabel={true} />
+        {/*<ImageInput source="file" label="Image" accept="image/*">*/}
+        <ImageField source="file" addLabel={true} />
+        {/*</ImageInput>*/}
         <FieldGuesser source="filePath" addLabel={true} />
     </ListGuesser>
 );
@@ -20,8 +22,8 @@ const MediaObjectsEdit = props => (
     <EditGuesser {...props}>
         <InputGuesser source="user" />
         <InputGuesser source="contentUrl" />
-        <ImageInput source="file" label="Imgage" accept="image/*">
-            <ImageField source="file" title="file" />
+        <ImageInput source="file" label="Image" accept="image/*">
+            <ImageField source="src" title="file" />
         </ImageInput>
         <InputGuesser source="filePath" />
     </EditGuesser>

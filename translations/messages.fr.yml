@@ -1,13 +1,13 @@
-contact.form.contactme.title: "Contactez moi"
-contact.form.type.label: "Type"
-contact.form.type.backdev.option: "Back Dev"
-contact.form.type.leaddev.option: "Lead Dev"
-contact.form.type.fullstack.option: "FullStack"
-contact.form.contract.title: "Contrat"
-contact.form.contract.freelance.option: "Freelance"
-contact.form.contract.cdi.option: "CDI"
-contact.form.techno.title: "Techno"
-contact.form.techno.php.option: "PHP 7"
+contact.form.contactme.title: 'Contactez moi'
+contact.form.type.label: Type
+contact.form.type.backdev.option: 'Back Dev'
+contact.form.type.leaddev.option: 'Lead Dev'
+contact.form.type.fullstack.option: FullStack
+contact.form.contract.title: Contrat
+contact.form.contract.freelance.option: Freelance
+contact.form.contract.cdi.option: CDI
+contact.form.techno.title: Techno
+contact.form.techno.php.option: 'PHP 7'
 contact.form.techno.symfony.option: Symfony
 contact.form.techno.javascript.option: Javascript
 contact.form.techno.reactjs.option: Reactjs
@@ -20,20 +20,22 @@ contact.form.techno.logstash.option: Logstash
 contact.form.techno.kibana.option: Kibana
 contact.form.lastname.label: Nom
 contact.form.firstname.label: Prénom
-contact.form.socity.label: "Société"
+contact.form.society.label: Société
 contact.form.email.label: Email
-contact.form.email.placeholder: Veuillez entrer votre email
+contact.form.email.placeholder: 'Veuillez entrer votre email'
 contact.form.subject.label: Sujet
-contact.form.subject.default.option: Selectionnez une option
+contact.form.subject.default.option: 'Selectionnez une option'
 contact.form.subject.contact.option: Contact
 contact.form.subject.recrutement.option: Recrutement
 contact.form.subject.project.option: Projet
 contact.form.message.label: Message
 contact.form.submit.label: Envoyer
 contact.form.cancel.label: Annuler
-home.title: "Karim Moussouni"
-card.title.label: "Karim Moussouni"
-card.subtitle.label: "Full Stack Developer"
-card.content.label: "Je suis expérimenté dans l'exploitation de frameworks agiles pour fournir une synopsis robuste pour les aperçus de haut niveau. Les approches itératives de la stratégie des entreprises favorisent la réflexion collaborative afin de faire progresser la proposition de valeur globale."
-info.subtitle1.label: "Chargement d'un scène FBX / texte 3D / UI par "
-info.subtitle2.label: "Modèle et Animations de "
+home.title: 'Karim Moussouni'
+card.title.label: 'Karim Moussouni'
+card.subtitle.label: 'Full Stack Developer'
+card.content.label: 'Je suis un développeur Web sénior FullStack en développement Symfony et React. Je maîtrise les environnements du développement à la production. Je suis actuellement disponible pour une mission/job.'
+#card.content.label: 'Je suis expérimenté dans l''exploitation de frameworks agiles pour fournir une synopsis robuste pour les aperçus de haut niveau. Les approches itératives de la stratégie des entreprises favorisent la réflexion collaborative afin de faire progresser la proposition de valeur globale.'
+info.subtitle1.label: 'Chargement d''un scène FBX / texte 3D / UI par '
+info.subtitle2.label: 'Modèle et Animations de '
+loading.title: __loading.title

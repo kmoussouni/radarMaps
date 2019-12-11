@@ -4,5 +4,5 @@ App\Entity\Project:
     title: '<sentence()>'
     body: '<sentence()>'
     demoUrl: '<url()>'
-    image: "@media_objects*"
+    image: "@media_objects_projects*"
 #    imageHeaderFile: ''

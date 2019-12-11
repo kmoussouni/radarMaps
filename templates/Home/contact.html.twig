@@ -4,131 +4,156 @@
 
         <article class="message notification is-success">
 
-{#            <div class="message-header">#}
-{#                <p class="title">#}
-{#                    {{ 'contact.form.contactme.title'|trans }}#}
-{#                    {% include 'Components/exit.html.twig' with {context: 'contact'} %}#}
-{#                </p>#}
-{#            </div>#}
+            <div class="message-header">
+                <p class="title">
+                    {{ 'contact.form.contactme.title'|trans }}
+                </p>
+            </div>
+
 
             <div class="message-body">
 
-                <div class="field">
+                <div class="columns">
 
-                    <div class="dropdown">
+                    <div class="column">
+
+                        <div class="field">
+                            <label class="field-name label">{{ 'contact.form.techno.title'|trans }}</label>
+                            <div class="dropdown">
+                                <div class="control">
+                                    <div class="select is-info is-multiple">
+                                        <select id="technos" multiple size="4">
+                                            <option>{{ 'contact.form.techno.php.option'|trans }}</option>
+                                            <option>{{ 'contact.form.techno.symfony.option'|trans }}</option>
+                                            <option>{{ 'contact.form.techno.javascript.option'|trans }}</option>
+                                            <option>{{ 'contact.form.techno.reactjs.option'|trans }}</option>
+                                            <option>{{ 'contact.form.techno.webpack.option'|trans }}</option>
+                                            <option>{{ 'contact.form.techno.mysql.option'|trans }}</option>
+                                            <option>{{ 'contact.form.techno.docker.option'|trans }}</option>
+                                            <option>{{ 'contact.form.techno.vagrant.option'|trans }}</option>
+                                            <option>{{ 'contact.form.techno.elasticsearch.option'|trans }}</option>
+                                            <option>{{ 'contact.form.techno.logstash.option'|trans }}</option>
+                                            <option>{{ 'contact.form.techno.kibana.option'|trans }}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="column">
+
+                        <div class="field">
                         <label class="label">{{ 'contact.form.type.label'|trans }}</label>
-                        <div class="control">
-                            <div class="select">
-                                <select id="type">
-                                    <option>{{ 'contact.form.type.backdev.option'|trans }}</option>
-                                    <option>{{ 'contact.form.type.leaddev.option'|trans }}</option>
-                                    <option>{{ 'contact.form.type.fullstack.option'|trans }}</option>
-                                </select>
+                            <div class="dropdown">
+                                <div class="control">
+                                    <div class="select is-info">
+                                        <select id="type">
+                                            <option>{{ 'contact.form.type.backdev.option'|trans }}</option>
+                                            <option>{{ 'contact.form.type.leaddev.option'|trans }}</option>
+                                            <option>{{ 'contact.form.type.fullstack.option'|trans }}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="column">
+
+                        <div class="field">
+                            <label class="label">{{ 'contact.form.contract.title'|trans }}</label>
+                            <div class="dropdown">
+                                <div class="control">
+                                    <div class="select is-info">
+                                        <select id="contract">
+                                            <option>{{ 'contact.form.contract.freelance.option'|trans }}</option>
+                                            <option>{{ 'contact.form.contract.cdi.option'|trans }}</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <div class="columns field">
+                    <div class="column">
+
+                        <label class="label">{{ 'contact.form.lastname.label'|trans }}</label>
+                        <div class="control">
+                            <input id="lastname" class="input" type="text" placeholder="Text input">
+                        </div>
+
+                    </div>
+                    <div class="column">
+                        <label class="label">{{ 'contact.form.firstname.label'|trans }}</label>
+                        <div class="control">
+                            <input id="firstname" class="input" type="text" placeholder="Text input">
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="columns field">
+                    <div class="column">
+
+                        <label class="label">{{ 'contact.form.society.label'|trans }}</label>
+                        <div class="control">
+                            <input id="society" class="input" type="text" placeholder="...">
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <label class="label">{{ 'contact.form.email.label'|trans }}</label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input id="email" class="input is-primary" type="email" placeholder="{{ 'contact.form.email.placeholder'|trans }}" value="hello@" required />
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-envelope"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </span>
+                        </div>
+        {#                <p class="help is-danger">This email is invalid</p>#}
                     </div>
 
                 </div>
 
                 <div class="field">
-                    <div class="dropdown">
-                        <label class="label">{{ 'contact.form.contract.title'|trans }}</label>
-                        <div class="control">
-                            <div class="select">
-                                <select id="contract">
-                                    <option>{{ 'contact.form.contract.freelance.option'|trans }}</option>
-                                    <option>{{ 'contact.form.contract.cdi.option'|trans }}</option>
-                                </select>
-                            </div>
+                    <label class="label">{{ 'contact.form.subject.label'|trans }}</label>
+                    <div class="control">
+                        <div class="select is-info">
+                            <select id="subject">
+                                <option>{{ 'contact.form.subject.default.option'|trans }}</option>
+                                <option>{{ 'contact.form.subject.contact.option'|trans }}</option>
+                                <option>{{ 'contact.form.subject.recrutement.option'|trans }}</option>
+                                <option>{{ 'contact.form.subject.project.option'|trans }}</option>
+                            </select>
                         </div>
                     </div>
-
-                    <div class="dropdown">
-                        <label class="label">{{ 'contact.form.techno.title'|trans }}</label>
-                        <div class="control">
-                            <div class="select">
-                                <select id="technos" multiple>
-                                    <option>{{ 'contact.form.techno.php.option'|trans }}</option>
-                                    <option>{{ 'contact.form.techno.symfony.option'|trans }}</option>
-                                    <option>{{ 'contact.form.techno.javascript.option'|trans }}</option>
-                                    <option>{{ 'contact.form.techno.reactjs.option'|trans }}</option>
-                                    <option>{{ 'contact.form.techno.webpack.option'|trans }}</option>
-                                    <option>{{ 'contact.form.techno.mysql.option'|trans }}</option>
-                                    <option>{{ 'contact.form.techno.docker.option'|trans }}</option>
-                                    <option>{{ 'contact.form.techno.vagrant.option'|trans }}</option>
-                                    <option>{{ 'contact.form.techno.elasticsearch.option'|trans }}</option>
-                                    <option>{{ 'contact.form.techno.logstash.option'|trans }}</option>
-                                    <option>{{ 'contact.form.techno.kibana.option'|trans }}</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
 
-            </div>
-
-            <div class="field">
-
-                <label class="label">{{ 'contact.form.lastname.label'|trans }}</label>
-                <div class="control">
-                    <input id="lastname" class="input" type="text" placeholder="Text input">
-                </div>
-                <label class="label">{{ 'contact.form.firstname.label'|trans }}</label>
-                <div class="control">
-                    <input id="firstname" class="input" type="text" placeholder="Text input">
-                </div>
-                <label class="label">{{ 'contact.form.society.label'|trans }}</label>
-                <div class="control">
-                    <input id="society" class="input" type="text" placeholder="...">
-                </div>
-
-            </div>
-
-            <div class="field">
-                <label class="label">{{ 'contact.form.email.label'|trans }}</label>
-                <div class="control has-icons-left has-icons-right">
-                    <input id="email" class="input is-danger" type="email" placeholder="{{ 'contact.form.email.placeholder'|trans }}" value="hello@" required />
-                    <span class="icon is-small is-left">
-                        <i class="fas fa-envelope"></i>
-                    </span>
-                    <span class="icon is-small is-right">
-                        <i class="fas fa-exclamation-triangle"></i>
-                    </span>
-                </div>
-{#                <p class="help is-danger">This email is invalid</p>#}
-            </div>
-
-            <div class="field">
-                <label class="label">{{ 'contact.form.subject.label'|trans }}</label>
-                <div class="control">
-                    <div class="select">
-                        <select id="subject">
-                            <option>{{ 'contact.form.subject.default.option'|trans }}</option>
-                            <option>{{ 'contact.form.subject.contact.option'|trans }}</option>
-                            <option>{{ 'contact.form.subject.recrutement.option'|trans }}</option>
-                            <option>{{ 'contact.form.subject.project.option'|trans }}</option>
-                        </select>
+                <div class="field">
+                    <label class="label">{{ 'contact.form.message.label'|trans }}</label>
+                    <div class="control">
+                         <textarea  id="message" class="textarea" placeholder="Textarea"></textarea>
                     </div>
                 </div>
-            </div>
 
-            <div class="field">
-                <label class="label">{{ 'contact.form.message.label'|trans }}</label>
-                <div class="control">
-                     <textarea  id="message" class="textarea" placeholder="Textarea"></textarea>
+                <div class="field is-grouped">
+                    <div class="control">
+                        <button id="submitContactForm" class="button is-link">{{ 'contact.form.submit.label'|trans }}</button>
+                    </div>
+                    <div class="control">
+                        <button id="exitContact" class="button is-link is-light">{{ 'contact.form.cancel.label'|trans }}</button>
+                    </div>
                 </div>
-            </div>
 
-            <div class="field is-grouped">
-                <div class="control">
-                    <button id="submitContactForm" class="button is-link">{{ 'contact.form.submit.label'|trans }}</button>
-                </div>
-                <div class="control">
-                    <button id="exitContact" class="button is-link is-light">{{ 'contact.form.cancel.label'|trans }}</button>
-                </div>
             </div>
-
         </article>
 
     </div>

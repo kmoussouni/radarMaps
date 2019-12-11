@@ -55,6 +55,7 @@ final class ResolveMediaObjectContentUrlSubscriber implements EventSubscriberInt
             }
 
             // @todo: when admin ok, upload file localy
+//            $mediaObject->contentUrl = 'http://karimmoussouni.local/'.$this->storage->resolveUri($mediaObject, 'file');
             $mediaObject->contentUrl = $this->storage->resolveUri($mediaObject, 'file');
         }
     }

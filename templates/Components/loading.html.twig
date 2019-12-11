@@ -1,19 +1,10 @@
-<div class="container">
-    <section class="section">
-        <div class="container is-vcentered">
-    {#        <h1 class="title">Section</h1>#}
-    {#        <h2 class="subtitle">#}
-    {#            A simple container to divide your page into <strong>sections</strong>, like the one you're currently reading#}
-    {#        </h2>#}
-            <div class="title is-medium">Loading</div>
-            <progress id="progress" class="progress is-danger is-large" value="90" max="100"></progress>
-    {#        <i class="fas fa-spinner fa-pulse fa-stack-1x fa-ban fa-stack-2x has-text-danger"></i>#}
+<div class="container is-vertical-center">
+    <div class="content is-vertical-center is-full">
+{#    <section class="section">#}
+        <div class="section">
+                <div class="title is-medium">{{ 'loading.title'|trans }}</div>
+                <progress id="progress" class="progress is-danger is-large" value="90" max="100"></progress>
+            </div>
         </div>
-    </section>
+{#    </section>#}
 </div>
-{#<div class="">#}
-{#    <span class="icon is-large">#}
-{#        <span class="fa-stack fa-lg">#}
-{#        </span>#}
-{#    </span>#}
-{#</div>#}

@@ -1,6 +1,6 @@
-#kmoussokarimmoussouni/karimmoussokarimmoussouni.com
+#kmoussouni/karimmoussouni.com
 
-# KarimMoussokarimmoussouni.com Project
+# KarimMoussouni.com Project
 
 ##Install
 
@@ -167,7 +167,9 @@ and in autoload-dev/psr-4 section
 ```
 
 
-php bin/console mailingnewsrooms:oauth-server:client:create --redirect-uri="https://karimmoussouni.local" --grant-type="authorization_code" --grant-type="password" --grant-type="refresh_token" --grant-type="token" --grant-type="client_credentials" --grant-type="acces_token"
+php bin/console fos:oauth-server:create-client --redirect-uri="https://karimmoussouni.local" --grant-type="authorization_code" --grant-type="password" --grant-type="refresh_token" --grant-type="token" --grant-type="client_credentials" --grant-type="acces_token"
 
 
-php bin/console mailingnewsrooms:oauth-server:client:create --redirect-uri="https://api.mailingnewsrooms.me/v5/ha/ha_entrypoint" --grant-type="authorization_code" --grant-type="password" --grant-type="refresh_token" --grant-type="token" --grant-type="client_credentials" --grant-type="acces_token"
+php bin/console fos:oauth-server:create-client --redirect-uri="https://api.mailingnewsrooms.me/v5/ha/ha_entrypoint" --grant-type="authorization_code" --grant-type="password" --grant-type="refresh_token" --grant-type="token" --grant-type="client_credentials" --grant-type="acces_token"
+
+php bin/console trans:update --output-format=yml --force fr

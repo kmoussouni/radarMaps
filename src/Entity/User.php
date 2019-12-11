@@ -2,7 +2,9 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
@@ -12,7 +14,10 @@ use Symfony\Component\Serializer\Annotation\MaxDepth;
  * Class User
  * @package App\Entity
  *
- * @ApiResource()
+ * @ApiResource(
+ *     normalizationContext={"groups"={"api_front"}},
+ *     denormalizationContext={"groups"={"api_front"}}
+ * )
  *
  * @ORM\Entity()
  * @ORM\Table(name="user")
@@ -40,6 +45,8 @@ class User extends BaseUser
 
     /**
      * @ORM\OneToMany(targetEntity="Experience", mappedBy="user")
+     * @ApiSubresource()
+     * @ApiProperty()
      */
     protected $experiences;
 

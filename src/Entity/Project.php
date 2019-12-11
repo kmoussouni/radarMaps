@@ -11,7 +11,10 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
  * Class Project
  * @package App\Entity
  *
- * @ApiResource()
+ * @ApiResource(
+ *     normalizationContext={"groups"={"api_front"}},
+ *     denormalizationContext={"groups"={"api_front"}}
+ * )
  *
  * @ORM\Entity()
  * @ORM\Table(name="project")

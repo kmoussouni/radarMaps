@@ -6,30 +6,36 @@ var currentSection = 'home';
 function exitResume() {
     // e.preventDefault();
     ShowSection('card')
-    console.log('click on exit resume');
 };
 
 function exitContact() {
     ShowSection('card')
-    console.log('click on exit contact');
 };
 
 function submitContactForm() {
-    console.log('submitContactForm');
+    var technos = document.getElementById('technos');
+    var selectedTechnos =  Array.from(technos.selectedOptions)
+        .map(option => option.value);
+
     axios.post('/api/quotations',
-    [
         {
-            lastname: document.getElementById('lastname').valueOf(),
-            firstname: document.getElementById('firstname').valueOf(),
-            email: document.getElementById('email').valueOf(),
-            subject: document.getElementById('subject').valueOf(),
-            message: document.getElementById('message').valueOf(),
-            type: document.getElementById('type').valueOf(),
-            contract: document.getElementById('contract').valueOf(),
-            technos: document.getElementById('technos').valueOf()
+            lastname: document.getElementById('lastname').value,
+            firstname: document.getElementById('firstname').value,
+            mail: document.getElementById('email').value,
+            subject: document.getElementById('subject').value,
+            text: document.getElementById('message').value,
+            type: document.getElementById('type').value,
+            contract: document.getElementById('contract').value,
+            technos: selectedTechnos
         }
-    ]
-    );
+    ).then(function (response) {
+        if(response) {
+            ShowSection('card')
+        }
+    })
+        .catch(function (error) {
+            console.log(error);
+        });;
 };
 
 function showProject(project) {
@@ -37,16 +43,18 @@ function showProject(project) {
 }
 
 function ShowSection(UIId) {
-    var UIElemeents = ["loading", "spinner", "card", "exit", "contact", "resume", "project"];
+    var UIElemeents = ["loading", "card", "info", "contact", "resume", "project"];
 
     if(document.getElementById(UIId)) {
         UIElemeents.map(function(UIElmnt) {
             if(document.getElementById(UIElmnt)) {
                 if(UIElmnt == UIId) {
-                    console.log(UIId);
                     document.getElementById(UIId).style.display = 'block';
                 } else {
                     document.getElementById(UIElmnt).style.display = 'none';
+                }
+                if('card' === UIId) {
+                    document.getElementById('info').style.display = 'block';
                 }
             }
         });
@@ -59,6 +67,14 @@ function updateProgress(e) {
     }
 }
 
+function updateClock() {
+    var now = new Date();
+
+    document.getElementById('time').innerHTML = now.toDateString() + ' ' + now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds() + ':' + now.getMilliseconds();
+    setTimeout(updateClock, 1000);
+}
+
+updateClock();
 
 // Resume
 document.getElementById("exitResume").onclick = exitResume;

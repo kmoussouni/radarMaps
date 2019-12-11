@@ -1,11 +1,19 @@
 App\Entity\MediaObject:
-  media_objects{0..100}:
+  media_objects_articles{0..20}:
     user: "@karim"
     contentUrl: "<imageUrl(512, 512)>.png"
+    filePath: "<image('public/media/articles')>"
     file: null
-    filePath: 'null'
+#    filePath: "<image('../assets/assets/images/')>"
 #    filePath: "<image(600, 400)>.jpg"
 
+  media_objects_projects{0..20}:
+    user: "@karim"
+    contentUrl: "<imageUrl(512, 512)>.png"
+    filePath: "<image('public/media/projects')>"
+    file: null
+#    filePath: "<image('../assets/assets/images/')>"
+#    filePath: "<image(600, 400)>.jpg"
 
   logo_bayday:
     user: "@karim"

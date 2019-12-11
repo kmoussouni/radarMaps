@@ -16,20 +16,27 @@ body {
 .container {
   width: 100% !important;
   max-width: 100% !important;
-  //height: 100% !important;
+  height: 100% !important;
   position: absolute !important;
   z-index: 10;
   pointer-events: initial;
 }
 
-.resume {
+.is-vertical-center {
   width: 100% !important;
   max-width: 100% !important;
-  height: auto !important;
+  display: flex;
+  align-items: center;
+}
+
+//.resume {
+  //width: 100% !important;
+  //max-width: 100% !important;
+  //height: auto !important;
   //position: absolute !important;
   //z-index: 10;
   //pointer-events: initial;
-}
+//}
 
 navi, infoi {
   width: 100%;

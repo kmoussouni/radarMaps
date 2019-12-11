@@ -17,7 +17,7 @@ import {ShowSection, showProject, updateProgress} from './ui';
 import '../scss/app.scss';
 
 /** variables */
-var baseUrl = "http://karimmoussouni.local/"
+var baseUrl = "http://karimmoussouni.local/../"
 
 var container, controls;
 var camera, scene, renderer, light;
@@ -89,17 +89,9 @@ function init()
         })
         .to({ x: 0, y: 100, z: 0, r: -2*Math.PI}, 1000)
         .onUpdate(function() {
-            // console.log(this.r, this.x, this.y, this.z, this.o);
-            // light.position.set(this.x, this.y, this.z);
             light.rotation.set(this.r, light.rotation.y, light.rotation.z);
-            // light.scale.set(this.s,this.s,this.s);
-
-            // light.material.opacity = this.o;
         });
     tweenlight.start();
-
-
-    // scene.add( new THREE.PointLightHelper( light, 15 ) );
 
     /**
      * grid
@@ -111,8 +103,6 @@ function init()
     /////////////////////////////////////////
     loader = new FBXLoader();
     loader.load( '/build/3d/Freelance/malcolmHappyIdle.fbx', function ( object ) {
-        // console.info( 'FBX model loading...' );
-
         mixer = new THREE.AnimationMixer( object );
         var action = mixer.clipAction( object.animations[ 0 ] );
         action.play();
@@ -230,8 +220,6 @@ function init()
  * Events
  ***************************************/
 function createPortfolio() {
-    // console.log('create portforlio');
-
     var countProject = 0;
     var url;
     var j = 0, x = 0;
@@ -239,22 +227,25 @@ function createPortfolio() {
 
     // api get all projets
     axios.get('/api/projects').then(function (response) {
-        if(response.data["hydra:member"]) {
-            countProject = response.data["hydra:member"].length;
-            response.data["hydra:member"].map((elmnt) => {
+        if(response.data) {
+            countProject = response.data.length;
+            response.data.map((elmnt) => {
                 var name = elmnt.title;
-                axios.get(elmnt.image).then(function (response) {
-                    if(response.data.contentUrl) {
-                        url = response.data.contentUrl;
-                        x = i%10;
-                        y = parseInt(j/10%10);
-                        createPlane(x, y, name, url)
-                        i++; j+=1;
-                    }
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
+                // image/texture
+                // axios.get(baseUrl+elmnt.image.filePath).then(function (response) {
+                //     if(response.data.contentUrl) {
+                console.log(baseUrl+elmnt.image);
+                url = baseUrl+elmnt.image.filePath;
+                // url = response.data.contentUrl;
+                x = i%10;
+                y = parseInt(j/10%10);
+                createPlane(x, y, name, url);
+                i++; j+=1;
+                    // }
+                // })
+                // .catch(function (error) {
+                //     console.log(error);
+                // });
             });
         }
     })
@@ -268,10 +259,11 @@ function createPlane(i, j, name, imagesUrl) {
     var delta = 5*cote;
     var geometry = new THREE.PlaneGeometry( 100, 100 );
 
-    // console.log("loading " + imagesUrl + "at x=" +i+"     y="+j)
     var textureLoader = new THREE.TextureLoader();
     textureLoader.crossOrigin = "*";
-    var texture = textureLoader.load( imagesUrl );
+    console.log('url='+imagesUrl);
+    console.log('http://karimmoussouni.local' + imagesUrl);
+    var texture = textureLoader.load( 'http://karimmoussouni.local' + imagesUrl );
     var material = new THREE.MeshBasicMaterial( { map: texture } );
     material.side = THREE.DoubleSide;
     material.opacity = 1.0;
@@ -321,9 +313,6 @@ function onDocumentKeyPress( event ) {
 function onDocumentMouseDown( event ) {
     // event.preventDefault();
 
-    console.log(event.target);
-    console.log(event);
-
     if(event.target  instanceof HTMLCanvasElement) {
         mouse.set( ( event.clientX / window.innerWidth ) * 2 - 1, - ( event.clientY / window.innerHeight ) * 2 + 1 );
         raycaster.setFromCamera( mouse, camera );
@@ -342,13 +331,11 @@ function handleClick(object, uuid, state='project') {
 
     //cv
     if(object.name == 'Shoes' || object.name == 'Bottoms' || object.name == 'Shoes' || object.name == 'Hats' || object.name == 'Tops') {
-        console.log('RESUME')
         ShowSection('resume');
     }
 
     // contact
     if(object.km == 'Text') {
-        console.log('BLOG')
         ShowSection('contact');
     }
 
@@ -364,14 +351,12 @@ function handleClick(object, uuid, state='project') {
             })
             .to({ x: camera.position.x, y: camera.position.y, z: 0, r: -2*Math.PI, o: 0, s: 5}, 1000)
             .onUpdate(function() {
-                // console.log(this.r, this.x, this.y, this.z, this.o, this.s);
                 object.position.set(this.x, this.y, this.z);
                 object.rotation.set(this.r, object.rotation.y, object.rotation.z);
                 object.scale.set(this.s,this.s,this.s);
                 object.material.opacity = this.o;
             })
             .onComplete(function() {
-                console.log('done');
                 showProject(object);
             })
         ;
@@ -383,7 +368,6 @@ function handleClick(object, uuid, state='project') {
             })
             .to({ x: 0, y: 0, z: 0}, 1000)
             .onUpdate(function() {
-                // console.log('Camera: '  + this.x, this.y, this.z);
                 camera.rotation.set(this.x, this.y, this.z);
             });
 
@@ -391,8 +375,6 @@ function handleClick(object, uuid, state='project') {
             tweenProject.start();
     }
     // blog
-
-    // exits
 }
 
 function onDocumentMouseMove( event ) {
@@ -410,20 +392,18 @@ function onDocumentMouseMove( event ) {
         if(INTERSECTED != intersect) {
             INTERSECTED = intersect;
 
-            console.log("INTERSECT   =" + INTERSECTED.object.uuid);
-
             INTERSECTED.object.material.transparent = true;
-            INTERSECTED.object.material.opacity = 0.7;
-        } else {
-            if ( INTERSECTED ) {
-                console.log("INTERSECTED =" + INTERSECTED.object.uuid);
-                INTERSECTED.object.material.transparent = false;
-                INTERSECTED.object.material.opacity = 1;
-            }
-
-            // INTERSECTED = null;
+            INTERSECTED.object.material.opacity = 0.5;
+        }
+    } else {
+        if(INTERSECTED) {
+            INTERSECTED.object.material.transparent = false;
+            INTERSECTED.object.material.opacity = 1;
+            INTERSECTED = null;
         }
     }
 
     controls.update();
+    camera.updateMatrixWorld();
 }
+

@@ -1,13 +1,13 @@
-contact.form.contactme.title: "Contact me"
-contact.form.type.label: "Type"
-contact.form.type.backdev.option: "Back Dev"
-contact.form.type.leaddev.option: "Lead Dev"
-contact.form.type.fullstack.option: "FullStack"
-contact.form.contract.title: "Contract"
-contact.form.contract.freelance.option: "Freelance"
-contact.form.contract.cdi.option: "CDI"
-contact.form.techno.title: "Techno"
-contact.form.techno.php.option: "PHP 7"
+contact.form.contactme.title: 'Contact me'
+contact.form.type.label: Type
+contact.form.type.backdev.option: 'Back Dev'
+contact.form.type.leaddev.option: 'Lead Dev'
+contact.form.type.fullstack.option: FullStack
+contact.form.contract.title: Contract
+contact.form.contract.freelance.option: Freelance
+contact.form.contract.cdi.option: CDI
+contact.form.techno.title: Techno
+contact.form.techno.php.option: 'PHP 7'
 contact.form.techno.symfony.option: Symfony
 contact.form.techno.javascript.option: Javascript
 contact.form.techno.reactjs.option: Reactjs
@@ -20,20 +20,21 @@ contact.form.techno.logstash.option: Logstash
 contact.form.techno.kibana.option: Kibana
 contact.form.lastname.label: Lastname
 contact.form.firstname.label: Firstname
-contact.form.socity.label: Society
+contact.form.society.label: Society
 contact.form.email.label: Mail
-contact.form.email.placeholder: Please enter your email
+contact.form.email.placeholder: 'Please enter your email'
 contact.form.subject.label: Subject
-contact.form.subject.default.option: Select an option
+contact.form.subject.default.option: 'Select an option'
 contact.form.subject.contact.option: Contact
 contact.form.subject.recrutement.option: Hiring
 contact.form.subject.project.option: Project
 contact.form.message.label: Message
 contact.form.submit.label: Submit
 contact.form.cancel.label: Cancem
-home.title: "Karim Moussouni"
-card.title.label: "Karim Moussouni"
-card.subtitle.label: "Full Stack Developer"
-card.content.label: "I am experienced in leveraging agile frameworks to provide a robust\nsynopsis for high level overviews. Iterative approaches to corporate\nstrategy foster collaborative thinking to further the overall value\nproposition."
-info.subtitle1.label: "FBX Scene Loading / 3D text / UI by "
-info.subtitle2.label: "Character and Animations from "
+home.title: 'Karim Moussouni'
+card.title.label: 'Karim Moussouni'
+card.subtitle.label: 'Full Stack Developer'
+card.content.label: "I am a senior FullStack web developer developing Symfony and React. I master the environments of development to production. I am currently available for a mission/job."
+info.subtitle1.label: 'FBX Scene Loading / 3D text / UI by '
+info.subtitle2.label: 'Character and Animations from '
+loading.title: __loading.title

@@ -1,22 +1,29 @@
 import React from "react";
 import {FieldGuesser, ListGuesser, CreateGuesser, InputGuesser, EditGuesser, ShowGuesser} from "@api-platform/admin";
 // import { List, Datagrid, TextField, TextInput } from 'react-admin';
-import { TextInput } from 'react-admin';
+import { TextInput, ImageField } from 'react-admin';
 // import { InputHelperText } from 'ra-ui-materialui';
 // import RichTextInput from "ra-input-rich-text";
+import { List, Datagrid, TextField, ReferenceField } from 'react-admin';
 
 const ArticlesList = props => (
         <ListGuesser {...props}>
-                <FieldGuesser source="id" />
-                <FieldGuesser source="title" />
-                <FieldGuesser source="body" />
+                <ImageField source="image" />
+                <FieldGuesser source="title" inputProps={{ maxLength: 12 }} />
+                <FieldGuesser source="createdAt" />
         </ListGuesser>
 );
 
 const ArticlesCreate = props => (
     <CreateGuesser {...props}>
         <InputGuesser source="title" />
+        <ReferenceField
+            source="user"
+            // reference="user"
+            label="User"
+            filterToQuery={searchText => ({ email: searchText })} >
         <InputGuesser source="user" />
+        </ReferenceField>
         <InputGuesser source="image" />
         <InputGuesser source="title" />
         <InputGuesser source="slug" />

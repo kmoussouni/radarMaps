@@ -20,11 +20,9 @@ const UsersCreate = props => (
 
 const UsersEdit = props => (
     <EditGuesser {...props}>
-
         <InputGuesser source="username" addLabel={true} />
         <InputGuesser source="email" addLabel={true} />
         <InputGuesser source="enabled" addLabel={true} />
-
     </EditGuesser>
 );
 

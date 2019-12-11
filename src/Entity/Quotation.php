@@ -11,6 +11,8 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
  * @package App\Entity
  *
  * @ApiResource(
+ *     normalizationContext={"groups"={"api_front"}},
+ *     denormalizationContext={"groups"={"api_front"}},
  *     itemOperations={
  *          "get",
  *      },
@@ -45,7 +47,7 @@ class Quotation
     protected $contract;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="simple_array")
      */
     protected $technos;
 

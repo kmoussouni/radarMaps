@@ -5,6 +5,7 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
@@ -14,7 +15,10 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
  * Class Article
  * @package App\Entity
  *
- * @ApiResource()
+ * @ApiResource(
+ *     normalizationContext={"groups"={"api_front"}},
+ *     denormalizationContext={"groups"={"api_front"}}
+ * )
  *
  * @ORM\Entity()
  * @ORM\Table(name="article")
@@ -32,6 +36,8 @@ class Article
 
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="articles")
+     * @ApiProperty()
+     * @ApiSubresource()
      */
     protected $user;
 
@@ -98,6 +104,13 @@ class Article
      * @ORM\Column(name="word_count", type="integer")
      */
     protected $wordCount = 0;
+
+    /**
+     * Article constructor.
+     */
+    public function __construct()
+    {
+    }
 
     /**
      * @return mixed

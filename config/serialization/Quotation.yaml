@@ -1,0 +1,20 @@
+App\Entity\Quotation:
+  attributes:
+    id:
+      groups: ['api_front']
+    type:
+      groups: ['api_front']
+    contract:
+      groups: ['api_front']
+    technos:
+      groups: ['api_front']
+    firstname:
+      groups: ['api_front']
+    lastname:
+      groups: ['api_front']
+    mail:
+      groups: ['api_front']
+    subject:
+      groups: ['api_front']
+    text:
+      groups: ['api_front']

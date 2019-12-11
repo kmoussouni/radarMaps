@@ -1,0 +1,4 @@
+App\Entity\Expeerience:
+  attributes:
+    id:
+      groups: ['api_front']

@@ -1,7 +1,7 @@
 App\Entity\Article:
   articles{0..100}:
     user: '@karim'
-    image: "@media_objects*"
+    image: "@media_objects_articles*"
     title: "<sentence()>"
     body: "<sentence(1000)>"
     section: "<word()>"

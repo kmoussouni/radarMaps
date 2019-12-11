@@ -1,12 +1,17 @@
 // in src/authProvider.js
 import { AUTH_LOGIN, AUTH_LOGOUT } from 'react-admin';
 
+
 export default (type, params) => {
     if (type === AUTH_LOGIN) {
-        const { username, password } = params;
-        const request = new Request('https://karimmoussouni.local/oauth/v2/auth', {
+        var username = process.env.USERNAME;
+        var password = process.env.PASSWORD;
+
+        // const { username, password } = params;
+
+        const request = new Request('https://karimmoussouni.local/oauth/v2/token', {
             method: 'POST',
-            body: JSON.stringify({ username, password }),
+            // body: JSON.stringify({ '55zjfeefv10c4ocso8osk8wc8c0wwow480s4okgkok0k04k8gg', '52fizeldb9k4w8w0soog888sg448gs884k004scc8w4gck84ss' }),
             headers: new Headers({ 'Content-Type': 'application/json' }),
         })
         return fetch(request)
