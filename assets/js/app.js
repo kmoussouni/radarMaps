@@ -17,7 +17,9 @@ import {ShowSection, showProject, updateProgress} from './ui';
 import '../scss/app.scss';
 
 /** variables */
-var baseUrl = "http://karimmoussouni.local/../"
+var baseUrl = "/../../"
+// var baseUrl = "/var/www/karimmoussouni/"
+// var baseUrl = "http://karimmoussouni.local/../"
 
 var container, controls;
 var camera, scene, renderer, light;
@@ -40,7 +42,6 @@ var windowHalfX = window.innerWidth / 2;
  * Sequence
  ***************************************/
 init();
-
 animate();
 
 /****************************************
@@ -118,7 +119,6 @@ function init()
         document.getElementById('card').style.display = 'block';
     }, function ( e ) {
         updateProgress(e);
-        console.log( e.loaded + '/'+e.total );
     }, function ( error ) {
         console.error( error );
     } );
@@ -207,6 +207,8 @@ function init()
     // events
     document.addEventListener( 'mousemove', onDocumentMouseMove, false );
     document.addEventListener( 'mousedown', onDocumentMouseDown, false );
+    document.addEventListener( 'keypress', onDocumentMouseDown, false );
+    document.addEventListener( 'touchstart', onDocumentMouseDown, false );
 
     // document.addEventListener( 'touchstart', onDocumentTouchStart, false );
     // document.addEventListener( 'touchmove', onDocumentTouchMove, false );
@@ -226,26 +228,15 @@ function createPortfolio() {
     var i = 0, y = 0;
 
     // api get all projets
-    axios.get('/api/projects').then(function (response) {
+    axios.get('/api/articles').then(function (response) {
         if(response.data) {
             countProject = response.data.length;
             response.data.map((elmnt) => {
-                var name = elmnt.title;
-                // image/texture
-                // axios.get(baseUrl+elmnt.image.filePath).then(function (response) {
-                //     if(response.data.contentUrl) {
-                console.log(baseUrl+elmnt.image);
-                url = baseUrl+elmnt.image.filePath;
-                // url = response.data.contentUrl;
+                // console.log(elmnt)
                 x = i%10;
                 y = parseInt(j/10%10);
-                createPlane(x, y, name, url);
+                createPlane(x, y, elmnt);
                 i++; j+=1;
-                    // }
-                // })
-                // .catch(function (error) {
-                //     console.log(error);
-                // });
             });
         }
     })
@@ -254,28 +245,22 @@ function createPortfolio() {
     });
 }
 
-function createPlane(i, j, name, imagesUrl) {
+function createPlane(i, j, project) {
     var cote = 100;
     var delta = 5*cote;
-    var geometry = new THREE.PlaneGeometry( 100, 100 );
 
-    var textureLoader = new THREE.TextureLoader();
-    textureLoader.crossOrigin = "*";
-    console.log('url='+imagesUrl);
-    console.log('http://karimmoussouni.local' + imagesUrl);
-    var texture = textureLoader.load( 'http://karimmoussouni.local' + imagesUrl );
-    var material = new THREE.MeshBasicMaterial( { map: texture } );
-    material.side = THREE.DoubleSide;
-    material.opacity = 1.0;
+    var loader = new THREE.TextureLoader().setPath( '' );
 
-    // var plane = new THREE.Mesh( geometry );
-    var floorGeometry = new THREE.PlaneGeometry(100, 100);
-    // var floorGeometry = new THREE.PlaneGeometry(100, 100, 10, 10);
-    var plane = new THREE.Mesh(floorGeometry, material);
-    collidedObjectUuid.push(plane.uuid);
-    plane.name = name;
+    var texture = loader.load(project.image.filePath.replace('public/','/') );
+
+    var material = new THREE.MeshStandardMaterial( { map: texture } );
+
+    var geometry = new THREE.PlaneGeometry(100, 100);
+    var plane = new THREE.Mesh(geometry); //, material);
+    plane.material = material;
+    plane.elmnt = project;
     plane.km = "Project";
-    // plane.material = material;
+    collidedObjectUuid.push(plane.uuid);
     plane.rotation.x = - Math.PI / 2;
     plane.position.set( -delta + 100*i, cote, -delta + cote*j );
 
@@ -319,7 +304,6 @@ function onDocumentMouseDown( event ) {
         intersects = raycaster.intersectObjects( scene.children, true );
         if ( intersects.length > 0 ) {
             intersect = intersects[ 0 ];
-            console.log('down on ' + intersect.object.name + '/' + intersect.object.uuid);
 
             handleClick(intersect.object, intersect.object.uuid)
         }
@@ -327,8 +311,6 @@ function onDocumentMouseDown( event ) {
 }
 
 function handleClick(object, uuid, state='project') {
-    console.log('click / TYPE= ' + object.type + " / NAME= " + object.name + " / UUID= " + uuid + " / KM= " + object.km);
-
     //cv
     if(object.name == 'Shoes' || object.name == 'Bottoms' || object.name == 'Shoes' || object.name == 'Hats' || object.name == 'Tops') {
         ShowSection('resume');
@@ -341,38 +323,41 @@ function handleClick(object, uuid, state='project') {
 
     // portfolio/project
     if(object.km == 'Project') {
-        var tweenProject = new TWEEN.Tween({
-                x: object.position.x,
-                y: object.position.y,
-                z: object.position.z,
-                r: object.rotation.x,
-                o: object.material.opacity,
-                s: object.scale.x
-            })
-            .to({ x: camera.position.x, y: camera.position.y, z: 0, r: -2*Math.PI, o: 0, s: 5}, 1000)
-            .onUpdate(function() {
-                object.position.set(this.x, this.y, this.z);
-                object.rotation.set(this.r, object.rotation.y, object.rotation.z);
-                object.scale.set(this.s,this.s,this.s);
-                object.material.opacity = this.o;
-            })
-            .onComplete(function() {
-                showProject(object);
-            })
-        ;
+        showProject(object);
+        // ShowSection('article');
 
-        var tweenCamera = new TWEEN.Tween({
-                x: camera.rotation.x,
-                y: camera.rotation.y,
-                z: camera.rotation.z
-            })
-            .to({ x: 0, y: 0, z: 0}, 1000)
-            .onUpdate(function() {
-                camera.rotation.set(this.x, this.y, this.z);
-            });
-
-            tweenCamera.start();
-            tweenProject.start();
+        // var tweenProject = new TWEEN.Tween({
+        //         x: object.position.x,
+        //         y: object.position.y,
+        //         z: object.position.z,
+        //         r: object.rotation.x,
+        //         o: object.material.opacity,
+        //         s: object.scale.x
+        //     })
+        //     .to({ x: camera.position.x, y: camera.position.y, z: 0, r: -2*Math.PI, o: 0, s: 5}, 1000)
+        //     .onUpdate(function() {
+        //         object.position.set(this.x, this.y, this.z);
+        //         object.rotation.set(this.r, object.rotation.y, object.rotation.z);
+        //         object.scale.set(this.s,this.s,this.s);
+        //         object.material.opacity = this.o;
+        //     })
+        //     .onComplete(function() {
+        //         showProject(object);
+        //     })
+        // ;
+        //
+        // var tweenCamera = new TWEEN.Tween({
+        //         x: camera.rotation.x,
+        //         y: camera.rotation.y,
+        //         z: camera.rotation.z
+        //     })
+        //     .to({ x: 0, y: 0, z: 0}, 1000)
+        //     .onUpdate(function() {
+        //         camera.rotation.set(this.x, this.y, this.z);
+        //     });
+        //
+        //     tweenCamera.start();
+        //     tweenProject.start();
     }
     // blog
 }
@@ -383,22 +368,50 @@ function onDocumentMouseMove( event ) {
     mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
 
     raycaster.setFromCamera( mouse, camera );
-    intersects = raycaster.intersectObjects( scene.children, true );
+    intersects = raycaster.intersectObjects( scene.children, false );
 
     if ( intersects.length > 0 ) {
         intersect = intersects[0];
-        console.log('intersect ' + intersect.object.uuid + '      name: ' + intersect.object.name);
 
         if(INTERSECTED != intersect) {
             INTERSECTED = intersect;
+            // console.log("new intersect KM/NAME="+INTERSECTED.object.km+INTERSECTED.object.name);
 
-            INTERSECTED.object.material.transparent = true;
-            INTERSECTED.object.material.opacity = 0.5;
+            if(INTERSECTED.object.name=="Body"
+                || INTERSECTED.object.name=="Tops"
+                || INTERSECTED.object.name=="Hats"
+                || INTERSECTED.object.name=="Hair") {
+                // KM => stop animation
+                INTERSECTED.currentScale = INTERSECTED.object.scale;
+            }
+            else if(INTERSECTED.object.km=="Project") {
+                // Project => scale
+                INTERSECTED.currentScale = INTERSECTED.object.scale;
+                scaleParts(INTERSECTED.object, {x:INTERSECTED.object.scale.x+0.4, y:INTERSECTED.object.scale.y+0.4, z:INTERSECTED.object.scale.z+0.4});
+            }
+            else if(INTERSECTED.object.km=="Text") {
+                // Contact => color
+                if(INTERSECTED.object.material.emissive) {
+                    INTERSECTED.object.material.emissive.setHex(0xff0000);
+                }
+            }
+
         }
+        else {}
     } else {
         if(INTERSECTED) {
-            INTERSECTED.object.material.transparent = false;
-            INTERSECTED.object.material.opacity = 1;
+            // console.log("intersects.length = "+intersects.length);
+
+            if(INTERSECTED.currentScale) {
+                scaleParts(INTERSECTED.object, {
+                    x: INTERSECTED.currentScale.x,
+                    y: INTERSECTED.currentScale.y,
+                    z: INTERSECTED.currentScale.z
+                });
+            }
+            // if(INTERSECTED.object.material.emissive) INTERSECTED.object.material.emissive.setHex( 0x444444 );
+            // INTERSECTED.object.material.transparent = false;
+            // INTERSECTED.object.material.opacity = 1;
             INTERSECTED = null;
         }
     }
@@ -407,3 +420,44 @@ function onDocumentMouseMove( event ) {
     camera.updateMatrixWorld();
 }
 
+function scaleParts(mesh, to)  {
+    // console.log(to)
+    // console.log(mesh.scale)
+    var tween = new TWEEN.Tween({
+        x: mesh.scale.x,
+        y: mesh.scale.y,
+        z: mesh.scale.z
+    })
+    .to({
+        x: to.x,
+        y: to.y,
+        z: to.z
+    }, 100)
+    .onUpdate(function() {
+        mesh.scale.set(this.x, this.y, this.z);
+    });
+
+    tween.start();
+}
+
+
+
+
+
+
+
+// var mesh = INTERSECTED.object;
+// var intersect = intersects[ 0 ];
+// var face = intersect.face;
+// var linePosition = line.geometry.attributes.position;
+// if(mesh.geometry.attributes && face)
+// {
+//     var meshPosition = mesh.geometry.attributes.position;
+//     linePosition.copyAt( 0, meshPosition, face.a );
+//     linePosition.copyAt( 1, meshPosition, face.b );
+//     linePosition.copyAt( 2, meshPosition, face.c );
+//     linePosition.copyAt( 3, meshPosition, face.a );
+//     mesh.updateMatrix();
+//     line.geometry.applyMatrix( mesh.matrix );
+//     line.visible = true;
+// }

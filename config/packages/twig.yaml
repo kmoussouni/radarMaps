@@ -6,3 +6,4 @@ twig:
     globals:
         ga_tracking: 'UA-xxxxx-x'
         mail: 'lebondev@gmail.com'
+        version: '1.0a'

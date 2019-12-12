@@ -6,7 +6,6 @@ use App\Controller\Api\Action\CreateMediaObjectAction;
 use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
-use Gedmo\Timestampable\Traits\Timestampable;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
@@ -72,7 +71,7 @@ class MediaObject
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="articles")
      * @ApiProperty()
-     * @Groups({"media_object_read"})
+     * @Groups({"api_front"})
      */
     protected $user;
 
@@ -81,7 +80,7 @@ class MediaObject
      *
      * @ORM\Column(type="string")
      * @ApiProperty()
-     * @Groups({"media_object_read"})
+     * @Groups({"api_front"})
      */
     public $contentUrl;
 
@@ -89,18 +88,26 @@ class MediaObject
      * @var File|null
      *
      * @Assert\NotNull(groups={"media_object_create"})
-     * @Groups({"media_object_read"})
-     * @Vich\UploadableField(mapping="media_object", fileNameProperty="filePath")
+     * @Groups({"api_front"})
+     * @Vich\UploadableField(mapping="media_object", fileNameProperty="filePath", size="fileSize")
      */
     public $file;
 
     /**
      * @var string|null
      *
-     * @Groups({"media_object_read"})
+     * @Groups({"api_front"})
      * @ORM\Column(nullable=false)
      */
     public $filePath;
+
+    /**
+     * @var string|null
+     *
+     * @Groups({"api_front"})
+     * @ORM\Column(nullable=true)
+     */
+    public $fileSize;
 
     /**
      * @return mixed
@@ -179,6 +186,24 @@ class MediaObject
     public function setFilePath(?string $filePath): MediaObject
     {
         $this->filePath = $filePath;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getFileSize(): ?string
+    {
+        return $this->fileSize;
+    }
+
+    /**
+     * @param string|null $fileSize
+     * @return MediaObject
+     */
+    public function setFileSize(?string $fileSize): MediaObject
+    {
+        $this->fileSize = $fileSize;
         return $this;
     }
 }

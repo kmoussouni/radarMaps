@@ -1,62 +1,31 @@
-{#<div class="tile is-10">#}
-<div class="card">
-    {#    <div class="card-image">#}
-    {#        <figure class="image is-128x128">#}
-    {#            <img src="{{ asset('build/img/profile.jpg')}}" alt="Placeholder image">#}
-    {#        </figure>#}
-    {#    </div>#}
-    <div class="card-content">
-        <div class="media">
-            <div class="media-left">
-                <figure class="image is-48x48">
-                    <img src="{{ asset('build/img/profile.jpg')}}" alt="Placeholder image">
-                </figure>
-            </div>
-            <div class="media-content  is-medium">
-                <p class="title is-4">THE Karim Moussouni</p>
-                <p class="subtitle is-6">@kmoussouni</p>
-            </div>
-        </div>
+<div class="content">
+    <div class="container">
+        <div class="modal is-active">
+            <div class="modal-background"></div>
+            <div class="modal-card">
+                <header class="modal-card-head">
+                    <p id="project_title" class="modal-card-title title"></p>
+                    <button id="exitProject" class="delete close-modal is-danger" aria-label="close"></button>
+                </header>
+                <section class="modal-card-body">
+                    <article>
+                        <div class="">
+                            <figure class="image is-512x512">
+                                <img id="project_image" src="https://bulma.io/images/placeholders/128x128.png">
+                            </figure>
 
-        <div class="content is-small">
-            I am experienced in leveraging agile frameworks
-            to provide a robust synopsis for high level overviews.
-            Iterative approaches to corporate strategy foster
-            collaborative thinking to further the overall
-            value proposition. <br />
-            <a href="#">#dev</a>
-            <a href="#">#symfony</a>
-            <a href="#">#react</a>
-            <a href="#">#cloud</a>
-            <a href="#">#iot</a>
-            <a href="#">#fullstack</a>
-            <br>
-            <time datetime="2016-1-1">{{ "now"|date("H:s m/d/Y") }}
-            </time>
+{#                            <p  class="content has-text-justified">#}
+{#                                <img id="project_image" class="is-" src="" />#}
+{#                            </p>#}
+                        </div>
+                        <div class="">
+                            <p id="project_body" class="content has-text-justified"></p>
+                        </div>
+                    </article>
+                </section>
+                <footer class="modal-card-foot">
+                </footer>
+            </div>
         </div>
     </div>
 </div>
-
-
-{#<div class="tile">#}
-{#    <div class="tile is-parent is-vertical">#}
-{#        <article class="tile is-child notification is-primary">#}
-{#            <p class="title">Karim Moussouni - <a href="{{ path('home')}}"  rel="noopener">Home</a></p>#}
-{#            <p class="subtitle">Full Stack Developer</p>#}
-{#            <p class="subtitle">karim.moussouni@gmail.com#}
-{#                #Tel#}
-{#                karimmoussouni.com#}
-{#                <a href="https://www.linkedin.com/in/karim-moussouni-39407868/"><i class="fab fa-linkedin-in"></i></a>#}
-{#                github.com/username#}
-{#                @kmoussouni</p>#}
-{#        </article>#}
-{#        <article class="tile is-child notification is-warning">#}
-{#            <p class="title">Infos</p>#}
-{#            <p class="subtitle">#}
-{#                <a href="http://threejs.org" target="_blank" rel="noopener">three.js</a> - FBX Scene Loading / 3D text / UI by#}
-{#                <a href="http://www.lab4games.net/zz85/blog" target="_blank" rel="noopener">Karim Moussouni</a><br/>#}
-{#                Character and Animations from <a href="https://www.mixamo.com/" target="_blank" rel="noopener">Mixamo</a><br/>#}
-{#            </p>#}
-{#        </article>#}
-{#    </div>#}
-{#</div>#}

@@ -4,5 +4,13 @@ App\Entity\Article:
       groups: ['api_front']
     user:
       groups: ['api_front']
+    title:
+      groups: ['api_front']
+    slug:
+      groups: ['api_front']
+    body:
+      groups: ['api_front']
+    section:
+      groups: ['api_front']
     image:
       groups: ['api_front']

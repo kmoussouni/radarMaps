@@ -2,15 +2,28 @@ import axios from 'axios';
 
 var currentSection = 'home';
 
-
 function exitResume() {
-    // e.preventDefault();
     ShowSection('card')
 };
 
 function exitContact() {
     ShowSection('card')
 };
+
+function exitProject() {
+    ShowSection('card')
+};
+
+function showProject(project) {
+    console.log('showProject ',project);
+    
+    // Update Article
+    document.getElementById('project_title').innerHTML = project.elmnt.title;
+    document.getElementById('project_body').innerHTML = project.elmnt.body;
+    document.getElementById('project_image').src = project.elmnt.image.filePath.replace('public/','/');
+
+    ShowSection('article')
+}
 
 function submitContactForm() {
     var technos = document.getElementById('technos');
@@ -38,12 +51,9 @@ function submitContactForm() {
         });;
 };
 
-function showProject(project) {
-    console.log('showProject ' + project.title);
-}
 
 function ShowSection(UIId) {
-    var UIElemeents = ["loading", "card", "info", "contact", "resume", "project"];
+    var UIElemeents = ["loading", "card", "info", "contact", "resume", "article"];
 
     if(document.getElementById(UIId)) {
         UIElemeents.map(function(UIElmnt) {
@@ -67,6 +77,9 @@ function updateProgress(e) {
     }
 }
 
+function changeMusic(id) {}
+function changeDance(id) {}
+
 function updateClock() {
     var now = new Date();
 
@@ -85,6 +98,18 @@ document.getElementById("submitContactForm").onclick = submitContactForm;
 document.getElementById("exitContact").onclick = exitContact;
 
 // Projects
+document.getElementById("exitProject").onclick = exitProject;
+
+// Misc
+document.getElementById("music#4").onclick = changeMusic(1);
+document.getElementById("music#4").onclick = changeMusic(2);
+document.getElementById("music#4").onclick = changeMusic(3);
+document.getElementById("music#4").onclick = changeMusic(4);
+
+document.getElementById("dance#1").onclick = changeDance(1);
+document.getElementById("dance#1").onclick = changeDance(2);
+document.getElementById("dance#1").onclick = changeDance(3);
+document.getElementById("dance#1").onclick = changeDance(4);
 
 // exports
 export {ShowSection, showProject, updateProgress};
