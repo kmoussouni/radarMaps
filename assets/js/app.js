@@ -13,7 +13,7 @@ import { FBXLoader } from '../../node_modules/three/examples/jsm/loaders/FBXLoad
 
 const axios = require('axios');
 
-import {ShowSection, showProject, updateProgress} from './ui';
+import {ShowSection, updateProgress} from './ui';
 import '../scss/app.scss';
 
 /** variables */
@@ -204,8 +204,11 @@ function init()
     controls.target.set( 0, 200, 0 );
     controls.update();
 
-    // events
+    // click events
     document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+    document.addEventListener( 'click', onDocumentMouseMove, false );
+
+    // move events
     document.addEventListener( 'mousedown', onDocumentMouseDown, false );
     document.addEventListener( 'keypress', onDocumentMouseDown, false );
     document.addEventListener( 'touchstart', onDocumentMouseDown, false );
@@ -323,42 +326,16 @@ function handleClick(object, uuid, state='project') {
 
     // portfolio/project
     if(object.km == 'Project') {
-        showProject(object);
-        // ShowSection('article');
+        // console.log('showProject ',object.elmnt);
 
-        // var tweenProject = new TWEEN.Tween({
-        //         x: object.position.x,
-        //         y: object.position.y,
-        //         z: object.position.z,
-        //         r: object.rotation.x,
-        //         o: object.material.opacity,
-        //         s: object.scale.x
-        //     })
-        //     .to({ x: camera.position.x, y: camera.position.y, z: 0, r: -2*Math.PI, o: 0, s: 5}, 1000)
-        //     .onUpdate(function() {
-        //         object.position.set(this.x, this.y, this.z);
-        //         object.rotation.set(this.r, object.rotation.y, object.rotation.z);
-        //         object.scale.set(this.s,this.s,this.s);
-        //         object.material.opacity = this.o;
-        //     })
-        //     .onComplete(function() {
-        //         showProject(object);
-        //     })
-        // ;
-        //
-        // var tweenCamera = new TWEEN.Tween({
-        //         x: camera.rotation.x,
-        //         y: camera.rotation.y,
-        //         z: camera.rotation.z
-        //     })
-        //     .to({ x: 0, y: 0, z: 0}, 1000)
-        //     .onUpdate(function() {
-        //         camera.rotation.set(this.x, this.y, this.z);
-        //     });
-        //
-        //     tweenCamera.start();
-        //     tweenProject.start();
+        // Update Article
+        document.getElementById('article_title').innerHTML = object.elmnt.title;
+        document.getElementById('article_body').innerHTML = object.elmnt.body;
+        document.getElementById('article_image').src = object.elmnt.image.filePath.replace('public/','/');
+
+        ShowSection('article');
     }
+
     // blog
 }
 
@@ -374,50 +351,56 @@ function onDocumentMouseMove( event ) {
         intersect = intersects[0];
 
         if(INTERSECTED != intersect) {
-            INTERSECTED = intersect;
-            // console.log("new intersect KM/NAME="+INTERSECTED.object.km+INTERSECTED.object.name);
 
-            if(INTERSECTED.object.name=="Body"
-                || INTERSECTED.object.name=="Tops"
-                || INTERSECTED.object.name=="Hats"
-                || INTERSECTED.object.name=="Hair") {
-                // KM => stop animation
-                INTERSECTED.currentScale = INTERSECTED.object.scale;
-            }
-            else if(INTERSECTED.object.km=="Project") {
-                // Project => scale
-                INTERSECTED.currentScale = INTERSECTED.object.scale;
-                scaleParts(INTERSECTED.object, {x:INTERSECTED.object.scale.x+0.4, y:INTERSECTED.object.scale.y+0.4, z:INTERSECTED.object.scale.z+0.4});
-            }
-            else if(INTERSECTED.object.km=="Text") {
-                // Contact => color
-                if(INTERSECTED.object.material.emissive) {
-                    INTERSECTED.object.material.emissive.setHex(0xff0000);
+            if(INTERSECTED) {
+                if(intersect.object.name=="Body"
+                    || intersect.object.name=="Tops"
+                    || intersect.object.name=="Hats"
+                    || intersect.object.name=="Hair") {
+                    // KM => stop animation
+                    intersect.currentScale = intersect.object.scale;
+                }
+                else if(intersect.object.km=="Project") {
+                    // Project => scale
+                    console.log("new intersect KM/NAME="+intersect.object.km+'/'+intersect.object.elmnt.title);
+                    intersect.currentScale = intersect.object.scale;
+                    if(intersect.object.dirScale == 'unscale')
+                        scaleParts(intersect.object, {x:intersect.object.scale.x+0.4, y:intersect.object.scale.y+0.4, z:intersect.object.scale.z+0.4});
+                }
+                else if(intersect.object.km=="Text") {
+                    // Contact => color
+                    if(intersect.object.material.emissive) {
+                        intersect.object.material.emissive.setHex(0xff0000);
+                    }
                 }
             }
 
+            INTERSECTED = intersect;
+            INTERSECTED.object.dirScale = 'scale';
+            console.log(INTERSECTED);
         }
-        else {}
-    } else {
-        if(INTERSECTED) {
-            // console.log("intersects.length = "+intersects.length);
-
-            if(INTERSECTED.currentScale) {
-                scaleParts(INTERSECTED.object, {
-                    x: INTERSECTED.currentScale.x,
-                    y: INTERSECTED.currentScale.y,
-                    z: INTERSECTED.currentScale.z
-                });
-            }
-            // if(INTERSECTED.object.material.emissive) INTERSECTED.object.material.emissive.setHex( 0x444444 );
-            // INTERSECTED.object.material.transparent = false;
-            // INTERSECTED.object.material.opacity = 1;
-            INTERSECTED = null;
-        }
+        // if(INTERSECTED) {
+        //     // if(INTERSECTED.currentScale) {
+        //         console.log("restore intersects = "+INTERSECTED.object.km);
+        //         scaleParts(INTERSECTED.object, {
+        //             x: 1,
+        //             y: 1,
+        //             z: 1
+        //         });
+        //
+        //         INTERSECTED.object.dirScale == 'unscale';
+        //     // }
+        //     // if(INTERSECTED.object.material.emissive) INTERSECTED.object.material.emissive.setHex( 0x444444 );
+        //     // INTERSECTED.object.material.transparent = false;
+        //     // INTERSECTED.object.material.opacity = 1;
+        //     INTERSECTED = null;
+        // }
+    }
+    else {
     }
 
-    controls.update();
-    camera.updateMatrixWorld();
+    // controls.update();
+    // camera.updateMatrixWorld();
 }
 
 function scaleParts(mesh, to)  {
@@ -432,7 +415,7 @@ function scaleParts(mesh, to)  {
         x: to.x,
         y: to.y,
         z: to.z
-    }, 100)
+    }, 30)
     .onUpdate(function() {
         mesh.scale.set(this.x, this.y, this.z);
     });

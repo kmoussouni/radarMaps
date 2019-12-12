@@ -72,20 +72,16 @@
                 <div class="columns">
                     <div class="column is-three-fifths">
                         <div class="summary">
-                            <div class="title is-size-8 has-text-primary has-text-weight-bold">SUMMARY</div>
+                            <div class="title is-size-8 has-text-primary has-text-weight-bold">{{ 'resume.content.title'|trans }}</div>
                             <div class="wrapper">
                                 <p class="has-text-centered">
-                                    An experienced software engineer especially in frontend side.
-                                    Having deep knowledge in HTML, CSS (with its pre-processor) and JavaScript with the various framework.
-                                    Write good quality, well tested, and fast delivered code.
-                                    Experience in architecting frontend codebase.
-                                    A well-known figure in the programming community, open-source creator, and writer for many technical articles.
+                                    {{ 'resume.content.label'|trans }}
                                 </p>
                                 <br />
                             </div>
                         </div>
                         <div class="experience">
-                            <div class="title is-size-8 has-text-primary has-text-weight-bold">EXPERIENCE</div>
+                            <div class="title is-size-8 has-text-primary has-text-weight-bold">{{ 'resume.experience.title'|trans }}</div>
                             {% for experience in experiences %}
                                 <div class="item">
                                     <div class="is-size-8">
@@ -100,7 +96,7 @@
                             {% endfor %}
                         </div>
                         <div class="education">
-                            <div class="title is-size-8 has-text-primary has-text-weight-bold">EDUCATION</div>
+                            <div class="title is-size-8 has-text-primary has-text-weight-bold">{{ 'resume.education.title'|trans }}</div>
                             <div class="item">
                                 <div class="is-size-8">
                                     <span class="has-text-weight-semi-bold">
@@ -134,7 +130,7 @@
                     </div>
                     <div class="column">
                         <div class="projects">
-                            <div class="title is-size-8 has-text-primary has-text-weight-bold">PROJECTS</div>
+                            <div class="title is-size-8 has-text-primary has-text-weight-bold">{{ 'resume.projects.title'|trans }}</div>
                             {% for project in projects %}
                                 <div class="item">
                                     <div class="is-size-8">
@@ -145,40 +141,40 @@
                             {% endfor %}
                         </div>
                         <div class="skills">
-                            <div class="title is-size-8 has-text-primary has-text-weight-bold">SKILLS</div>
+                            <div class="title is-size-8 has-text-primary has-text-weight-bold">{{ 'resume.skills.title'|trans }}</div>
                             <div class="wrapper">
                                 <div class="item">
-                                    <div>Javascript</div>
+                                    <div>{{ 'resume.skills.javascript.title'|trans }}</div>
                                     <progress class="progress is-primary is-small" value="60" max="100">60%</progress>
                                 </div>
                                 <div class="item">
-                                    <div>Symfony</div>
+                                    <div>{{ 'resume.skills.symfony.title'|trans }}</div>
                                     <progress class="progress is-primary is-small" value="70" max="100">70%</progress>
                                 </div>
                                 <div class="item">
-                                    <div>PHP</div>
+                                    <div>{{ 'resume.skills.php.title'|trans }}</div>
                                     <progress class="progress is-primary is-small" value="80" max="100">80%</progress>
                                 </div>
                                 <div class="item">
-                                    <div>ReactJS/Redux</div>
+                                    <div>{{ 'resume.skills.reactjsreduc.title'|trans }}</div>
                                     <progress class="progress is-primary is-small" value="50" max="100">50%</progress>
                                 </div>
                                 <div class="item">
-                                    <div>Docker</div>
+                                    <div>{{ 'resume.skills.docker.title'|trans }}</div>
                                     <progress class="progress is-primary is-small" value="70" max="100">70%</progress>
                                 </div>
                                 <div class="item">
-                                    <div>Elasticsearch</div>
+                                    <div>{{ 'resume.skills.elasticsearch.title'|trans }}</div>
                                     <progress class="progress is-primary is-small" value="70" max="100">70%</progress>
                                 </div>
                             </div>
                         </div>
                         <div class="languages">
                             <div class="title is-size-8 has-text-primary has-text-weight-bold">
-                                LANGUAGES
+                                {{ 'resume.languages.title'|trans }}
                             </div>
                             <div class="wrapper">
-                                French, English,
+                                {{ 'resume.languages.english.label'|trans }}, {{ 'resume.languages.french.label'|trans }},
                             </div>
                         </div>
                     </div>

@@ -35,7 +35,21 @@ home.title: 'Karim Moussouni'
 card.title.label: 'Karim Moussouni'
 card.subtitle.label: 'Full Stack Developer'
 card.content.label: 'Je suis un développeur Web sénior FullStack en développement Symfony et React. Je maîtrise les environnements du développement à la production. Je suis actuellement disponible pour une mission/job.'
-#card.content.label: 'Je suis expérimenté dans l''exploitation de frameworks agiles pour fournir une synopsis robuste pour les aperçus de haut niveau. Les approches itératives de la stratégie des entreprises favorisent la réflexion collaborative afin de faire progresser la proposition de valeur globale.'
-info.subtitle1.label: 'Chargement d''un scène FBX / texte 3D / UI par '
+info.subtitle1.label: 'Chargement d''une scène FBX / texte 3D / UI par '
 info.subtitle2.label: 'Modèle et Animations de '
-loading.title: __loading.title
+loading.title: Chargement...
+resume.content.title: Résumé
+resume.content.label: 'An experienced software engineer especially in frontend side. Having deep knowledge in HTML, CSS (with its pre-processor) and JavaScript with the various framework. Write good quality, well tested, and fast delivered code. Experience in architecting frontend codebase. A well-known figure in the programming community, open-source creator, and writer for many technical articles.'
+resume.experience.title: Expériences
+resume.education.title: Diplômes
+resume.projects.title: Projets
+resume.skills.title: Compétences
+resume.skills.javascript.title: Javascript
+resume.skills.symfony.title: Symfony
+resume.skills.php.title: PHP
+resume.skills.reactjsreduc.title: Reactjs/Reduc
+resume.skills.docker.title: Docker
+resume.skills.elasticsearch.title: Elasticsearch
+resume.languages.title: Langues
+resume.languages.french.label: Français
+resume.languages.english.label: __resume.languages.english.label

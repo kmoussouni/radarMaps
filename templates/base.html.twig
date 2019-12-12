@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="{{ app.request.locale|split('_')[0] }}">
 
     <head>
         <meta charset="utf-8">
@@ -16,10 +16,8 @@
     </head>
 
     <body>
-{#            <div class="container">#}
-                {% block content %}{% endblock %}
-{#            </div>#}
-            <div id="root"></div>
+        {% block content %}{% endblock %}
+        <div id="root"></div>
     </body>
 
     {% block javascripts %}

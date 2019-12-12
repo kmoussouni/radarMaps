@@ -34,7 +34,8 @@
         "symfony/yaml": "4.3.*",
         "twig/extensions": "^2.0@dev",
         "vich/uploader-bundle": "^1.11@dev",
-        "white-october/pagerfanta-bundle": "^1.0@dev"
+        "white-october/pagerfanta-bundle": "^1.0@dev",
+        "willdurand/js-translation-bundle": "^2.7@dev"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.3@dev",

@@ -29,23 +29,6 @@ body {
   align-items: center;
 }
 
-//.resume {
-  //width: 100% !important;
-  //max-width: 100% !important;
-  //height: auto !important;
-  //position: absolute !important;
-  //z-index: 10;
-  //pointer-events: initial;
-//}
-
-navi, infoi {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
 #info {
   display: block;
   position: absolute;
@@ -68,6 +51,10 @@ navi, infoi {
 }
 
 #article {
+  display: none;
+}
+
+#modal {
   display: none;
 }
 
@@ -97,7 +84,7 @@ navi, infoi {
 .summary, .experience, .education, .projects, .skills, .awards, .languages{
   margin-bottom: 1.5rem;
 
-  .title{
+.title{
     padding: .5em 0;
     border-bottom: 1px solid $theme;
   }
