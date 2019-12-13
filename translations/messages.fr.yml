@@ -6,7 +6,7 @@ contact.form.type.fullstack.option: FullStack
 contact.form.contract.title: Contrat
 contact.form.contract.freelance.option: Freelance
 contact.form.contract.cdi.option: CDI
-contact.form.techno.title: Techno
+contact.form.techno.title: Technos
 contact.form.techno.php.option: 'PHP 7'
 contact.form.techno.symfony.option: Symfony
 contact.form.techno.javascript.option: Javascript

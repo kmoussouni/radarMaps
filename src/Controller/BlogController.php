@@ -39,7 +39,7 @@ class BlogController extends Controller
 
         $pagerfanta->setMaxPerPage(5);
 
-        $pagerfanta->setCurrentPage($request->get('page'));
+        if($request->get('page')) $pagerfanta->setCurrentPage($request->get('page'));
 
         return $this->render('Blog/index.html.twig', [
             'pager' => $pagerfanta

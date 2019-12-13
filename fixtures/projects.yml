@@ -1,8 +1,15 @@
 App\Entity\Project:
-  projects{0..5}:
+  project:
     user: '@karim'
-    title: '<sentence()>'
-    body: '<sentence()>'
-    demoUrl: '<url()>'
+    title: 'Coming soon'
+    body: ''
+    demoUrl: ''
     image: "@media_objects_projects*"
 #    imageHeaderFile: ''
+#  projects{0..5}:
+#    user: '@karim'
+#    title: '<sentence()>'
+#    body: '<sentence()>'
+#    demoUrl: '<url()>'
+#    image: "@media_objects_projects*"
+##    imageHeaderFile: ''

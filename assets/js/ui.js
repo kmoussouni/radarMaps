@@ -84,9 +84,6 @@ function updateClock() {
 
 updateClock();
 
-// Resume
-document.getElementById("exitResume").onclick = Home;
-
 // ContactForm
 document.getElementById("exitContact").onclick = Home;
 document.getElementById("submitContactForm").onclick = submitContactForm;
@@ -110,9 +107,9 @@ document.getElementById("music#3").onclick = changeMusic(3);
 document.getElementById("music#4").onclick = changeMusic(4);
 
 document.getElementById("dance#1").onclick = changeDance(1);
-document.getElementById("dance#1").onclick = changeDance(2);
-document.getElementById("dance#1").onclick = changeDance(3);
-document.getElementById("dance#1").onclick = changeDance(4);
+document.getElementById("dance#2").onclick = changeDance(2);
+document.getElementById("dance#3").onclick = changeDance(3);
+document.getElementById("dance#4").onclick = changeDance(4);
 
 // exports
 export {ShowSection, updateProgress};
