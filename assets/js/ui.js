@@ -100,6 +100,12 @@ function changeDance(id) {
 }
 
 function updateClock() {
+    if(window.innerHeight > window.innerWidth) {
+        document.getElementById('alert').style.display = 'block';
+    } else {
+        document.getElementById('alert').style.display = 'none';
+    }
+
     var now = new Date();
 
     document.getElementById('time').innerHTML = now.toDateString() + ' ' + now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds() + ':' + now.getMilliseconds();

@@ -30,7 +30,34 @@
     <div class="notification is-warning">
         <button class="delete"></button>
         <p id="billboardBody">
-            Resume
+            {{ 'billboard.resume.label'|trans }}
+        </p>
+    </div>
+</div>
+
+<div id="billboardContact" class="info is-pulled-right">
+    <div class="notification is-warning">
+        <button class="delete"></button>
+        <p>
+            {{ 'billboard.contact.label'|trans }}
+        </p>
+    </div>
+</div>
+
+<div id="billboardProject" class="info is-pulled-right">
+    <div class="notification is-warning">
+        <button class="delete"></button>
+        <p>
+            {{ 'billboard.project.label'|trans }}
+        </p>
+    </div>
+</div>
+
+<div id="alert" class="tile danger is-centered">
+    <div class="notification is-danger">
+{#        <button class="delete"></button>#}
+        <p id="billboardBody">
+            {{ 'alert.label'|trans }}
         </p>
     </div>
 </div>

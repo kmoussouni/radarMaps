@@ -223,7 +223,7 @@ function init()
 
     // click events
     document.addEventListener( 'mousemove', onDocumentMouseMove, false );
-    // document.addEventListener( 'click', onDocumentMouseMove, false );
+    document.addEventListener( 'touchmove', onDocumentMouseMove, false );
 
     // move events
     document.addEventListener( 'mousedown', onDocumentMouseDown, false );
@@ -320,7 +320,7 @@ function onDocumentKeyPress( event ) {
 }
 
 function onDocumentMouseDown( event ) {
-    // event.preventDefault();
+    event.preventDefault();
 
     if(event.target  instanceof HTMLCanvasElement) {
         mouse.set( ( event.clientX / window.innerWidth ) * 2 - 1, - ( event.clientY / window.innerHeight ) * 2 + 1 );

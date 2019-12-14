@@ -68,6 +68,34 @@ body {
   z-index: 10;
 }
 
+#billboardContact {
+  //display: none;
+  display: block;
+  position: absolute;
+  right: 200px;
+  height: 132px;
+  bottom: 0px;
+  z-index: 10;
+}
+
+#billboardProject {
+  //display: none;
+  display: block;
+  position: absolute;
+  right: 200px;
+  height: 132px;
+  bottom: 0px;
+  z-index: 10;
+}
+
+#alert {
+  display: none;
+  position: absolute;
+  margin-left: 45%;
+  margin-top: 45%;
+  z-index: 10;
+}
+
 //.exitResume {
 //  left: 12px;
 //  top: 12px;
