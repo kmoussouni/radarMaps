@@ -3066,6 +3066,11 @@ fs.realpath@^1.0.0:
   resolved "https://registry.yarnpkg.com/fs.realpath/-/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f"
   integrity sha1-FQStJSMVjKpA20onh8sBQRmU6k8=
 
+fs@^0.0.1-security:
+  version "0.0.1-security"
+  resolved "https://registry.yarnpkg.com/fs/-/fs-0.0.1-security.tgz#8a7bd37186b6dddf3813f23858b57ecaaf5e41d4"
+  integrity sha1-invTcYa23d84E/I4WLV+yq9eQdQ=
+
 fsevents@^1.2.7:
   version "1.2.9"
   resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-1.2.9.tgz#3f5ed66583ccd6f400b5a00db6f7e861363e388f"
@@ -4003,6 +4008,11 @@ jsesc@~0.5.0:
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/jsesc/-/jsesc-0.5.0.tgz#e7dee66e35d6fc16f710fe91d5cf69f70f08911d"
   integrity sha1-597mbjXW/Bb3EP6R1c9p9w8IkR0=
+
+jsloader@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/jsloader/-/jsloader-1.0.1.tgz#b0a226d77c5513ae1c944098f0b54693a6a3c591"
+  integrity sha1-sKIm13xVE64clECY8LVGk6ajxZE=
 
 json-parse-better-errors@^1.0.1, json-parse-better-errors@^1.0.2:
   version "1.0.2"

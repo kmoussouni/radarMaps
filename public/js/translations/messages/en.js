@@ -1,3 +1,4 @@
+var Translator = require('../../../../public/bundles/bazingajstranslation/js/translator.min');
 (function (t) {
 // en
 t.add("contact.form.contactme.title", "Contact me", "messages", "en");
@@ -8,7 +9,7 @@ t.add("contact.form.type.fullstack.option", "FullStack", "messages", "en");
 t.add("contact.form.contract.title", "Contract", "messages", "en");
 t.add("contact.form.contract.freelance.option", "Freelance", "messages", "en");
 t.add("contact.form.contract.cdi.option", "CDI", "messages", "en");
-t.add("contact.form.techno.title", "Techno", "messages", "en");
+t.add("contact.form.techno.title", "Skills", "messages", "en");
 t.add("contact.form.techno.php.option", "PHP 7", "messages", "en");
 t.add("contact.form.techno.symfony.option", "Symfony", "messages", "en");
 t.add("contact.form.techno.javascript.option", "Javascript", "messages", "en");
@@ -54,5 +55,8 @@ t.add("resume.skills.docker.title", "Docker", "messages", "en");
 t.add("resume.skills.elasticsearch.title", "Elasticsearch", "messages", "en");
 t.add("resume.languages.title", "Languages", "messages", "en");
 t.add("resume.languages.french.label", "French", "messages", "en");
-t.add("resume.languages.english.label", "__resume.languages.english.label", "messages", "en");
+t.add("resume.languages.english.label", "English", "messages", "en");
+t.add("front.3d.message.label", "Contact\\n         me :)", "messages", "en");
+t.add("blog.title", "{{ Karim Moussouni \/ Blog }}", "messages", "en");
+t.add("blog.subtitle", "FullStack PHP Developer", "messages", "en");
 })(Translator);

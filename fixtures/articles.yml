@@ -16,8 +16,10 @@ App\Entity\Article:
     Refactorisation UI
     Passage à ReactJS/Redux pour le rendu/storage/navigation
     WASM
-    Enhanced UI
-    Blog
+    Enhanced UI\n
+    Blog\n
+    Optimisation models 3D\n
+    Optimisations webpack
 
     "
     section: "Article"

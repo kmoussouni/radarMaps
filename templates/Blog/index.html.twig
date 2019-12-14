@@ -37,13 +37,14 @@
                 {% endfor %}
             </div>
 
+            <div class="column is-8 is-offset-2">
+                {{ pagerfanta(pager, 'twitter_bootstrap4_translated', {}) }}
+            </div>
+
         </section>
 
-        <section class="articles">
-        <div class="column is-8 is-offset-2">
-            {{ pagerfanta(pager, 'twitter_bootstrap4_translated', {}) }}
-        </div>
-        </section>
+{#        <section class="articles">#}
+{#        </section>#}
     </div>
 
     <div class="container">

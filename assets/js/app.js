@@ -1,4 +1,5 @@
 // karimmoussouni.com
+// 2019
 // import webgl from "./asc/webgl.asc.asc";
 
 /****************************************
@@ -13,13 +14,24 @@ import { FBXLoader } from '../../node_modules/three/examples/jsm/loaders/FBXLoad
 
 const axios = require('axios');
 
-import {ShowSection, updateProgress} from './ui';
+var Translator = require('../../public/bundles/bazingajstranslation/js/translator.min');
+Translator.locale = 'fr';
+
+Translator.loadFR = require("../../public/js/translations/messages/en.js");
+Translator.loadEN = require("../../public/js/translations/messages/fr.js");
+
+// Translator.loadFR();
+// Translator.loadEN();
+
+// Translator.fromJSON("../../public/js/translations/messages/en.json");
+// Translator.fromJSON("../../public/js/translations/messages/fr.json");
+
+import {ShowSection, updateProgress, updateBillBoard} from './ui';
 import '../scss/app.scss';
 
 /** variables */
 var baseUrl = "/../../"
 // var baseUrl = "/var/www/karimmoussouni/"
-// var baseUrl = "http://karimmoussouni.local/../"
 
 var container, controls;
 var camera, scene, renderer, light;
@@ -103,6 +115,7 @@ function init()
     // model - freelance
     /////////////////////////////////////////
     loader = new FBXLoader();
+
     loader.load( '/build/3d/Freelance/malcolmHappyIdle.fbx', function ( object ) {
         mixer = new THREE.AnimationMixer( object );
         var action = mixer.clipAction( object.animations[ 0 ] );
@@ -143,7 +156,11 @@ function init()
             opacity: 0.4,
             side: THREE.DoubleSide
         } );
-        var message = "Contact\n         me :)";
+        var message = Translator.trans('front.3d.message1.label', {}, 'messages');
+        message+= "\n";
+        message+= Translator.trans('front.3d.message2.label', {}, 'messages');
+        // var message = "Contact\n         me :)";
+
         var shapes = font.generateShapes( message, 100 );
         var geometry = new THREE.ShapeBufferGeometry( shapes );
         geometry.computeBoundingBox();
@@ -181,19 +198,19 @@ function init()
         // scene.add( new THREE.BoxHelper( lineText) );
     } );
 
-    // intersect Line
-    var geometry = new THREE.BufferGeometry();
-    geometry.setAttribute( 'position', new THREE.BufferAttribute( new Float32Array( 4 * 3 ), 3 ) );
-    var material = new THREE.LineBasicMaterial( { color: 0xff0000, transparent: false } );
-    // var material = new THREE.LineBasicMaterial( { color: 0xff0000, transparent: true } );
-    line = new THREE.Line( geometry, material );
-    scene.add( line );
+    // // intersect Line
+    // var geometry = new THREE.BufferGeometry();
+    // geometry.setAttribute( 'position', new THREE.BufferAttribute( new Float32Array( 4 * 3 ), 3 ) );
+    // var material = new THREE.LineBasicMaterial( { color: 0xff0000, transparent: false } );
+    // // var material = new THREE.LineBasicMaterial( { color: 0xff0000, transparent: true } );
+    // line = new THREE.Line( geometry, material );
+    // scene.add( line );
 
     // WebGL Renderer
     renderer = new THREE.WebGLRenderer( { antialias: true } );
     renderer.setPixelRatio( window.devicePixelRatio );
     renderer.setSize( window.innerWidth, window.innerHeight );
-    renderer.shadowMap.enabled = true;
+    // renderer.shadowMap.enabled = true;
     container.appendChild( renderer.domElement );
 
     raycaster = new THREE.Raycaster();
@@ -206,7 +223,7 @@ function init()
 
     // click events
     document.addEventListener( 'mousemove', onDocumentMouseMove, false );
-    document.addEventListener( 'click', onDocumentMouseMove, false );
+    // document.addEventListener( 'click', onDocumentMouseMove, false );
 
     // move events
     document.addEventListener( 'mousedown', onDocumentMouseDown, false );
@@ -270,6 +287,10 @@ function createPlane(i, j, project) {
     scene.add( plane );
 }
 
+function createBillBoard(mesh) {
+    console.log(e)
+}
+
 /****************************************
  * Animate / Interact
  ***************************************/
@@ -307,6 +328,8 @@ function onDocumentMouseDown( event ) {
         intersects = raycaster.intersectObjects( scene.children, true );
         if ( intersects.length > 0 ) {
             intersect = intersects[ 0 ];
+
+            // createBillBoard(intersect.object);
 
             handleClick(intersect.object, intersect.object.uuid)
         }
@@ -350,6 +373,8 @@ function onDocumentMouseMove( event ) {
     if ( intersects.length > 0 ) {
         intersect = intersects[0];
 
+        updateBillBoard(intersect.object, mouse)
+
         if(INTERSECTED != intersect) {
 
             if(INTERSECTED) {
@@ -362,7 +387,7 @@ function onDocumentMouseMove( event ) {
                 }
                 else if(intersect.object.km=="Project") {
                     // Project => scale
-                    console.log("new intersect KM/NAME="+intersect.object.km+'/'+intersect.object.elmnt.title);
+                    // console.log("new intersect KM/NAME="+intersect.object.km+'/'+intersect.object.elmnt.title);
                     intersect.currentScale = intersect.object.scale;
                     if(intersect.object.dirScale == 'unscale')
                         scaleParts(intersect.object, {x:intersect.object.scale.x+0.4, y:intersect.object.scale.y+0.4, z:intersect.object.scale.z+0.4});
@@ -377,7 +402,7 @@ function onDocumentMouseMove( event ) {
 
             INTERSECTED = intersect;
             INTERSECTED.object.dirScale = 'scale';
-            console.log(INTERSECTED);
+            // console.log(INTERSECTED);
         }
         // if(INTERSECTED) {
         //     // if(INTERSECTED.currentScale) {

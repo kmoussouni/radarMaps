@@ -13,6 +13,8 @@
         "bulma": "^0.8.0",
         "connected-react-router": "^6.6.1",
         "flag-icon-css": "^3.4.5",
+        "fs": "^0.0.1-security",
+        "jsloader": "^1.0.1",
         "lodash": "^4.17.15",
         "node-sass": "^4.13.0",
         "prop-types": "^15.7.2",

@@ -47,9 +47,13 @@ resume.skills.title: Compétences
 resume.skills.javascript.title: Javascript
 resume.skills.symfony.title: Symfony
 resume.skills.php.title: PHP
-resume.skills.reactjsreduc.title: Reactjs/Reduc
+resume.skills.reactjsreduc.title: Reactjs/Redux
 resume.skills.docker.title: Docker
 resume.skills.elasticsearch.title: Elasticsearch
 resume.languages.title: Langues
 resume.languages.french.label: Français
-resume.languages.english.label: __resume.languages.english.label
+resume.languages.english.label: Anglais
+front.3d.message1.label: "Contactez"
+front.3d.message2.label: "         moi :)"
+blog.title: '{{ Karim Moussouni Blog }}'
+blog.subtitle: 'Développeur FullStack PHP'
