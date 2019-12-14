@@ -1,4 +1,3 @@
-var Translator = require('../../../../public/bundles/bazingajstranslation/js/translator.min');
 (function (t) {
 // en
 t.add("contact.form.contactme.title", "Contact me", "messages", "en");
@@ -33,7 +32,7 @@ t.add("contact.form.subject.recrutement.option", "Hiring", "messages", "en");
 t.add("contact.form.subject.project.option", "Project", "messages", "en");
 t.add("contact.form.message.label", "Message", "messages", "en");
 t.add("contact.form.submit.label", "Submit", "messages", "en");
-t.add("contact.form.cancel.label", "Cancem", "messages", "en");
+t.add("contact.form.cancel.label", "Cancel", "messages", "en");
 t.add("home.title", "Karim Moussouni", "messages", "en");
 t.add("card.title.label", "Karim Moussouni", "messages", "en");
 t.add("card.subtitle.label", "Full Stack Developer", "messages", "en");
@@ -50,13 +49,18 @@ t.add("resume.skills.title", "Skills", "messages", "en");
 t.add("resume.skills.javascript.title", "Javascript", "messages", "en");
 t.add("resume.skills.symfony.title", "Symfony", "messages", "en");
 t.add("resume.skills.php.title", "PHP", "messages", "en");
-t.add("resume.skills.reactjsreduc.title", "Reactjs\/Reduc", "messages", "en");
+t.add("resume.skills.reactjsreduc.title", "Reactjs\/Redux", "messages", "en");
 t.add("resume.skills.docker.title", "Docker", "messages", "en");
 t.add("resume.skills.elasticsearch.title", "Elasticsearch", "messages", "en");
 t.add("resume.languages.title", "Languages", "messages", "en");
 t.add("resume.languages.french.label", "French", "messages", "en");
 t.add("resume.languages.english.label", "English", "messages", "en");
-t.add("front.3d.message.label", "Contact\\n         me :)", "messages", "en");
-t.add("blog.title", "{{ Karim Moussouni \/ Blog }}", "messages", "en");
+t.add("front.3d.message1.label", "Contact", "messages", "en");
+t.add("front.3d.message2.label", "         me :)", "messages", "en");
+t.add("blog.title", "{{ Karim Moussouni Blog }}", "messages", "en");
 t.add("blog.subtitle", "FullStack PHP Developer", "messages", "en");
+t.add("billboard.resume.label", "__billboard.resume.label", "messages", "en");
+t.add("billboard.contact.label", "__billboard.contact.label", "messages", "en");
+t.add("billboard.project.label", "__billboard.project.label", "messages", "en");
+t.add("alert.label", "__alert.label", "messages", "en");
 })(Translator);

@@ -1,4 +1,3 @@
-var Translator = require('../../../../public/bundles/bazingajstranslation/js/translator.min');
 (function (t) {
 // fr
 t.add("contact.form.contactme.title", "Contactez moi", "messages", "fr");
@@ -50,13 +49,18 @@ t.add("resume.skills.title", "Comp\u00e9tences", "messages", "fr");
 t.add("resume.skills.javascript.title", "Javascript", "messages", "fr");
 t.add("resume.skills.symfony.title", "Symfony", "messages", "fr");
 t.add("resume.skills.php.title", "PHP", "messages", "fr");
-t.add("resume.skills.reactjsreduc.title", "Reactjs\/Reduc", "messages", "fr");
+t.add("resume.skills.reactjsreduc.title", "Reactjs\/Redux", "messages", "fr");
 t.add("resume.skills.docker.title", "Docker", "messages", "fr");
 t.add("resume.skills.elasticsearch.title", "Elasticsearch", "messages", "fr");
 t.add("resume.languages.title", "Langues", "messages", "fr");
 t.add("resume.languages.french.label", "Fran\u00e7ais", "messages", "fr");
 t.add("resume.languages.english.label", "Anglais", "messages", "fr");
-t.add("front.3d.message.label", "Contactez\\n         moi :)", "messages", "fr");
-t.add("blog.title", "{{ Karim Moussouni \/ Blog }}", "messages", "fr");
+t.add("front.3d.message1.label", "Contactez", "messages", "fr");
+t.add("front.3d.message2.label", "         moi :)", "messages", "fr");
+t.add("blog.title", "{{ Karim Moussouni Blog }}", "messages", "fr");
 t.add("blog.subtitle", "D\u00e9veloppeur FullStack PHP", "messages", "fr");
+t.add("billboard.resume.label", "__billboard.resume.label", "messages", "fr");
+t.add("billboard.contact.label", "__billboard.contact.label", "messages", "fr");
+t.add("billboard.project.label", "__billboard.project.label", "messages", "fr");
+t.add("alert.label", "__alert.label", "messages", "fr");
 })(Translator);
