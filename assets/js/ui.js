@@ -100,10 +100,13 @@ function changeDance(id) {
 }
 
 function updateClock() {
-    if(window.innerHeight > window.innerWidth) {
-        document.getElementById('alert').style.display = 'block';
-    } else {
-        document.getElementById('alert').style.display = 'none';
+    // check landscape/portrait view
+    if(document.getElementById('alert')) {
+        if(window.innerHeight > window.innerWidth) {
+            document.getElementById('alert').style.display = 'block';
+        } else {
+            document.getElementById('alert').style.display = 'none';
+        }
     }
 
     var now = new Date();
@@ -131,30 +134,39 @@ document.getElementById("exitModal").onclick = Home;
 //     }
 // };
 
-function updateBillBoard(mesh, mouse) {
-    // console.log(mesh);
-    var bb;
+function updateBillBoard(evt, mesh, mouse) {
+    var bb = mesh.km;
+    console.log(bb);
 
     if(bb) {
         if(bb == 'Project') {
-            console.log(bb.elmnt);
-            bb.style.x = mouse.x;
-            bb.style.y = mouse.y;
-            bb = document.getElementById('billboard'+(mesh.name.charAt(0).toUpperCase() + mesh.name.slice(1)));
-            document.getElementById('billboardBody').innerHTML = mesh.elmnt.title;
-
-            bb.style.display = 'block';
-            bb.style.posx.value = mouse.x;
-            bb.style.posy.value = mouse.y;
+            updateBillBordInfo('Project', bb, evt.clientX, evt.clientY, mesh.elmnt.title);
         }
         else if(mesh.name == 'Shoes' || mesh.name == 'Bottoms' || mesh.name == 'Shoes' || mesh.name == 'Hats' || mesh.name == 'Tops') {
-            bb = document.getElementById('billboardResume');
-            console.log(bb.elmnt);
-            bb.style.display = 'block';
-            bb.style.posx.value = mouse.x;
-            bb.style.posy.value = mouse.y;
+            updateBillBordInfo('Resume', bb, evt.clientX, evt.clientY, Translator.trans('billboard.resume.label', {}, 'messages'));
+        }
+        else if(mesh.km == 'Text') {
+            updateBillBordInfo('Contact', bb, evt.clientX, evt.clientY, Translator.trans('billboard.contact.label', {}, 'messages'));
         }
     }
+}
+
+function updateBillBordInfo(id, bb, x, y, message) {
+    bb = document.getElementById('billboard'+id);
+
+    bb.style.display = 'block';
+    bb.style.top = y+'px';
+    bb.style.left = x+'px';
+
+    document.getElementById('billboard'+id+'Body').innerHTML = message;
+
+    var tweenOpacity = new TWEEN.Tween({v: 1})
+        .to({ v: 0 }, 2000)
+        .onUpdate(function() {
+            document.getElementById('billboard'+id).style.opacity=this.v;
+        });
+    tweenOpacity.start();
+
 }
 
 document.getElementById("exitResume").onclick = Home;

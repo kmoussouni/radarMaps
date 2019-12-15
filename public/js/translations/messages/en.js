@@ -1,3 +1,4 @@
+var Translator = require('../../../../public/bundles/bazingajstranslation/js/translator.min');
 (function (t) {
 // en
 t.add("contact.form.contactme.title", "Contact me", "messages", "en");
@@ -59,8 +60,18 @@ t.add("front.3d.message1.label", "Contact", "messages", "en");
 t.add("front.3d.message2.label", "         me :)", "messages", "en");
 t.add("blog.title", "{{ Karim Moussouni Blog }}", "messages", "en");
 t.add("blog.subtitle", "FullStack PHP Developer", "messages", "en");
-t.add("billboard.resume.label", "__billboard.resume.label", "messages", "en");
-t.add("billboard.contact.label", "__billboard.contact.label", "messages", "en");
-t.add("billboard.project.label", "__billboard.project.label", "messages", "en");
-t.add("alert.label", "__alert.label", "messages", "en");
+t.add("billboard.resume.label", "Resume", "messages", "en");
+t.add("billboard.contact.label", "Contact Form", "messages", "en");
+t.add("billboard.project.label", "Project", "messages", "en");
+t.add("alert.label", "Please, switch tp Landscape :)", "messages", "en");
+t.add("contact.form.techno.help.label", "__contact.form.techno.help.label", "messages", "en");
+t.add("contact.form.type.default.option", "__contact.form.type.default.option", "messages", "en");
+t.add("contact.form.type.help.label", "__contact.form.type.help.label", "messages", "en");
+t.add("contact.form.contract.help.label", "__contact.form.contract.help.label", "messages", "en");
+t.add("contact.form.lastname.help.label", "__contact.form.lastname.help.label", "messages", "en");
+t.add("contact.form.firstname.help.label", "__contact.form.firstname.help.label", "messages", "en");
+t.add("contact.form.society.help.label", "__contact.form.society.help.label", "messages", "en");
+t.add("contact.form.email.help.label", "__contact.form.email.help.label", "messages", "en");
+t.add("contact.form.subject.help.label", "__contact.form.subject.help.label", "messages", "en");
+t.add("contact.form.message.help.label", "__contact.form.message.help.label", "messages", "en");
 })(Translator);

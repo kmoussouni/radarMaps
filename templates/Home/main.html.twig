@@ -26,37 +26,34 @@
     {% include 'Home/info.html.twig' %}
 </div>
 
-<div id="billboardResume" class="info is-pulled-right">
-    <div class="notification is-warning">
-        <button class="delete"></button>
-        <p id="billboardBody">
+<div id="billboardResume" class="notification is-info">
+    <div class="is-primary">
+        <p id="billboardResumeBody">
             {{ 'billboard.resume.label'|trans }}
         </p>
     </div>
 </div>
 
-<div id="billboardContact" class="info is-pulled-right">
-    <div class="notification is-warning">
-        <button class="delete"></button>
-        <p>
+<div id="billboardContact" class="notification is-info">
+    <div class="is-primary">
+        <p id="billboardContactBody">
             {{ 'billboard.contact.label'|trans }}
         </p>
     </div>
 </div>
 
-<div id="billboardProject" class="info is-pulled-right">
-    <div class="notification is-warning">
-        <button class="delete"></button>
-        <p>
+<div id="billboardProject" class="notification is-info">
+    <div class="is-primary">
+        <p id="billboardProjectBody">
             {{ 'billboard.project.label'|trans }}
         </p>
     </div>
 </div>
 
-<div id="alert" class="tile danger is-centered">
+<div id="alert" class="card tile danger is-centered">
     <div class="notification is-danger">
 {#        <button class="delete"></button>#}
-        <p id="billboardBody">
+        <p>
             {{ 'alert.label'|trans }}
         </p>
     </div>

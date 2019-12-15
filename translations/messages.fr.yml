@@ -33,7 +33,7 @@ contact.form.submit.label: Envoyer
 contact.form.cancel.label: Annuler
 home.title: 'Karim Moussouni'
 card.title.label: 'Karim Moussouni'
-card.subtitle.label: 'Full Stack Developer'
+card.subtitle.label: 'Full Stack Développeur'
 card.content.label: 'Je suis un développeur Web sénior FullStack en développement Symfony et React. Je maîtrise les environnements du développement à la production. Je suis actuellement disponible pour une mission/job.'
 info.subtitle1.label: 'Chargement d''une scène FBX / texte 3D / UI par '
 info.subtitle2.label: 'Modèle et Animations de '
@@ -57,7 +57,17 @@ front.3d.message1.label: Contactez
 front.3d.message2.label: '         moi :)'
 blog.title: '{{ Karim Moussouni Blog }}'
 blog.subtitle: 'Développeur FullStack PHP'
-billboard.resume.label: Curriculum Vitae
-billboard.contact.label: Formulaire de contact
-billboard.project.label: 'Project'
-alert.label: Passez en mode Paysage :)
+billboard.resume.label: 'Curriculum Vitae'
+billboard.contact.label: 'Formulaire de contact'
+billboard.project.label: Project
+alert.label: 'Passez en mode Paysage :)'
+contact.form.techno.help.label: 'Veuillez entrer une ou plusieurs compétence(s).'
+contact.form.type.default.option: 'Le type de poste recherché.'
+contact.form.type.help.label: 'Veuillez entrer le type de poste.'
+contact.form.contract.help.label: 'Veuillez entrer le contrat de poste.'
+contact.form.lastname.help.label: 'Veuillez entrer votre nom.'
+contact.form.firstname.help.label: 'Veuillez entrer votre prénom.'
+contact.form.society.help.label: 'Veuillez entrer le nom de votre société.'
+contact.form.email.help.label: 'Veuillez entrer votre email.'
+contact.form.subject.help.label: 'Veuillez entrer le sujet du message.'
+contact.form.message.help.label: 'Veuillez entrer votre message.'

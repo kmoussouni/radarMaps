@@ -58,6 +58,16 @@ front.3d.message2.label: '         me :)'
 blog.title: '{{ Karim Moussouni Blog }}'
 blog.subtitle: 'FullStack PHP Developer'
 billboard.resume.label: Resume
-billboard.contact.label: Contact Form
+billboard.contact.label: 'Contact Form'
 billboard.project.label: Project
-alert.label: Please, switch tp Landscape :)
+alert.label: 'Please, switch tp Landscape :)'
+contact.form.techno.help.label: __contact.form.techno.help.label
+contact.form.type.default.option: __contact.form.type.default.option
+contact.form.type.help.label: __contact.form.type.help.label
+contact.form.contract.help.label: __contact.form.contract.help.label
+contact.form.lastname.help.label: __contact.form.lastname.help.label
+contact.form.firstname.help.label: __contact.form.firstname.help.label
+contact.form.society.help.label: __contact.form.society.help.label
+contact.form.email.help.label: __contact.form.email.help.label
+contact.form.subject.help.label: __contact.form.subject.help.label
+contact.form.message.help.label: __contact.form.message.help.label

@@ -1,3 +1,4 @@
+var Translator = require('../../../../public/bundles/bazingajstranslation/js/translator.min');
 (function (t) {
 // fr
 t.add("contact.form.contactme.title", "Contactez moi", "messages", "fr");
@@ -35,7 +36,7 @@ t.add("contact.form.submit.label", "Envoyer", "messages", "fr");
 t.add("contact.form.cancel.label", "Annuler", "messages", "fr");
 t.add("home.title", "Karim Moussouni", "messages", "fr");
 t.add("card.title.label", "Karim Moussouni", "messages", "fr");
-t.add("card.subtitle.label", "Full Stack Developer", "messages", "fr");
+t.add("card.subtitle.label", "Full Stack D\u00e9veloppeur", "messages", "fr");
 t.add("card.content.label", "Je suis un d\u00e9veloppeur Web s\u00e9nior FullStack en d\u00e9veloppement Symfony et React. Je ma\u00eetrise les environnements du d\u00e9veloppement \u00e0 la production. Je suis actuellement disponible pour une mission\/job.", "messages", "fr");
 t.add("info.subtitle1.label", "Chargement d'une sc\u00e8ne FBX \/ texte 3D \/ UI par ", "messages", "fr");
 t.add("info.subtitle2.label", "Mod\u00e8le et Animations de ", "messages", "fr");
@@ -59,8 +60,18 @@ t.add("front.3d.message1.label", "Contactez", "messages", "fr");
 t.add("front.3d.message2.label", "         moi :)", "messages", "fr");
 t.add("blog.title", "{{ Karim Moussouni Blog }}", "messages", "fr");
 t.add("blog.subtitle", "D\u00e9veloppeur FullStack PHP", "messages", "fr");
-t.add("billboard.resume.label", "__billboard.resume.label", "messages", "fr");
-t.add("billboard.contact.label", "__billboard.contact.label", "messages", "fr");
-t.add("billboard.project.label", "__billboard.project.label", "messages", "fr");
-t.add("alert.label", "__alert.label", "messages", "fr");
+t.add("billboard.resume.label", "Curriculum Vitae", "messages", "fr");
+t.add("billboard.contact.label", "Formulaire de contact", "messages", "fr");
+t.add("billboard.project.label", "Project", "messages", "fr");
+t.add("alert.label", "Passez en mode Paysage :)", "messages", "fr");
+t.add("contact.form.techno.help.label", "Veuillez entrer une ou plusieurs comp\u00e9tence(s).", "messages", "fr");
+t.add("contact.form.type.default.option", "Le type de poste recherch\u00e9.", "messages", "fr");
+t.add("contact.form.type.help.label", "Veuillez entrer le type de poste.", "messages", "fr");
+t.add("contact.form.contract.help.label", "Veuillez entrer le contrat de poste.", "messages", "fr");
+t.add("contact.form.lastname.help.label", "Veuillez entrer votre nom.", "messages", "fr");
+t.add("contact.form.firstname.help.label", "Veuillez entrer votre pr\u00e9nom.", "messages", "fr");
+t.add("contact.form.society.help.label", "Veuillez entrer le nom de votre soci\u00e9t\u00e9.", "messages", "fr");
+t.add("contact.form.email.help.label", "Veuillez entrer votre email.", "messages", "fr");
+t.add("contact.form.subject.help.label", "Veuillez entrer le sujet du message.", "messages", "fr");
+t.add("contact.form.message.help.label", "Veuillez entrer votre message.", "messages", "fr");
 })(Translator);

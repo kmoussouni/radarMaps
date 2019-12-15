@@ -15,16 +15,12 @@ import { FBXLoader } from '../../node_modules/three/examples/jsm/loaders/FBXLoad
 const axios = require('axios');
 
 var Translator = require('../../public/bundles/bazingajstranslation/js/translator.min');
-Translator.locale = 'fr';
 
-Translator.loadFR = require("../../public/js/translations/messages/en.js");
-Translator.loadEN = require("../../public/js/translations/messages/fr.js");
+require("../../public/js/translations/messages/en.js");
+require("../../public/js/translations/messages/fr.js");
 
-// Translator.loadFR();
-// Translator.loadEN();
-
-// Translator.fromJSON("../../public/js/translations/messages/en.json");
-// Translator.fromJSON("../../public/js/translations/messages/fr.json");
+console.log(document.documentElement.lang);
+Translator.locale = document.documentElement.lang;
 
 import {ShowSection, updateProgress, updateBillBoard} from './ui';
 import '../scss/app.scss';
@@ -222,13 +218,13 @@ function init()
     controls.update();
 
     // click events
-    document.addEventListener( 'mousemove', onDocumentMouseMove, false );
-    document.addEventListener( 'touchmove', onDocumentMouseMove, false );
+    document.getElementById('root').addEventListener( 'mousemove', onDocumentMouseMove, false );
+    // document.addEventListener( 'touchmove', onDocumentMouseMove, false );
 
     // move events
-    document.addEventListener( 'mousedown', onDocumentMouseDown, false );
-    document.addEventListener( 'keypress', onDocumentMouseDown, false );
-    document.addEventListener( 'touchstart', onDocumentMouseDown, false );
+    document.getElementById('root').addEventListener( 'mousedown', onDocumentMouseDown, false );
+    document.getElementById('root').addEventListener( 'keypress', onDocumentMouseDown, false );
+    document.getElementById('root').addEventListener( 'touchstart', onDocumentMouseDown, false );
 
     // document.addEventListener( 'touchstart', onDocumentTouchStart, false );
     // document.addEventListener( 'touchmove', onDocumentTouchMove, false );
@@ -329,6 +325,10 @@ function onDocumentMouseDown( event ) {
         if ( intersects.length > 0 ) {
             intersect = intersects[ 0 ];
 
+
+            console.log('click')
+            updateBillBoard(event, intersect.object, mouse);
+
             // createBillBoard(intersect.object);
 
             handleClick(intersect.object, intersect.object.uuid)
@@ -363,17 +363,19 @@ function handleClick(object, uuid, state='project') {
 }
 
 function onDocumentMouseMove( event ) {
-    // event.preventDefault();
+    event.preventDefault();
+
     mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
     mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
 
     raycaster.setFromCamera( mouse, camera );
-    intersects = raycaster.intersectObjects( scene.children, false );
+    intersects = raycaster.intersectObjects( scene.children, true );
 
     if ( intersects.length > 0 ) {
         intersect = intersects[0];
 
-        updateBillBoard(intersect.object, mouse)
+        console.log('move')
+        updateBillBoard(event, intersect.object, mouse);
 
         if(INTERSECTED != intersect) {
 
