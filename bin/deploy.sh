@@ -18,8 +18,8 @@ rsync -avzh --delete \
 # ~/.ssh/id.pub
 #run make build
 echo "MAKE APP"
-ssh -i ~/.ssh/id_rsa ubuntu@ns35222 -C "cd /var/www/karimmoussouni && make start
-                                        && make fixperm
-                                        && docker exec -udev -i php composer i
-                                        && docker exec -udev -i php yarn
-                                        && yarn build"
+ssh -i ~/.ssh/id_rsa ubuntu@ns35222 -C 'cd /var/www/karimmoussouni && make start \
+                                        && cd /var/www/karimmoussouni && make fixperm \
+                                        && docker exec -udev -i php composer i \
+                                        && docker exec -udev -i php yarn \
+                                        && yarn build'

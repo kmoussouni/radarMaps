@@ -19,10 +19,9 @@ var Translator = require('../../public/bundles/bazingajstranslation/js/translato
 require("../../public/js/translations/messages/en.js");
 require("../../public/js/translations/messages/fr.js");
 
-console.log(document.documentElement.lang);
 Translator.locale = document.documentElement.lang;
 
-import {ShowSection, updateProgress, updateBillBoard} from './ui';
+import {ShowSection, updateProgress, updateBillBoard, isLandascape} from './ui';
 import '../scss/app.scss';
 
 /** variables */
@@ -299,7 +298,9 @@ function animate() {
     var delta = clock.getDelta();
     if ( mixer ) mixer.update( delta );
 
-    renderer.render( scene, camera );
+    if(isLandascape) {
+        renderer.render( scene, camera );
+    }
 }
 
 /********************************************************************************************************************

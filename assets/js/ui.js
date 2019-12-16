@@ -2,7 +2,7 @@ var TWEEN = require('tween/tween.js');
 import axios from 'axios';
 import Translator from '../../public/bundles/bazingajstranslation/js/translator.min';
 
-var currentSection = 'home';
+var isLandascape = false;
 
 function Home() {
     ShowSection('card');
@@ -103,8 +103,11 @@ function updateClock() {
     // check landscape/portrait view
     if(document.getElementById('alert')) {
         if(window.innerHeight > window.innerWidth) {
-            document.getElementById('alert').style.display = 'block';
+            isLandascape = false;
+            document.getElementById('alert').style.display = 'flex';
         } else {
+            isLandascape = true;
+            // renderer.stop();
             document.getElementById('alert').style.display = 'none';
         }
     }
@@ -182,4 +185,4 @@ document.getElementById("dance#3").onclick = changeDance(3);
 document.getElementById("dance#4").onclick = changeDance(4);
 
 // exports
-export {ShowSection, updateProgress, updateBillBoard};
+export {ShowSection, updateProgress, updateBillBoard, isLandascape};

@@ -86,10 +86,13 @@ body {
 }
 
 #alert {
-  display: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: absolute;
-  margin-left: 45%;
-  margin-top: 45%;
+  //margin-left: auto;
+  //margin-right: auto;
+  //margin-top: auto;
   z-index: 10;
 }
 
