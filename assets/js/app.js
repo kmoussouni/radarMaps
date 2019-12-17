@@ -328,7 +328,7 @@ function onDocumentMouseDown( event ) {
 
 
             console.log('click')
-            updateBillBoard(event, intersect.object, mouse);
+            updateBillBoard(event, intersect.object);
 
             // createBillBoard(intersect.object);
 
@@ -376,7 +376,7 @@ function onDocumentMouseMove( event ) {
         intersect = intersects[0];
 
         console.log('move')
-        updateBillBoard(event, intersect.object, mouse);
+        updateBillBoard(event, intersect.object);
 
         if(INTERSECTED != intersect) {
 

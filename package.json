@@ -36,6 +36,7 @@
         "assemblyscript-live-loader": "git+https://github.com/dongsik-yoo/assemblyscript-live-loader.git",
         "copy-webpack-plugin": "^5.0.5",
         "core-js": "^3.0.0",
+        "create-react-app": "^3.3.0",
         "regenerator-runtime": "^0.13.2",
         "webpack": "^4.41.0",
         "webpack-notifier": "^1.6.0"

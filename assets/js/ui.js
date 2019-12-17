@@ -114,7 +114,7 @@ function updateClock() {
 
     var now = new Date();
 
-    document.getElementById('time').innerHTML = now.toDateString() + ' ' + now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds() + ':' + now.getMilliseconds();
+    document.getElementById('time').innerHTML = now.toDateString() + ' ' + now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds();
     setTimeout(updateClock, 1000);
 }
 updateClock();
@@ -137,20 +137,20 @@ document.getElementById("exitModal").onclick = Home;
 //     }
 // };
 
-function updateBillBoard(evt, mesh, mouse) {
+function updateBillBoard(evt, mesh) {
+    console.log(mesh);
     var bb = mesh.km;
-    console.log(bb);
 
     if(bb) {
         if(bb == 'Project') {
             updateBillBordInfo('Project', bb, evt.clientX, evt.clientY, mesh.elmnt.title);
         }
-        else if(mesh.name == 'Shoes' || mesh.name == 'Bottoms' || mesh.name == 'Shoes' || mesh.name == 'Hats' || mesh.name == 'Tops') {
-            updateBillBordInfo('Resume', bb, evt.clientX, evt.clientY, Translator.trans('billboard.resume.label', {}, 'messages'));
-        }
         else if(mesh.km == 'Text') {
             updateBillBordInfo('Contact', bb, evt.clientX, evt.clientY, Translator.trans('billboard.contact.label', {}, 'messages'));
         }
+    }
+    else if(mesh.name == 'Shoes' || mesh.name == 'Bottoms' || mesh.name == 'Shoes' || mesh.name == 'Hats' || mesh.name == 'Tops') {
+        updateBillBordInfo('Resume', bb, evt.clientX, evt.clientY, Translator.trans('billboard.resume.label', {}, 'messages'));
     }
 }
 

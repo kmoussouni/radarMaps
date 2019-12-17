@@ -26,27 +26,31 @@
     {% include 'Home/info.html.twig' %}
 </div>
 
-<div id="billboardResume" class="notification is-info">
-    <div class="is-primary">
-        <p id="billboardResumeBody">
+<div id="billboardResume" >
+    <div class="notification is-info">
+        <p class="has-text-centered" id="billboardResumeBody">
+            <i class="fas fa-bomb"></i>
             {{ 'billboard.resume.label'|trans }}
         </p>
     </div>
+
 </div>
 
-<div id="billboardContact" class="notification is-info">
-    <div class="is-primary">
-        <p id="billboardContactBody">
+<div id="billboardContact">
+    <div class="notification is-info">
+        <p class="has-text-centered">
+            <i class="fas fa-bomb"></i>
             {{ 'billboard.contact.label'|trans }}
+{#            {{ 'alert.label'|trans }}#}
         </p>
     </div>
 </div>
 
 <div id="billboardProject" class="notification is-info">
     <div class="is-primary">
-        <p id="billboardProjectBody">
+        <div id="billboardProjectBody">
             {{ 'billboard.project.label'|trans }}
-        </p>
+        </div>
     </div>
 </div>
 
