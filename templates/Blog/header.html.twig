@@ -1,23 +1,14 @@
-{#<section class="is-info is-medium is-bold">#}
-{#    <div class="header">#}
-{#        <div class="container has-text-centered">#}
-{#            <h1 class="title">#}
-{#                {{ "{{ Karim Moussouni's Blog }}" }}<br />#}
-{#                    sed eiusmod tempor incididunt ut labore et dolore magna aliqua#}
-{#            </h1>#}
-{#        </div>#}
-{#    </div>#}
-{#</section>#}
-
-<section class="hero is-info is-medium">
-    <div class="hero-body">
-        <div class="container">
-            <h1 class="title">
+<div class="header-content">
+    <section class="hero is-medium">
+        <div class="hero-body">
+            <div class="container has-text-centered" style="font-family: 'Rock Salt', cursive;">
+                <h1 class="title is-1 is-spaced">
                 {{ 'blog.title'|trans }}<br />
-            </h1>
-            <h2 class="subtitle">
-                {{ 'blog.subtitle'|trans }}<br />
-            </h2>
+                </h1>
+                <h3 class="subtitle is-spaced is-3">
+                    <i>... {{ 'blog.subtitle'|trans }}</i>
+                </h3>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+</div>

@@ -59,6 +59,14 @@ class Article
     protected $title;
 
     /**
+     * The actual subtitle of the article.
+     *
+     * @ORM\Column(type="string", nullable=false)
+     * @ApiFilter(SearchFilter::class, strategy="ipartial")
+     */
+    protected $subtitle;
+
+    /**
      * The actual slug of the article.
      *
      * @ORM\Column(type="string", unique=true, nullable=false)
@@ -279,6 +287,24 @@ class Article
     public function setSlug($slug)
     {
         $this->slug = $slug;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSubtitle()
+    {
+        return $this->subtitle;
+    }
+
+    /**
+     * @param mixed $subtitle
+     * @return Article
+     */
+    public function setSubtitle($subtitle)
+    {
+        $this->subtitle = $subtitle;
         return $this;
     }
 }

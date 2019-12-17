@@ -4,6 +4,8 @@
 
 {% block content %}
 
+    {% include 'Blog/nav.html.twig' %}
+
     {% include 'Blog/header.html.twig' %}
 
     <div class="container">
@@ -54,9 +56,6 @@
 {#        </section>#}
     </div>
 
-    <div class="container">
-    </div>
-
 {% endblock %}
 
 {% block javascripts %}
@@ -64,10 +63,10 @@
     <script src={{ asset('build/runtime.js') }} type="text/javascript"></script>
     <script src="{{ asset('build/js/blog.min.js') }}" type="text/javascript"></script>
 
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.9.1/js/OverlayScrollbars.min.js'></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            OverlayScrollbars(document.querySelectorAll("body"), { });
-        });
-    </script>
+{#    <script src='https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.9.1/js/OverlayScrollbars.min.js'></script>#}
+{#    <script>#}
+{#        document.addEventListener("DOMContentLoaded", function() {#}
+{#            OverlayScrollbars(document.querySelectorAll("body"), { });#}
+{#        });#}
+{#    </script>#}
 {% endblock %}

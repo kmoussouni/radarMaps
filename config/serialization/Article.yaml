@@ -6,6 +6,8 @@ App\Entity\Article:
       groups: ['api_front']
     title:
       groups: ['api_front']
+    subtitle:
+      groups: ['api_front']
     slug:
       groups: ['api_front']
     body:

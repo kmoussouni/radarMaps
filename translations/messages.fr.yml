@@ -55,7 +55,7 @@ resume.languages.french.label: Français
 resume.languages.english.label: Anglais
 front.3d.message1.label: Contactez
 front.3d.message2.label: '         moi :)'
-blog.title: '{{ Karim Moussouni Blog }}'
+blog.title: 'Karim Moussouni, le Blog'
 blog.subtitle: 'Développeur FullStack PHP'
 billboard.resume.label: 'Curriculum Vitae'
 billboard.contact.label: 'Formulaire de contact'

@@ -14,7 +14,7 @@
     {% include 'Home/resume.html.twig' %}
 </div>
 
-<div id="article" class="is-fullwidth is-centered is-vertical-center">
+<div id="article" class="is-fullwidth is-centered">
     {% include 'Home/article.html.twig' %}
 </div>
 
@@ -38,8 +38,8 @@
 
 <div id="billboardContact">
     <div class="notification is-info">
-        <p class="has-text-centered">
-            <i class="fas fa-bomb"></i>
+        <p id="billboardContactBody" class="has-text-centered">
+            <i class="fas fa-envelope"></i>
             {{ 'billboard.contact.label'|trans }}
 {#            {{ 'alert.label'|trans }}#}
         </p>

@@ -49,7 +49,7 @@ function ShowSection(UIId) {
                     });
                     tweenOpacity.start();
 
-                    document.getElementById(UIId).style.display = 'block';
+                    document.getElementById(UIId).style.display = 'flex';
                 } else {
                     var tweenOpacity = new TWEEN.Tween({v: 0})
                         .to({ v: 1 }, 1000)
@@ -67,7 +67,7 @@ function ShowSection(UIId) {
                     });
                     tweenOpacity.start();
 
-                    document.getElementById('info').style.display = 'block';
+                    document.getElementById('info').style.display = 'flex';
                 }
             }
         });
@@ -157,16 +157,19 @@ function updateBillBoard(evt, mesh) {
 function updateBillBordInfo(id, bb, x, y, message) {
     bb = document.getElementById('billboard'+id);
 
-    bb.style.display = 'block';
+    bb.style.display = 'flex';
     bb.style.top = y+'px';
     bb.style.left = x+'px';
 
     document.getElementById('billboard'+id+'Body').innerHTML = message;
 
     var tweenOpacity = new TWEEN.Tween({v: 1})
-        .to({ v: 0 }, 2000)
+        .to({ v: 0 }, 1000)
         .onUpdate(function() {
             document.getElementById('billboard'+id).style.opacity=this.v;
+        })
+        .onComplete(function() {
+            document.getElementById('billboard'+id).style.display='none';
         });
     tweenOpacity.start();
 

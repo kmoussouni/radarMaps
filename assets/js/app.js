@@ -124,7 +124,7 @@ function init()
         scene.add( object );
 
         document.getElementById('loading').style.display = 'none';
-        document.getElementById('card').style.display = 'block';
+        document.getElementById('card').style.display = 'flex';
     }, function ( e ) {
         updateProgress(e);
     }, function ( error ) {
@@ -221,9 +221,10 @@ function init()
     // document.addEventListener( 'touchmove', onDocumentMouseMove, false );
 
     // move events
-    document.getElementById('root').addEventListener( 'mousedown', onDocumentMouseDown, false );
-    document.getElementById('root').addEventListener( 'keypress', onDocumentMouseDown, false );
     document.getElementById('root').addEventListener( 'touchstart', onDocumentMouseDown, false );
+    document.getElementById('root').addEventListener( 'mousedown', onDocumentMouseDown, false );
+    document.getElementById('root').addEventListener( 'click', onDocumentMouseDown, false );
+    // document.getElementById('root').addEventListener( 'keypress', onDocumentMouseDown, false );
 
     // document.addEventListener( 'touchstart', onDocumentTouchStart, false );
     // document.addEventListener( 'touchmove', onDocumentTouchMove, false );
@@ -317,50 +318,45 @@ function onDocumentKeyPress( event ) {
 }
 
 function onDocumentMouseDown( event ) {
-    event.preventDefault();
+    // event.preventDefault();
 
-    if(event.target  instanceof HTMLCanvasElement) {
+    // if(event.target  instanceof HTMLCanvasElement) {
         mouse.set( ( event.clientX / window.innerWidth ) * 2 - 1, - ( event.clientY / window.innerHeight ) * 2 + 1 );
         raycaster.setFromCamera( mouse, camera );
-        intersects = raycaster.intersectObjects( scene.children, true );
+        intersects = raycaster.intersectObjects( scene.children, false );
         if ( intersects.length > 0 ) {
             intersect = intersects[ 0 ];
-
-
-            console.log('click')
-            updateBillBoard(event, intersect.object);
-
-            // createBillBoard(intersect.object);
-
-            handleClick(intersect.object, intersect.object.uuid)
+            console.log('click');
+            handleClick(intersect.object);
+            // updateBillBoard(event, intersect.object);
         }
-    }
+    // }
 }
 
-function handleClick(object, uuid, state='project') {
+function handleClick(object) {
     //cv
     if(object.name == 'Shoes' || object.name == 'Bottoms' || object.name == 'Shoes' || object.name == 'Hats' || object.name == 'Tops') {
         ShowSection('resume');
     }
 
     // contact
-    if(object.km == 'Text') {
+    else if(object.km == 'Text') {
         ShowSection('contact');
     }
 
     // portfolio/project
-    if(object.km == 'Project') {
+    else if(object.km == 'Project') {
         // console.log('showProject ',object.elmnt);
 
         // Update Article
         document.getElementById('article_title').innerHTML = object.elmnt.title;
-        document.getElementById('article_body').innerHTML = object.elmnt.body;
+        document.getElementById('article_title').href = '/'+document.documentElement.lang+'/blog/'+object.elmnt.slug;
+        document.getElementById('article_author').innerHTML = object.elmnt.user.username;
+        document.getElementById('article_body').innerHTML = object.elmnt.body.substring(0, 342) + '...';
         document.getElementById('article_image').src = object.elmnt.image.filePath.replace('public/','/');
 
         ShowSection('article');
     }
-
-    // blog
 }
 
 function onDocumentMouseMove( event ) {
@@ -375,7 +371,7 @@ function onDocumentMouseMove( event ) {
     if ( intersects.length > 0 ) {
         intersect = intersects[0];
 
-        console.log('move')
+        // console.log('move')
         updateBillBoard(event, intersect.object);
 
         if(INTERSECTED != intersect) {
