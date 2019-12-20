@@ -2,7 +2,8 @@ App\Entity\Article:
   article1:
     user: '@karim'
     image: "@media_objects_articles*"
-    title: "Lancement du site!"
+    title: "Lancement du site !"
+    subtitle: "Premier article"
     body: "Le premier article sera logiquement celui du lancement du site.
     Donc Lancement du site EXPLICATIONS (comme ils disent sur leur tube!!!) :|
     Le developpement se base sur une stack assez commune... Du docker, une api sur une
@@ -34,6 +35,7 @@ App\Entity\Article:
     user: '@karim'
     image: "@media_objects_articles*"
     title: "<sentence()>"
+    subtitle: "<sentence()>"
     body: "<sentence(1000)>"
     section: "<word()>"
     backStory: "<sentence()>"

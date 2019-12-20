@@ -91,10 +91,15 @@ body {
 
 .article {
   margin: 0 auto;
+  width: 3em !important;
 }
 
 .subtitle {
   font-family: 'Raleway', sans-serif !important;
+}
+
+#exitProject {
+  padding-right: 1em;
 }
 
 //////////////////////////////////////////////////

@@ -101,8 +101,8 @@ api_platform:
 
     # The list of enabled formats. The first one will be the default.
     formats:
-#        jsonld:
-#            mime_types: ['application/ld+json']
+        jsonld:
+            mime_types: ['application/ld+json']
         json:
             mime_types: ['application/json']
         html:
@@ -110,5 +110,5 @@ api_platform:
     error_formats:
         jsonproblem:
             mime_types: ['application/problem+json']
-#        jsonld:
-#            mime_types: ['application/ld+json']
+        jsonld:
+            mime_types: ['application/ld+json']

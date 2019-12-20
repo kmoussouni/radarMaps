@@ -1,40 +1,60 @@
 <div class="container">
-    <div class="content tile is-10">
+    <div class="article content tile is-10">
         <div class="card is-8">
-            <div class="card-header">
-                <p class="content">
-                    <i id="exitProject" class="fas fa-times-circle fa-stack-1x fa-ban fa-stack-2x has-text-danger"></i>
+            <div class="card-content">
+                <p>
+                    <i id="exitProject" class="fas fa-times-circle fa-stack-1x fa-ban fa-stack-2x has-text-danger has-text-right"></i>
                 </p>
             </div>
+            <hr>
+
+
             <div class="card-image">
-                <figure class="image is-4by3">
-                    <img id="article_image" src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+                <figure class="image is-256x256">
+                    <img id="article_image" src="" alt="Project image">
                 </figure>
             </div>
-            <div class="card-content">
-                <div class="media">
-                    <div class="media-left">
-                        <figure class="image is-48x48">
-                            <img src="{{ asset('build/img/profile.jpg') }}" alt="Placeholder image">
-                        </figure>
+
+
+
+            <div class="container">
+{#            <div class="columns">#}
+
+                <div class="card-content">
+{#                <div class="column">#}
+                    <div class="media">
+                        <div class="media-left">
+                            <figure class="image is-48x48">
+                                <img src="{{ asset('build/img/profile.jpg') }}" alt="Placeholder image">
+                            </figure>
+                        </div>
+                        <div class="media-content">
+                            <p class="title is-4">
+                                <a id="article_title" href="#" target="_blank">
+                                </a>
+                            </p>
+                            <p id="article_author" class="subtitle is-6">@johnsmith</p>
+                        </div>
                     </div>
-                    <div class="media-content">
-                        <p class="title is-4">
-                            <a id="article_title" href="#" target="_blank">
-                            </a>
-                        </p>
-                        <p id="article_author" class="subtitle is-6">@johnsmith</p>
+
+                    <div id="article_body" class="media-content">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Phasellus nec iaculis mauris. <a>@bulmaio</a>.
+                        <a href="#">#css</a> <a href="#">#responsive</a>
+                        <br>
+                        <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
                     </div>
+
+                    {#                </div>#}
+
+{#                <div class="column">#}
+{#                </div>#}
+
                 </div>
 
-                <div id="article_body" class="content">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Phasellus nec iaculis mauris. <a>@bulmaio</a>.
-                    <a href="#">#css</a> <a href="#">#responsive</a>
-                    <br>
-                    <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-                </div>
             </div>
+            </div>
+
         </div>
     </div>
 </div>

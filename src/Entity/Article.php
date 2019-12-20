@@ -9,6 +9,7 @@ use ApiPlatform\Core\Annotation\ApiSubresource;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 /**
@@ -22,10 +23,13 @@ use Gedmo\Timestampable\Traits\TimestampableEntity;
  *
  * @ORM\Entity()
  * @ORM\Table(name="article")
+ *
+ * @Gedmo\SoftDeleteable(fieldName="deleteAt", timeAware=false, hardDelete=false)
  */
 class Article
 {
     use TimestampableEntity;
+    use SoftDeleteableEntity;
 
     /**
      * @ORM\Column(name="id", type="integer")
