@@ -1,6 +1,6 @@
-#kmoussouni/karimmoussouni.com
+#kmoussouni/dockersf4starter
 
-# KarimMoussouni.com Project
+Starter with vagrant/docker/sf4 Project
 
 ##Install
 
@@ -41,13 +41,13 @@ make ssh
 add to your local hosts file
 ```
 #Vagrant
-192.168.99.100  karimmoussouni.local www.karimmoussouni.local kibana.karimmoussouni.local db smtp elasticsearch adminer.karimmoussouni.local
+192.168.99.100  <URL> www.<URL> kibana.<URL> db smtp elasticsearch adminer.<URL>
 #Wsl
-127.0.0.1       karimmoussouni.local www.karimmoussouni.local kibana.karimmoussouni.local db smtp elasticsearch adminer.karimmoussouni.local
+127.0.0.1       <URL> www.<URL> kibana.<URL> db smtp elasticsearch adminer.<URL>
 ```
 
 test the urls:
-www.karimmoussouni.local, www.karimmoussouni.local/api/docs, www.karimmoussouni.local
+www.<URL>, www.<URL>/api/docs, www.<URL>
 
 setup env variables in .env and envvars.yml (vm specs, git personnal account and token access, app specs)
 
@@ -168,8 +168,8 @@ and in autoload-dev/psr-4 section
 
 create oauth2 client
 ```
-php bin/console fos:oauth-server:create-client --redirect-uri="https://karimmoussouni.local" --grant-type="authorization_code" --grant-type="password" --grant-type="refresh_token" --grant-type="token" --grant-type="client_credentials" --grant-type="acces_token"
-php bin/console fos:oauth-server:create-client --redirect-uri="https://api.mailingnewsrooms.me/v5/ha/ha_entrypoint" --grant-type="authorization_code" --grant-type="password" --grant-type="refresh_token" --grant-type="token" --grant-type="client_credentials" --grant-type="acces_token"
+php bin/console fos:oauth-server:create-client --redirect-uri="https://<URL>" --grant-type="authorization_code" --grant-type="password" --grant-type="refresh_token" --grant-type="token" --grant-type="client_credentials" --grant-type="acces_token"
+php bin/console fos:oauth-server:create-client --redirect-uri="https://api.<URL>/../entrypoint" --grant-type="authorization_code" --grant-type="password" --grant-type="refresh_token" --grant-type="token" --grant-type="client_credentials" --grant-type="acces_token"
 ```
 
 export translations
