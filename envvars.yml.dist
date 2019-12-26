@@ -2,6 +2,7 @@ env: dev
 name: dev
 repo: karimmoussouni
 ip: 192.168.99.100
+box: "huzhenghui/CentOS-7-vbguest"
 user: vagrant
 host: dev.karimmoussouni
 vm_user: vagrant

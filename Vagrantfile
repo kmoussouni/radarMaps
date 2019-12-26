@@ -6,8 +6,8 @@ require 'yaml'
 machine = YAML.load_file('envvars.yml')
 
 Vagrant.configure("2") do |config|
-  config.vm.box = "vineetpalan/centos7-docker"
-  config.vm.box_version = "1.0"
+  config.vm.box = machine["box"]
+  config.vm.box_version = machine["box_version"]
   config.vm.define machine['name']
   config.vm.box_check_update = false
 
@@ -48,6 +48,34 @@ Vagrant.configure("2") do |config|
       yum install -y yum-utils curl nfs-kernel-server
 
       yum uodate -y
+
+      yum remove -y docker \
+        docker-client \
+        docker-client-latest \
+        docker-common \
+        docker-latest \
+        docker-latest-logrotate \
+        docker-logrotate \
+        docker-engine
+
+      yum install -y yum-utils \
+        device-mapper-persistent-data \
+        lvm2
+
+      yum install -y docker-ce docker-ce-cli containerd.io
+      yum install -y docker-ce docker-ce-cli containerd.io
+      systemctl start docker
+
+      yum-config-manager \
+        --add-repo \
+        https://download.docker.com/linux/centos/docker-ce.repo
+
+      curl -L "https://github.com/docker/compose/releases/download/1.25.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+
+      chmod +x /usr/local/bin/docker-compose
+      ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+
+      usermod -aG docker vagrant
 
       mkdir -p /backup
       mkdir -p /var/www/symfony

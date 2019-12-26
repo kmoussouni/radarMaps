@@ -14,9 +14,7 @@ Encore
     // .setManifestKeyPrefix('build/')
 
     .addStyleEntry('css/app.min', './assets/scss/app.scss')
-    .addStyleEntry('css/blog.min', './assets/scss/blog.scss')
-    .addEntry('js/app.min', './assets/js/app.js')
-    .addEntry('js/blog.min', './assets/js/blog.js')
+    .addEntry('js/app.min', './assets/js/App.js')
     // .addEntry('js/resume.min', './assets/js/resume.js')
 
     // .splitEntryChunks()
@@ -44,16 +42,11 @@ Encore
     // )
     .addPlugin(new CopyWebpackPlugin([
         { from: './assets/img', to: 'img' },
-        { from: './assets/3d', to: '3d' },
     ]))
-// enables Sass/SCSS support
+    .enableReactPreset()
     .enableSassLoader()
     //.enableTypeScriptLoader()
     //.enableIntegrityHashes(Encore.isProduction())
-
-    //.autoProvidejQuery()
-    // .enableReactPreset()
-    //.addEntry('admin', './assets/js/admin.js')
 ;
 
 module.exports = Encore.getWebpackConfig();

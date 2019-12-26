@@ -20,10 +20,8 @@ class HomeController extends AbstractController
      */
     public function home()
     {
-
         return $this->render('Home/home.html.twig',
-            [
-            ]
+            []
         );
     }
 }

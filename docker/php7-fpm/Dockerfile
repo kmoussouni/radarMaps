@@ -6,7 +6,7 @@ FROM kmoussouni/php73-fpm:${PHP_TAG}
 
 #RUN apt-get -y install libssl1.0-dev
 
-RUN echo "127.0.0.1    karimmoussouni.local" >> /etc/hosts;
+RUN echo "127.0.0.1    radar.local" >> /etc/hosts;
 
 RUN usermod -aG www-data dev
 

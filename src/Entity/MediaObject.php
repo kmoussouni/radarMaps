@@ -69,7 +69,7 @@ class MediaObject
     protected $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="articles")
+     * @ORM\ManyToOne(targetEntity="User")
      * @ApiProperty()
      * @Groups({"api_front"})
      */

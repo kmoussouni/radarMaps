@@ -1,8 +1,0 @@
-App\Entity\Project:
-  attributes:
-    id:
-      groups: ['api_front']
-    user:
-      groups: ['api_front']
-    image:
-      groups: ['api_front']

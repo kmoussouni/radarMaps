@@ -2,13 +2,10 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
-use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
-use Symfony\Component\Serializer\Annotation\MaxDepth;
 
 /**
  * Class User
@@ -34,28 +31,6 @@ class User extends BaseUser
     protected $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="Article", mappedBy="user")
-     */
-    protected $articles;
-
-    /**
-     * @ORM\OneToMany(targetEntity="Project", mappedBy="user")
-     */
-    protected $projects;
-
-    /**
-     * @ORM\OneToMany(targetEntity="Experience", mappedBy="user")
-     * @ApiSubresource()
-     * @ApiProperty()
-     */
-    protected $experiences;
-
-    /**
-     * @ORM\OneToMany(targetEntity="Client", mappedBy="user")
-     */
-    protected $clients;
-
-    /**
      * User constructor.
      */
     public function __construct()
@@ -68,77 +43,5 @@ class User extends BaseUser
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getProjects()
-    {
-        return $this->projects;
-    }
-
-    /**
-     * @param mixed $projects
-     * @return User
-     */
-    public function setProjects($projects)
-    {
-        $this->projects = $projects;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getArticles()
-    {
-        return $this->articles;
-    }
-
-    /**
-     * @param mixed $articles
-     * @return User
-     */
-    public function setArticles($articles)
-    {
-        $this->articles = $articles;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getClients()
-    {
-        return $this->clients;
-    }
-
-    /**
-     * @param mixed $clients
-     * @return User
-     */
-    public function setClients($clients)
-    {
-        $this->clients = $clients;
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getExperiences()
-    {
-        return $this->experiences;
-    }
-
-    /**
-     * @param mixed $experiences
-     * @return User
-     */
-    public function setExperiences($experiences)
-    {
-        $this->experiences = $experiences;
-        return $this;
     }
 }

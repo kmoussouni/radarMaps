@@ -2,12 +2,6 @@ vich_uploader:
     db_driver: orm
 
     mappings:
-        articles:
-            uri_prefix: /media/articles
-            upload_destination: '%kernel.project_dir%/public/media/articles'
-        projects:
-            uri_prefix: /media/projects
-            upload_destination: '%kernel.project_dir%/public/media/projects'
         media_object:
             uri_prefix: /
             upload_destination: '%kernel.project_dir%/public/media'

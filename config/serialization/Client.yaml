@@ -1,6 +1,0 @@
-App\Entity\Client:
-  attributes:
-    id:
-      groups: ['api_front']
-    name:
-      groups: ['api_front']

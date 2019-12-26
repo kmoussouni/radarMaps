@@ -1,20 +1,17 @@
-App\Entity\Quotation:
+App\Entity\Radar:
   attributes:
     id:
       groups: ['api_front']
-    type:
+    name:
       groups: ['api_front']
-    contract:
+    speed:
       groups: ['api_front']
-    technos:
+    longitude:
       groups: ['api_front']
-    firstname:
+    latitude:
       groups: ['api_front']
-    lastname:
+    createdAt:
       groups: ['api_front']
-    mail:
+    updatedAt:
       groups: ['api_front']
-    subject:
-      groups: ['api_front']
-    text:
-      groups: ['api_front']
+
