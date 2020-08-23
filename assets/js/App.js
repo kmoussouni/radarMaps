@@ -17,7 +17,7 @@ export default class App extends Component {
     render() {
         return <div>
             <Header />
-            <SimpleMap />
+            <SimpleMap key={this.props.apiKey} />
         </div>;
     }
 }

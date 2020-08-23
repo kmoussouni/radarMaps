@@ -3,8 +3,6 @@ import GoogleMapReact from 'google-map-react';
 
 import Marker from "../Marker/Marker";
 
-// const AnyReactComponent = ({ text }) => <div>{text}</div>;
-
 export default class SimpleMap extends Component {
     constructor() {
         super();
@@ -21,7 +19,8 @@ export default class SimpleMap extends Component {
     render() {
         return <div style={{ height: '100vh', width: '100%' }}>
     <GoogleMapReact
-        bootstrapURLKeys={{ key: 'AIzaSyAv6BlmTxIwpUeX6Oa16Zg9R98HJMfka-I' }}
+        key={ this.props.apiKey }
+        // bootstrapURLKeys={{ key: new String(this.props.apiKey).toString() }}
         defaultCenter={this.state.center}
         defaultZoom={this.state.zoom}
             >
