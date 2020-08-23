@@ -1,29 +1,39 @@
 version: '3.6'
 
 services:
-    memcached:
-        image: memcached:alpine
-        container_name: memcached
+    mongo:
+        image: mongo
+        #        restart: always
+        container_name: radar_mongo
+        hostname: radar_mongo
         ports:
-            - "11211:11211"
-    db:
-        image: mysql:5.7
-        container_name: db
-        privileged: true
-#        user: "1000:50"
-        ports:
-            - "${MYSQL_ROOT_PORT}:3306"
+            - "27017:27017"
         environment:
-            MYSQL_HOST: ${MYSQL_ROOT_HOST}
-            MYSQL_PORT: ${MYSQL_ROOT_PORT}
-            MYSQL_ROOT_HOST: ${MYSQL_ROOT_HOST}
-            MYSQL_ROOT_PORT: ${MYSQL_ROOT_PORT}
-            MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-            MYSQL_DATABASE: ${MYSQL_DATABASE}
-            MYSQL_USER: ${MYSQL_USER}
-            MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+            MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+            MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+            MONGO_INITDB_USERNAME: ${MONGO_INITDB_USERNAME}
+            MONGO_INITDB_PASSWORD: ${MONGO_INITDB_PASSWORD}
+            MONGO_INITDB_DATABASE: ${MONGO_INITDB_DATABASE}
+    mongo-express:
+        image: mongo-express
+        container_name: radar_mongo_express
+        #        restart: always
+        ports:
+            - 8081:8081
+        environment:
+            ME_CONFIG_MONGODB_ADMINUSERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+            ME_CONFIG_MONGODB_ADMINPASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+    redis:
+        image: "redis:alpine"
+        container_name: radar_redis
+        command: redis-server --requirepass sOmE_sEcUrE_pAsS
+        ports:
+            - "6379:6379"
         volumes:
-            - .data/mysql:/var/lib/mysql:rw
+            - ${SYMFONY_APP_PATH}/var/redis-data:/var/lib/redis
+            - ${SYMFONY_APP_PATH}/docker/redis/redis.conf:/usr/local/etc/redis/redis.conf
+        environment:
+            - REDIS_REPLICATION_MODE=master
     php:
         env_file:
             - .env
@@ -33,21 +43,21 @@ services:
             args:
                 PHP_TAG: $PHP_TAG
                 XDEBUG_ENABLE: $XDEBUG_ENABLE
-        container_name: php
+        container_name: radar_php
         ports:
             - "9000:9000"
             - "3000:3000"
         extra_hosts:
             - host.docker.internal:${DOCKER_INTERNAL_IP}
         links:
-            - db
+            - mongo
         volumes:
             - ${SYMFONY_APP_PATH}:/var/www/symfony/:rw
     nginx:
         build:
             context: docker/nginx
             dockerfile: Dockerfile
-        container_name: nginx
+        container_name: radar_nginx
         env_file:
             - .env
         links:
@@ -56,10 +66,8 @@ services:
             - ${NGINX_EXPOSE}:80/tcp
             - 443:443/tcp
         volumes:
-            - nginx-log:/var/log/nginx
             - ${SYMFONY_APP_PATH}:/var/www/symfony/:rw
 
 volumes:
     db-data:
     elastica-data:
-    nginx-log:

@@ -1,6 +1,0 @@
-App\Entity\MediaObject:
-  media_objects_articles{0..20}:
-    user: "@karim"
-    contentUrl: "<imageUrl(512, 512)>.png"
-    filePath: "<image('public/media')>"
-    file: null

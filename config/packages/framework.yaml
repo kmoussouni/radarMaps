@@ -1,6 +1,7 @@
+# see https://symfony.com/doc/current/reference/configuration/framework.html
 framework:
     secret: '%env(APP_SECRET)%'
-    csrf_protection: true
+    #csrf_protection: true
     #http_method_override: true
 
     # Enables session support. Note that the session will ONLY be started if you read or write from it.
@@ -9,27 +10,8 @@ framework:
         handler_id: null
         cookie_secure: auto
         cookie_samesite: lax
-    translator: { fallback: fr }
-    form: { enabled: true }
+
     #esi: true
     #fragments: true
     php_errors:
         log: true
-    templating:
-        engines: ["twig"]
-    assets:
-        json_manifest_path: '%kernel.project_dir%/public/build/manifest.json'
-    serializer:
-        enable_annotations: true
-        mapping:
-            paths: ['%kernel.project_dir%/config/serialization']
-#    cache:
-#        enable: false
-#        directory: '%kernel.cache_dir%/pools' # Only used with cache.adapter.filesystem
-#
-#        # service: cache.doctrine
-#        default_doctrine_provider: 'app.doctrine_cache'
-#        # service: cache.psr6
-#        default_psr6_provider: 'app.my_psr6_service'
-#        # service: cache.redis
-#        default_memcached_provider: 'memcached://localhost'
