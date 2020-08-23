@@ -1,13 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block content %}
-    map
     {{ react_component('App', {'props': props, 'rendering': 'client_side'}) }}
-    dd
+    <div class="notification">
+        This container is <strong>centered</strong> on desktop.
+    </div>
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
-    <script src="{{ asset('build/vendors~App.min.js') }}"></script>
-    <script src="{{ asset('build/App.min.js') }}"></script>
+    <script src="{{ asset('build/vendors~js/App.min.js') }}"></script>
+    <script src="{{ asset('build/js/App.min.js') }}"></script>
 {% endblock %}

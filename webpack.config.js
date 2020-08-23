@@ -28,7 +28,8 @@ Encore
 
     .enableReactPreset()
 
-    .addEntry('App.min', './assets/js/App.js')
+    .addEntry('js/App.min', './assets/js/App.js')
+    .addStyleEntry('css/App.min', './assets/scss/App.scss')
 ;
 
 module.exports = Encore.getWebpackConfig();
