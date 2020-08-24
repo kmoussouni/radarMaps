@@ -1,8 +1,6 @@
-import ReactOnRails from 'react-on-rails';
-
 import React, { Component } from 'react';
 
-import 'bulma';
+// import 'bulma';
 
 export default class Header extends Component {
     constructor() {
@@ -73,5 +71,3 @@ export default class Header extends Component {
         </nav>;
     }
 }
-
-ReactOnRails.register({ Header });

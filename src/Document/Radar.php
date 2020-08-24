@@ -31,16 +31,16 @@ class Radar
     private $speed;
 
     /**
-     * @var string
+     * @var float
      *
-     * @MongoDB\Field(type="string")
+     * @MongoDB\Field(type="float")
      */
     private $longitude;
 
     /**
-     * @var string
+     * @var float
      *
-     * @MongoDB\Field(type="string")
+     * @MongoDB\Field(type="float")
      */
     private $latitude;
 
@@ -99,15 +99,15 @@ class Radar
     }
 
     /**
-     * @return string
+     * @return float
      */
-    public function getLongitude(): string
+    public function getLongitude(): float
     {
         return $this->longitude;
     }
 
     /**
-     * @param string $longitude
+     * @param float $longitude
      * @return Radar
      */
     public function setLongitude(string $longitude): Radar
@@ -117,18 +117,18 @@ class Radar
     }
 
     /**
-     * @return string
+     * @return float
      */
-    public function getLatitude(): string
+    public function getLatitude(): float
     {
         return $this->latitude;
     }
 
     /**
-     * @param string $latitude
+     * @param float $latitude
      * @return Radar
      */
-    public function setLatitude(string $latitude): Radar
+    public function setLatitude(float $latitude): Radar
     {
         $this->latitude = $latitude;
         return $this;
