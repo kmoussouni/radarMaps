@@ -1,24 +1,38 @@
 import React from 'react';
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
-// import { GoogleMap, LoadScript } from '@react-google-maps/api';
-// import GoogleMapReact from 'google-map-react';
-// import '@google/markerclustererplus';
+import {GoogleMap, LoadScript, MarkerClusterer, Marker, InfoWindow} from '@react-google-maps/api';
+import MD5 from "crypto-js/md5";
 
 import axios from 'axios';
-
-// const fetcher = (...args) => fetch(...args).then(response => response.json());
-
-// import Marker from "../Marker/Marker";
 
 const containerStyle = {
     width: '100%',
     height: '100%'
 };
 
+const divStyle = {
+    background: `white`,
+    border: `1px solid #ccc`,
+    padding: 15
+}
+
 const center = {
     lat: -3.745,
     lng: -38.523
 };
+
+const options = {
+    imagePath:
+        'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m', // so you must have m1.png, m2.png, m3.png, m4.png, m5.png and m6.png in that folder
+}
+
+const onLoad = infoWindow => {
+    console.log('infoWindow: ', infoWindow)
+}
+
+function createKey(radar) {
+    // return MD5(radar.id);
+    return MD5(radar.id + Math.random() + radar.lat + radar.lng + Math.random());
+}
 
 export default class SimpleMap extends React.Component {
 
@@ -55,47 +69,28 @@ export default class SimpleMap extends React.Component {
                     center={this.state.center}
                     zoom={this.state.zoom}
                 >
-                    { /* Child components, such as markers, info windows, etc. */ }
-                    <></>
-                    {this.state.radars.map(radar => (
-                        <Marker key={Math.random()}
-                                position={new window.google.maps.LatLng(radar.latitude, radar.longitude)}
-                            // lat={radar.latitude}
-                            // lng={radar.longitude}
-                            // text={radar.name}
-                        />
-                    ))}
+                    <MarkerClusterer options={options}>
+                        {(clusterer) =>
+                            this.state.radars.map((radar) => (
+                                <Marker key={createKey(location)}
+                                        position={new window.google.maps.LatLng(radar.latitude, radar.longitude)}
+                                        onClick={function(e){
+                                            // console.log(e);
+                                            return <InfoWindow
+                                                // onLoad={onLoad}
+                                                position={new window.google.maps.LatLng(radar.latitude, radar.longitude)}>
+                                                <div style={divStyle}>
+                                                    <h1>InfoWindow</h1>
+                                                    {/*<p>{radar.name}</p>*/}
+                                                </div>
+                                            </InfoWindow>;
+                                        }}
+                                        clusterer={clusterer} />
+                            ))
+                        }
+                    </MarkerClusterer>
                 </GoogleMap>
             </LoadScript>
-            {/*<GoogleMap*/}
-            {/*    key={ this.props.apiKey }*/}
-            {/*    // bootstrapURLKeys={{ key: new String(this.props.apiKey).toString() }}*/}
-            {/*    defaultCenter={this.state.center}*/}
-            {/*    defaultZoom={this.state.zoom}*/}
-            {/*    yesIWantToUseGoogleMapApiInternals*/}
-            {/*        >*/}
-            {/*    {this.state.radars.map(radar => (*/}
-            {/*        <Marker key={Math.random()}*/}
-            {/*            lat={radar.latitude}*/}
-            {/*            lng={radar.longitude}*/}
-            {/*            text={radar.name}*/}
-            {/*        />*/}
-            {/*    ))}*/}
-            {/*</GoogleMap>*/}
-            {/*<LoadScript*/}
-            {/*    googleMapsApiKey={ this.props.apiKey }*/}
-            {/*>*/}
-            {/*    <GoogleMap*/}
-            {/*        // key={ this.props.apiKey }*/}
-            {/*        onLoad={map => {*/}
-            {/*            const bounds = new window.google.maps.LatLngBounds();*/}
-            {/*            map.fitBounds(bounds);*/}
-            {/*        }}*/}
-            {/*        onUnmount={map => {*/}
-            {/*            // do your stuff before map is unmounted*/}
-            {/*        }}*/}
-            {/*    />*/}
-            {/*</LoadScript>*/}
         </div>
             ;
     }

@@ -21,6 +21,7 @@
         "@react-google-maps/api": "^1.9.12",
         "axios": "^0.20.0",
         "bulma": "^0.9.0",
+        "crypto-js": "^4.0.0",
         "react": "^16.13.1",
         "react-dom": "^16.13.1",
         "react-on-rails": "^12.0.1"

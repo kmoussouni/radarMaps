@@ -17,12 +17,12 @@ class RadarFixtures extends Fixture implements ODMFixtureInterface
         $files = [
             'FRZoneFR30.asc',
             'FRZoneFR50.asc',
-            'FRZoneFR60.asc',
-            'FRZoneFR70.asc',
-            'FRZoneFR80.asc',
-            'FRZoneFR90.asc',
-            'FRZoneFR110.asc',
-            'FRZoneFR130.asc',
+//            'FRZoneFR60.asc',
+//            'FRZoneFR70.asc',
+//            'FRZoneFR80.asc',
+//            'FRZoneFR90.asc',
+//            'FRZoneFR110.asc',
+//            'FRZoneFR130.asc',
         ];
 
         foreach ($files as $file) {
