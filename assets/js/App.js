@@ -3,6 +3,8 @@ import React from 'react';
 
 import Header from './Components/Page/Header/Header';
 import SimpleMap from './Components/Map/SimpleMap';
+import POIMarker from './Components/POIMarker/POIMarker';
+import POIInfoBox from './Components/POIInfoBox/POIInfoBox';
 
 export default class App extends React.Component {
     constructor(props) {
@@ -20,4 +22,4 @@ export default class App extends React.Component {
     }
 }
 
-ReactOnRails.register({ App, Header, SimpleMap });
+ReactOnRails.register({ App, Header, SimpleMap, POIMarker, POIInfoBox });

@@ -2,7 +2,6 @@
 
 namespace App\Document;
 
-use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 
 /**
