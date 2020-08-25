@@ -1,22 +1,22 @@
 import ReactOnRails from 'react-on-rails';
-import React, { Component } from 'react';
+import React from 'react';
 
 import Header from './Components/Page/Header/Header';
 import SimpleMap from './Components/Map/SimpleMap';
 
-export default class App extends Component {
-    constructor() {
-        super();
+export default class App extends React.Component {
+    constructor(props) {
+        super(props);
 
-        this.state = {
-        };
+        this.state = {};
     }
 
     render() {
-        return <div>
+        return <div className={"articles"}>
             <Header />
             <SimpleMap key={this.props.apiKey} />
-        </div>;
+        </div>
+            ;
     }
 }
 
