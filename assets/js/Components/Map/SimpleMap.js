@@ -1,69 +1,100 @@
-import React, { Component } from 'react';
-import GoogleMapReact from 'google-map-react';
+import React from 'react';
+import {GoogleMap, LoadScript, MarkerClusterer, StandaloneSearchBox} from '@react-google-maps/api';
+
 import axios from 'axios';
+import POIMarker from "../POIMarker/POIMarker";
 
-import Marker from "../Marker/Marker";
+const containerStyle = {
+    width: '100%',
+    height: '100%'
+};
 
-export default class SimpleMap extends Component {
+const options = { imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m' }
 
-    constructor() {
-        super();
+const center = {
+    lat: 47.014366,
+    lng: 2.565466
+};
+
+const zoom= 7;
+
+// const onLoad = ref => this.searchBox = ref;
+
+export default class SimpleMap extends React.Component {
+
+    constructor(props) {
+        super(props);
 
         this.state = {
-            radars: [],
-            center: {
-                lat: 47.014366,
-                lng: 2.565466
-            },
-            zoom: 7,
-            // mapRef: useRef()
-        };
+            radars: []
+        }
     }
 
-    getRadars()
-    {
-    //     axios.get(`/api/radar/list`)
-    //         .then(res => {
-    //             let radars = res.query;
-    //             console.log(radars);
-    //             this.setState({radars});
-    //         });
-    //
-    //     console.log(this.state.radars);
-
-        this.setState({radars: [1, 3, 4]});
-    }
-    //
     componentDidMount()
     {
-        this.getRadars();
         axios.get(`/api/radar/list`)
             .then(res => {
-                // console.log(res);
                 let radars = res.data.query;
-    //             console.log(radars);
                 this.setState({radars});
             });
-    //
     }
 
     render() {
+        let props=this.props;
+
         return <div style={{ height: '100vh', width: '100%' }}>
-            <GoogleMapReact
-                key={ this.props.apiKey }
-                // bootstrapURLKeys={{ key: new String(this.props.apiKey).toString() }}
-                defaultCenter={this.state.center}
-                defaultZoom={this.state.zoom}
-                yesIWantToUseGoogleMapApiInternals
-                    >
-                {this.state.radars.map(radar => (
-                    <Marker key={Math.random()}
-                        lat={radar.latitude}
-                        lng={radar.longitude}
-                        text={radar.name}
+            <LoadScript googleMapsApiKey={props.apiKey} libraries={["places", "drawing", "geometry", "visualization"]}>
+                <StandaloneSearchBox key={"StandaloneSearchBox"}
+                                     style={{
+                                         boxSizing: `border-box`,
+                                         border: `1px solid transparent`,
+                                         width: `240px`,
+                                         height: `320px`,
+                                         padding: `12px 12px`,
+                                         borderRadius: `3px`,
+                                         boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
+                                         fontSize: `14px`,
+                                         // outline: `none`,
+                                         textOverflow: `ellipses`,
+                                         position: 'inherit',
+                                         top: '10px',
+                                         right: '10px',
+                                         zindex: 10000000
+                                     }}>
+                    <input id={"searchInput"} type='text' placeholder='Customized your placeholder'
+                        style={{
+                            boxSizing: `border-box`,
+                            border: `1px solid transparent`,
+                            width: `200px`,
+                            height: `32px`,
+                            padding: `12px 12px`,
+                            borderRadius: `3px`,
+                            boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
+                            fontSize: `14px`,
+                            // outline: `none`,
+                            textOverflow: `ellipses`,
+                            position: 'fixed',
+                            top: '10px',
+                            right: '10px',
+                            zindex: 10000000
+                        }}
                     />
-                ))}
-            </GoogleMapReact>
+                </StandaloneSearchBox>
+                <GoogleMap
+                    id={"radarMap"}
+                    mapContainerStyle={containerStyle}
+                    center={center}
+                    zoom={zoom}
+                >
+                    <MarkerClusterer options={options}>
+                        {(clusterer) =>
+                            this.state.radars.map((radar) => (
+                                <POIMarker key={radar.id} radar={radar} clusterer={clusterer} />
+                            ))
+                        }
+                    </MarkerClusterer>
+                </GoogleMap>
+            </LoadScript>
         </div>
             ;
     }
