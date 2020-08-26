@@ -21,6 +21,8 @@ export default class POIMarker extends Component {
 
         return <Marker
             key={radar.id}
+            label={""}
+            title={radar.name}
             position={new window.google.maps.LatLng(radar.latitude, radar.longitude)}
             onClick={function(e){
                console.log(e);

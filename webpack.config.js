@@ -26,6 +26,22 @@ Encore
 
     .enableSassLoader()
 
+    .addLoader({ test: /\.tsx$/, loader: 'ts-loader' })
+    .enableTypeScriptLoader(function(tsConfig) {
+        // You can use this callback function to adjust ts-loader settings
+        // https://github.com/TypeStrong/ts-loader/blob/master/README.md#loader-options
+        // For example:
+        // tsConfig.silent = false
+        // configFile "./tsconfig.json",
+        // tsConfig.options = { allowTsInNodeModules: true }
+    })
+    // .enableForkedTypeScriptTypesChecking()
+    // .addPlugin(new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/))
+    // .addPlugin({
+    //     test: /\.tsx?$/,
+    //     loader: 'ts-loader?' + JSON.stringify({
+    //         transpileOnly: true
+    //     }) })
     .enableReactPreset()
 
     .addEntry('js/App.min', './assets/js/App.js')
